@@ -9,7 +9,7 @@ import Icon from "../components/Icon.astro";
 import categoriesData from "../content/categories.json";
 import { detailHours, closedDays, type Hours } from "../lib/hours";
 
-const categories = categoriesData.categories;
+const categories = categoriesData;
 const catById = Object.fromEntries(categories.map((c) => [c.id, c]));
 
 // Real support-line data → the card grid. Active only, featured first,

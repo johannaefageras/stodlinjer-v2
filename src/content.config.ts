@@ -50,9 +50,7 @@ const contactMethod = z.object({
 // ─────────────────────────────────────────────────────────────
 
 const categories = defineCollection({
-  loader: file("src/content/categories.json", {
-    parser: (text) => JSON.parse(text).categories,
-  }),
+  loader: file("src/content/categories.json"),
   schema: z.object({
     id: z.string(),
     label: z.string(),

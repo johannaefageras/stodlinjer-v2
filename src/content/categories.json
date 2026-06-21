@@ -1,5 +1,4 @@
-{
-  "categories": [
+[
     {
       "id": "acute_emergency",
       "label": "Akut / Nödsituation",
@@ -199,5 +198,4 @@
         "vägledning"
       ]
     }
-  ]
-}
+]

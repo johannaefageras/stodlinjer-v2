@@ -16,7 +16,7 @@ const { line, heading = "h2" } = Astro.props;
 const Heading = heading;
 const d = line.data;
 
-const catById = Object.fromEntries(categoriesData.categories.map((c) => [c.id, c]));
+const catById = Object.fromEntries(categoriesData.map((c) => [c.id, c]));
 const cat = catById[d.category.id];
 
 // Channel → icon + how the action link behaves. Phones/SMS/email-with-address

@@ -5,7 +5,7 @@ import categoriesData from "../../content/categories.json";
 // Delete alongside src/components/mockups/ and the mockup pages once a card
 // direction is chosen.
 
-const categories = categoriesData.categories;
+const categories = categoriesData;
 const catById = Object.fromEntries(categories.map((c) => [c.id, c]));
 
 const DAY_ORDER = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"] as const;
