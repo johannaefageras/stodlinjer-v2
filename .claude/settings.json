@@ -28,7 +28,9 @@
       "Bash(magick /tmp/cardF_full.png -crop 1280x620+0+60 +repage /tmp/cardF_full_crop.png)",
       "Bash(ps -p 89576 -o pid,stat,command)",
       "Bash(sed -i '' -e 's|var\\(--cat-${categoryColor}\\)|var\\(--cat-${categoryColor}, var\\(--accent-soft\\)\\)|g' -e 's|var\\(--cat-${categoryColor}-fg\\)|var\\(--cat-${categoryColor}-fg, var\\(--accent-soft-fg\\)\\)|g' CardA.astro CardB.astro CardC.astro CardD.astro CardE.astro CardF.astro CardDX.astro)",
-      "Bash(sed -i '' -e 's|var\\(--cat-green-fg\\)|var\\(--status-open\\)|g' -e 's|var\\(--cat-amber-fg\\)|var\\(--status-soon\\)|g' CardF.astro)"
+      "Bash(sed -i '' -e 's|var\\(--cat-green-fg\\)|var\\(--status-open\\)|g' -e 's|var\\(--cat-amber-fg\\)|var\\(--status-soon\\)|g' CardF.astro)",
+      "WebFetch(domain:pagescms.org)",
+      "Bash(npx -y js-yaml .pages.yml)"
     ]
   }
 }
