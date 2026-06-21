@@ -6,3 +6,4 @@ dist/
 .superpowers/
 docs/
 .claude/
+package-lock.json
