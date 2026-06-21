@@ -115,7 +115,14 @@ content:
                 type: select
                 options:
                   multiple: true
-                  values: [mon, tue, wed, thu, fri, sat, sun]
+                  values:
+                    - { name: mon, label: Måndag }
+                    - { name: tue, label: Tisdag }
+                    - { name: wed, label: Onsdag }
+                    - { name: thu, label: Torsdag }
+                    - { name: fri, label: Fredag }
+                    - { name: sat, label: Lördag }
+                    - { name: sun, label: Söndag }
               - { name: open, label: Öppnar, type: string, default: "00:00" }
               - { name: close, label: Stänger, type: string, default: "24:00" }
               - { name: timezone, label: Tidszon, type: string, default: "Europe/Stockholm" }
