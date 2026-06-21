@@ -1,0 +1,8 @@
+{
+  "slug": "akut-och-kris",
+  "label": "Akut och kris",
+  "description": "När det är akut – stöd för de tyngsta stunderna och vägen genom en kris.",
+  "icon": "four-segment-lifebuoy",
+  "color": "red",
+  "order": 1
+}
