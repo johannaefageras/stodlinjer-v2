@@ -1,0 +1,297 @@
+# Pages CMS configuration — https://pagescms.org/docs/
+# Edits made in the CMS are committed to this repo; Astro rebuilds from the files.
+
+media:
+  - name: images
+    label: Bilder
+    input: public/uploads
+    output: /uploads
+    categories: [image]
+    extensions: [png, jpg, jpeg, webp, svg, avif, gif]
+    rename: safe
+
+content:
+  # ── Stödlinjer ───────────────────────────────────────────────
+  - name: support-lines
+    label: Stödlinjer
+    type: collection
+    path: src/content/support-lines
+    format: json
+    filename: "{fields.slug}.json"
+    view:
+      fields: [name, organization, status]
+      primary: name
+      sort: [name, organization]
+      search: [name, organization]
+      default:
+        sort: name
+        order: asc
+    fields:
+      - { name: name, label: Namn, type: string, required: true }
+      - { name: organization, label: Organisation, type: string, required: true }
+      - { name: slug, label: Slug (filnamn och URL), type: string, required: true }
+      - { name: id, label: ID (oftast samma som slug), type: string, required: true }
+      - name: type
+        label: Typ
+        type: select
+        required: true
+        options:
+          values:
+            - { name: direct_line, label: Direkt stödlinje }
+            - { name: support_organization, label: Stödorganisation }
+            - { name: organization_contact, label: Organisationskontakt }
+            - { name: public_service, label: Offentlig samhällstjänst }
+      - name: status
+        label: Status
+        type: select
+        default: active
+        options:
+          values:
+            - { name: active, label: Aktiv }
+            - { name: paused, label: Pausad }
+            - { name: retired, label: Avvecklad }
+      - name: category
+        label: Kategori
+        type: select
+        required: true
+        options:
+          values:
+            - { name: acute_emergency, label: "Akut / Nödsituation" }
+            - { name: mental_health, label: "Psykisk hälsa" }
+            - { name: violence_abuse, label: "Våld och övergrepp" }
+            - { name: children_youth, label: "Barn och unga" }
+            - { name: family_parenting, label: "Familj och anhöriga" }
+            - { name: substance_use, label: "Beroende och missbruk" }
+            - { name: gambling, label: "Spelberoende" }
+            - { name: eating_disorders, label: "Ätstörningar" }
+            - { name: grief_loss, label: "Sorg och förlust" }
+            - { name: identity_inclusion, label: "Identitet och inkludering" }
+            - { name: care_guidance, label: "Vård och rådgivning" }
+            - { name: rights_public_authority, label: "Rättigheter och myndigheter" }
+            - { name: community_social_support, label: "Gemenskap och socialt stöd" }
+      - { name: shortDescription, label: Kort beskrivning, type: text, required: true }
+      - { name: longDescription, label: Lång beskrivning, type: text, required: true }
+      - name: helpsWith
+        label: Hjälper med (taggar)
+        type: string
+        list: true
+        description: "Återanvänd befintliga slug-taggar, t.ex. angest, ensamhet."
+      - { name: targetGroups, label: Målgrupper (taggar), type: string, list: true }
+      - name: contactMethods
+        label: Kontaktvägar
+        type: object
+        list:
+          min: 1
+          collapsible:
+            collapsed: true
+            summary: "{fields.label} ({fields.channel})"
+        fields:
+          - { name: id, label: ID, type: string, required: true }
+          - name: channel
+            label: Kanal
+            type: select
+            required: true
+            options:
+              values:
+                - { name: phone, label: Telefon }
+                - { name: chat, label: Chatt }
+                - { name: sms, label: SMS }
+                - { name: email, label: Mejl }
+                - { name: web, label: Webb }
+          - { name: label, label: Etikett, type: string, required: true }
+          - { name: value, label: "Värde (nummer/adress)", type: string }
+          - { name: url, label: URL, type: string }
+          - { name: note, label: Notis, type: string }
+          - name: openingHours
+            label: Öppettider
+            type: object
+            list:
+              collapsible:
+                collapsed: true
+                summary: "{fields.open}–{fields.close}"
+            fields:
+              - name: days
+                label: Dagar
+                type: select
+                options:
+                  multiple: true
+                  values: [mon, tue, wed, thu, fri, sat, sun]
+              - { name: open, label: Öppnar, type: string, default: "00:00" }
+              - { name: close, label: Stänger, type: string, default: "24:00" }
+              - { name: timezone, label: Tidszon, type: string, default: "Europe/Stockholm" }
+              - { name: note, label: Notis, type: string }
+      - name: accessibility
+        label: Tillgänglighet
+        type: object
+        fields:
+          - { name: anonymous, label: Anonymt, type: boolean, default: true }
+          - { name: free, label: Kostnadsfritt, type: boolean, default: true }
+          - { name: languages, label: Språk, type: string, list: true, default: [svenska] }
+          - { name: region, label: Region, type: string, default: sweden }
+          - { name: notes, label: Notiser, type: text }
+      - name: urgency
+        label: Brådska
+        type: object
+        fields:
+          - name: level
+            label: Nivå
+            type: select
+            required: true
+            options:
+              values:
+                - { name: emergency, label: Nödsituation }
+                - { name: urgent, label: Brådskande }
+                - { name: standard, label: Standard }
+          - { name: showEmergencyNotice, label: Visa nödruta, type: boolean, default: false }
+          - { name: emergencyText, label: Nödtext, type: text }
+      - name: source
+        label: Källa
+        type: object
+        fields:
+          - { name: primaryUrl, label: Primär URL, type: string, required: true }
+          - { name: secondaryUrl, label: Sekundär URL, type: string }
+          - { name: checkedAt, label: Kontrollerad, type: date, options: { format: "yyyy-MM-dd", time: false } }
+          - { name: sourceUpdatedAt, label: "Källa uppdaterad", type: date, options: { format: "yyyy-MM-dd", time: false } }
+          - name: confidence
+            label: Tillförlitlighet
+            type: select
+            options:
+              values:
+                - { name: high, label: Hög }
+                - { name: medium, label: Medel }
+                - { name: low, label: Låg }
+      - name: display
+        label: Visning
+        type: object
+        fields:
+          - { name: featured, label: Utvald, type: boolean, default: false }
+          - { name: priority, label: Prioritet, type: number, default: 0 }
+          - { name: primaryLabel, label: Primär etikett, type: string, required: true }
+          - { name: availabilityLabel, label: Tillgänglighetsetikett, type: string, required: true }
+      - name: metadata
+        label: Metadata
+        type: object
+        fields:
+          - { name: lastVerified, label: Senast verifierad, type: date, options: { format: "yyyy-MM-dd", time: false } }
+          - { name: nextReview, label: Nästa översyn, type: date, options: { format: "yyyy-MM-dd", time: false } }
+          - { name: resourceKind, label: Resurstyp, type: string }
+          - { name: supportLine, label: Är stödlinje, type: boolean }
+
+  # ── Artiklar ─────────────────────────────────────────────────
+  - name: articles
+    label: Artiklar
+    type: collection
+    path: src/content/articles
+    format: yaml-frontmatter
+    subfolders: true
+    filename: "{fields.collection}/{primary}.md"
+    view:
+      fields: [title, date, draft]
+      primary: title
+      sort: [date, title]
+      search: [title, description]
+      default:
+        sort: date
+        order: desc
+    fields:
+      - name: type
+        label: Typ
+        type: select
+        default: article
+        options:
+          values:
+            - { name: article, label: Artikel }
+            - { name: guide, label: Guide }
+      - { name: title, label: Titel, type: string, required: true }
+      - { name: description, label: Beskrivning, type: text, required: true }
+      - { name: date, label: Datum, type: date, required: true, options: { format: "yyyy-MM-dd", time: false } }
+      - { name: updated, label: Uppdaterad, type: date, options: { format: "yyyy-MM-dd", time: false } }
+      - { name: author, label: Författare, type: string, required: true, default: "Johanna Fagerås" }
+      - name: collection
+        label: Ämne
+        type: reference
+        required: true
+        options:
+          collection: article-topics
+          value: "{fields.slug}"
+          label: "{fields.label}"
+          search: [label, slug]
+      - { name: tags, label: Taggar, type: string, list: true }
+      - { name: readingTime, label: Lästid, type: string }
+      - { name: references, label: Källor, type: text, list: true }
+      - name: relatedArticles
+        label: Relaterade artiklar
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{fields.title}"
+        fields:
+          - { name: title, label: Titel, type: string }
+          - { name: url, label: URL, type: string }
+      - name: relatedSupportLines
+        label: Relaterade stödlinjer
+        type: reference
+        options:
+          collection: support-lines
+          multiple: true
+          value: "{fields.slug}"
+          label: "{fields.name}"
+          search: [name, organization]
+      - { name: crisisBanner, label: Visa krisbanner, type: boolean, default: false }
+      - { name: draft, label: Utkast, type: boolean, default: false }
+      - { name: body, label: Innehåll, type: rich-text }
+
+  # ── Artikelämnen ─────────────────────────────────────────────
+  - name: article-topics
+    label: Artikelämnen
+    type: collection
+    path: src/content/article-topics
+    format: json
+    filename: "{fields.slug}.json"
+    view:
+      fields: [label, slug, order]
+      primary: label
+      sort: [order, label]
+      default:
+        sort: order
+        order: asc
+    fields:
+      - { name: slug, label: Slug, type: string, required: true }
+      - { name: label, label: Etikett, type: string, required: true }
+      - { name: description, label: Beskrivning, type: text, required: true }
+      - name: icon
+        label: "Ikon (Nightingale-namn)"
+        type: string
+        required: true
+        description: "Ett ikonnamn som finns i src/styles/icons.css, utan ni-prefix."
+      - name: color
+        label: Färg
+        type: select
+        options:
+          values: [red, green, rose, sky, teal, lime, amber, pink, blue, violet, cyan, indigo, orange]
+      - { name: order, label: Ordning, type: number, required: true }
+
+  # ── Kategorier ───────────────────────────────────────────────
+  - name: categories
+    label: Kategorier
+    type: file
+    path: src/content/categories.json
+    format: json
+    list: true
+    fields:
+      - { name: id, label: ID, type: string, required: true }
+      - { name: label, label: Etikett, type: string, required: true }
+      - { name: description, label: Beskrivning, type: text, required: true }
+      - name: icon
+        label: "Ikon (Nightingale-namn)"
+        type: string
+        required: true
+        description: "Ett ikonnamn som finns i src/styles/icons.css, utan ni-prefix."
+      - name: color
+        label: Färg
+        type: select
+        options:
+          values: [red, green, rose, sky, teal, lime, amber, pink, blue, violet, cyan, indigo, orange]
+      - { name: priority, label: Prioritet, type: number, required: true }
+      - { name: keywords, label: Nyckelord, type: string, list: true }
