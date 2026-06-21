@@ -1,0 +1,105 @@
+{
+  "id": "alkoholhjalpen",
+  "slug": "alkoholhjalpen",
+  "name": "Alkoholhjälpen",
+  "organization": "Beroendecentrum Stockholm",
+  "type": "direct_line",
+  "status": "active",
+  "category": "substance_use",
+  "shortDescription": "Anonymt stöd för dig som funderar över dina egna eller någon annans alkoholvanor.",
+  "longDescription": "Alkoholhjälpen erbjuder kostnadsfritt och anonymt stöd via nätet och telefon för personer över 18 år som funderar över sina egna eller någon annans alkoholvanor. Även vårdgivare kan höra av sig.",
+  "helpsWith": [
+    "alkoholvanor",
+    "riskbruk",
+    "beroende",
+    "oro-for-nagon-annan",
+    "forandring-av-alkoholvanor"
+  ],
+  "targetGroups": [
+    "vuxna-over-18",
+    "anhoriga",
+    "vardgivare"
+  ],
+  "contactMethods": [
+    {
+      "id": "phone",
+      "channel": "phone",
+      "label": "Telefon",
+      "value": "020-84 44 48",
+      "openingHours": [
+        {
+          "days": [
+            "mon",
+            "tue",
+            "wed",
+            "thu"
+          ],
+          "open": "11:00",
+          "close": "19:00",
+          "timezone": "Europe/Stockholm",
+          "note": "Helgfria vardagar"
+        },
+        {
+          "days": [
+            "fri"
+          ],
+          "open": "11:00",
+          "close": "16:00",
+          "timezone": "Europe/Stockholm",
+          "note": "Helgfria vardagar"
+        }
+      ]
+    },
+    {
+      "id": "web-support",
+      "channel": "web",
+      "label": "Webbstöd",
+      "url": "https://www.alkoholhjalpen.se/",
+      "openingHours": [
+        {
+          "days": [
+            "mon",
+            "tue",
+            "wed",
+            "thu",
+            "fri",
+            "sat",
+            "sun"
+          ],
+          "open": "00:00",
+          "close": "24:00",
+          "timezone": "Europe/Stockholm",
+          "note": "Forum och skriftligt stöd nås via webbplatsen"
+        }
+      ]
+    }
+  ],
+  "accessibility": {
+    "anonymous": true,
+    "free": true,
+    "languages": [
+      "svenska"
+    ],
+    "region": "sweden"
+  },
+  "urgency": {
+    "level": "standard",
+    "showEmergencyNotice": true,
+    "emergencyText": "Vid akut fara för liv, ring 112."
+  },
+  "source": {
+    "primaryUrl": "https://www.alkoholhjalpen.se/",
+    "checkedAt": "2026-06-04",
+    "confidence": "high"
+  },
+  "display": {
+    "featured": true,
+    "priority": 74,
+    "primaryLabel": "Ring 020-84 44 48",
+    "availabilityLabel": "Telefon: mån-tors 11-19, fre 11-16, helgfria vardagar"
+  },
+  "metadata": {
+    "lastVerified": "2026-06-04",
+    "nextReview": "2026-12-04"
+  }
+}

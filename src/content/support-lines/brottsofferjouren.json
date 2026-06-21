@@ -1,0 +1,176 @@
+{
+  "id": "brottsofferjouren",
+  "slug": "brottsofferjouren",
+  "name": "Brottsofferjouren",
+  "organization": "Brottsofferjouren Sverige",
+  "type": "direct_line",
+  "status": "active",
+  "category": "violence_abuse",
+  "shortDescription": "Stöd för dig som utsatts för brott, är vittne eller närstående.",
+  "longDescription": "Brottsofferjourens nationella stödlinje ger kostnadsfritt stöd till brottsoffer, vittnen och anhöriga via telefon, e-post, chatt och kontaktformulär.",
+  "helpsWith": [
+    "utsatt-for-brott",
+    "vittne-till-brott",
+    "anhorig-till-brottsutsatt",
+    "rattsprocessen",
+    "praktisk-vagledning"
+  ],
+  "targetGroups": [
+    "brottsutsatta",
+    "vittnen",
+    "anhoriga"
+  ],
+  "contactMethods": [
+    {
+      "id": "phone",
+      "channel": "phone",
+      "label": "Telefon",
+      "value": "116 006",
+      "openingHours": [
+        {
+          "days": [
+            "mon",
+            "tue"
+          ],
+          "open": "09:00",
+          "close": "19:00",
+          "timezone": "Europe/Stockholm",
+          "note": "Ordinarie öppettider 2026"
+        },
+        {
+          "days": [
+            "wed",
+            "thu",
+            "fri"
+          ],
+          "open": "09:00",
+          "close": "17:00",
+          "timezone": "Europe/Stockholm",
+          "note": "Ordinarie öppettider 2026"
+        },
+        {
+          "days": [
+            "sat",
+            "sun"
+          ],
+          "open": "09:00",
+          "close": "12:00",
+          "timezone": "Europe/Stockholm",
+          "note": "Ordinarie öppettider 2026"
+        },
+        {
+          "days": [
+            "sat",
+            "sun"
+          ],
+          "open": "13:00",
+          "close": "16:00",
+          "timezone": "Europe/Stockholm",
+          "note": "Ordinarie öppettider 2026"
+        },
+        {
+          "days": [
+            "mon",
+            "tue",
+            "wed",
+            "thu",
+            "fri"
+          ],
+          "open": "09:00",
+          "close": "19:00",
+          "timezone": "Europe/Stockholm",
+          "note": "Juni och juli: stödlinjen öppen vardagar 9-19, helger stängt"
+        }
+      ]
+    },
+    {
+      "id": "email",
+      "channel": "email",
+      "label": "E-post",
+      "value": "fraga@boj.se",
+      "openingHours": [
+        {
+          "days": [
+            "mon",
+            "tue",
+            "wed",
+            "thu",
+            "fri",
+            "sat",
+            "sun"
+          ],
+          "open": "00:00",
+          "close": "24:00",
+          "timezone": "Europe/Stockholm",
+          "note": "Svar ges under stödlinjens bemannade tider"
+        }
+      ]
+    },
+    {
+      "id": "chat",
+      "channel": "chat",
+      "label": "Chatt",
+      "url": "https://www.brottsofferjouren.se/om-oss/kontakt/",
+      "openingHours": [
+        {
+          "days": [
+            "mon",
+            "tue",
+            "wed",
+            "thu",
+            "fri"
+          ],
+          "open": "09:00",
+          "close": "16:00",
+          "timezone": "Europe/Stockholm"
+        },
+        {
+          "days": [
+            "sat",
+            "sun"
+          ],
+          "open": "09:00",
+          "close": "12:00",
+          "timezone": "Europe/Stockholm"
+        },
+        {
+          "days": [
+            "sat",
+            "sun"
+          ],
+          "open": "13:00",
+          "close": "16:00",
+          "timezone": "Europe/Stockholm"
+        }
+      ]
+    }
+  ],
+  "accessibility": {
+    "anonymous": true,
+    "free": true,
+    "languages": [
+      "svenska"
+    ],
+    "region": "sweden"
+  },
+  "urgency": {
+    "level": "standard",
+    "showEmergencyNotice": true,
+    "emergencyText": "Vid akut fara för liv, ring 112."
+  },
+  "source": {
+    "primaryUrl": "https://www.brottsofferjouren.se/om-oss/kontakt/",
+    "checkedAt": "2026-06-04",
+    "confidence": "high"
+  },
+  "display": {
+    "featured": true,
+    "priority": 85,
+    "primaryLabel": "Ring 116 006",
+    "availabilityLabel": "Stödlinje: juni-juli vardagar 9-19. Ordinarie 2026: mån-tis 9-19, ons-fre 9-17, helg 9-12 och 13-16"
+  },
+  "metadata": {
+    "lastVerified": "2026-06-04",
+    "nextReview": "2026-12-04"
+  }
+}

@@ -1,0 +1,130 @@
+{
+  "id": "giftinformationscentralen",
+  "slug": "giftinformationscentralen",
+  "name": "Giftinformationscentralen",
+  "organization": "Giftinformationscentralen",
+  "type": "public_service",
+  "status": "active",
+  "category": "acute_emergency",
+  "shortDescription": "Rådgivning vid akut eller misstänkt förgiftning.",
+  "longDescription": "Giftinformationscentralen ger råd vid akuta förgiftningar och misstänkta förgiftningar. Vid akut förgiftning ska man ringa 112 och begära giftinformation. I mindre brådskande fall kan allmänheten ringa Giftinformationscentralens telefonnummer dygnet runt.",
+  "helpsWith": [
+    "forgiftning",
+    "misstankt-forgiftning",
+    "akuta-atgarder",
+    "lakemedel",
+    "kemikalier",
+    "barn-och-vuxna"
+  ],
+  "targetGroups": [
+    "allmanheten",
+    "patienter",
+    "anhoriga",
+    "vardpersonal"
+  ],
+  "contactMethods": [
+    {
+      "id": "acute-phone",
+      "channel": "phone",
+      "label": "Akut förgiftning via 112",
+      "value": "112",
+      "openingHours": [
+        {
+          "days": [
+            "mon",
+            "tue",
+            "wed",
+            "thu",
+            "fri",
+            "sat",
+            "sun"
+          ],
+          "open": "00:00",
+          "close": "24:00",
+          "timezone": "Europe/Stockholm"
+        }
+      ],
+      "note": "Ring 112 och begär giftinformation"
+    },
+    {
+      "id": "less-urgent-phone",
+      "channel": "phone",
+      "label": "Mindre brådskande fall",
+      "value": "010-456 67 00",
+      "openingHours": [
+        {
+          "days": [
+            "mon",
+            "tue",
+            "wed",
+            "thu",
+            "fri",
+            "sat",
+            "sun"
+          ],
+          "open": "00:00",
+          "close": "24:00",
+          "timezone": "Europe/Stockholm"
+        }
+      ]
+    },
+    {
+      "id": "general-questions-phone",
+      "channel": "phone",
+      "label": "Allmänna och förebyggande frågor",
+      "value": "010-456 67 00",
+      "openingHours": [
+        {
+          "days": [
+            "mon",
+            "tue",
+            "wed",
+            "thu",
+            "fri"
+          ],
+          "open": "09:00",
+          "close": "17:00",
+          "timezone": "Europe/Stockholm"
+        }
+      ]
+    },
+    {
+      "id": "website",
+      "channel": "web",
+      "label": "Giftinformation.se",
+      "url": "https://giftinformation.se/",
+      "openingHours": []
+    }
+  ],
+  "accessibility": {
+    "anonymous": false,
+    "free": false,
+    "languages": [
+      "svenska",
+      "engelska"
+    ],
+    "region": "sweden"
+  },
+  "urgency": {
+    "level": "urgent",
+    "showEmergencyNotice": true,
+    "emergencyText": "Vid akut förgiftning, ring 112 och begär giftinformation."
+  },
+  "source": {
+    "primaryUrl": "https://giftinformation.se/kontakta-oss/",
+    "checkedAt": "2026-06-05",
+    "confidence": "high"
+  },
+  "display": {
+    "featured": true,
+    "priority": 96,
+    "primaryLabel": "Ring 112 vid akut förgiftning",
+    "availabilityLabel": "Akut: 112 och begär giftinformation. Mindre brådskande: 010-456 67 00 dygnet runt"
+  },
+  "metadata": {
+    "lastVerified": "2026-06-05",
+    "nextReview": "2026-12-05",
+    "resourceKind": "governmental_public_service",
+    "supportLine": false
+  }
+}

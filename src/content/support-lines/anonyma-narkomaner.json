@@ -1,0 +1,105 @@
+{
+  "id": "anonyma-narkomaner",
+  "slug": "anonyma-narkomaner",
+  "name": "Anonyma Narkomaner",
+  "organization": "NA Sverige",
+  "type": "direct_line",
+  "status": "active",
+  "category": "substance_use",
+  "shortDescription": "Hjälptelefon och mötesgemenskap för dig som vill sluta använda droger.",
+  "longDescription": "Anonyma Narkomaner i Sverige erbjuder en hjälptelefon bemannad av NA-medlemmar, e-postkontakt och möten för personer som upplever att de har problem med droger och vill bli drogfria.",
+  "helpsWith": [
+    "drogberoende",
+    "drogfrihet",
+    "hitta-mote",
+    "tolvstegsprogram",
+    "stod-fran-andra-med-erfarenhet"
+  ],
+  "targetGroups": [
+    "personer-med-drogproblem",
+    "personer-som-vill-bli-drogfria"
+  ],
+  "contactMethods": [
+    {
+      "id": "help-phone",
+      "channel": "phone",
+      "label": "Hjälptelefon",
+      "value": "0771-13 80 00",
+      "openingHours": [
+        {
+          "days": [
+            "mon",
+            "tue",
+            "wed",
+            "thu",
+            "fri",
+            "sat",
+            "sun"
+          ],
+          "open": "00:00",
+          "close": "24:00",
+          "timezone": "Europe/Stockholm",
+          "note": "Officiell sida anger bemannad alla dagar men inte exakta klockslag"
+        }
+      ]
+    },
+    {
+      "id": "email",
+      "channel": "email",
+      "label": "E-post",
+      "value": "info@nasverige.org",
+      "openingHours": [
+        {
+          "days": [
+            "mon",
+            "tue",
+            "wed",
+            "thu",
+            "fri",
+            "sat",
+            "sun"
+          ],
+          "open": "00:00",
+          "close": "24:00",
+          "timezone": "Europe/Stockholm",
+          "note": "Mail besvaras löpande under dagen"
+        }
+      ]
+    },
+    {
+      "id": "meetings",
+      "channel": "web",
+      "label": "Möten och kontaktformulär",
+      "url": "https://www.nasverige.org/kontakt/",
+      "openingHours": []
+    }
+  ],
+  "accessibility": {
+    "anonymous": true,
+    "free": true,
+    "languages": [
+      "svenska"
+    ],
+    "region": "sweden"
+  },
+  "urgency": {
+    "level": "standard",
+    "showEmergencyNotice": true,
+    "emergencyText": "Vid akut fara för liv, ring 112."
+  },
+  "source": {
+    "primaryUrl": "https://www.nasverige.org/kontakt/",
+    "checkedAt": "2026-06-04",
+    "confidence": "high"
+  },
+  "display": {
+    "featured": true,
+    "priority": 63,
+    "primaryLabel": "Ring 0771-13 80 00",
+    "availabilityLabel": "Hjälptelefonen är bemannad alla dagar"
+  },
+  "metadata": {
+    "lastVerified": "2026-06-04",
+    "nextReview": "2026-12-04"
+  }
+}

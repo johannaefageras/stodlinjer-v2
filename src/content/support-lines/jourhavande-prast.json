@@ -1,0 +1,136 @@
+{
+  "id": "jourhavande-prast",
+  "slug": "jourhavande-prast",
+  "name": "Jourhavande präst",
+  "organization": "Svenska kyrkan",
+  "type": "direct_line",
+  "status": "active",
+  "category": "mental_health",
+  "shortDescription": "Akut samtals- och krisstöd via telefon, chatt och digitalt brev på kvällar och nätter.",
+  "longDescription": "Jourhavande präst erbjuder anonymt samtals- och krisstöd för den som vill prata om sorg, ensamhet, självmordstankar, ångest, existentiella frågor eller annat svårt. Tjänsten nås via 112 på telefon, via chatt och via digitalt brev.",
+  "helpsWith": [
+    "akut-kris",
+    "sorg",
+    "ensamhet",
+    "sjalvmordstankar",
+    "existentiella-fragor",
+    "angest"
+  ],
+  "targetGroups": [
+    "vuxna",
+    "unga",
+    "aldre"
+  ],
+  "contactMethods": [
+    {
+      "id": "phone",
+      "channel": "phone",
+      "label": "Telefon via 112",
+      "value": "112",
+      "openingHours": [
+        {
+          "days": [
+            "mon",
+            "tue",
+            "wed",
+            "thu",
+            "fri",
+            "sat",
+            "sun"
+          ],
+          "open": "21:00",
+          "close": "24:00",
+          "timezone": "Europe/Stockholm"
+        },
+        {
+          "days": [
+            "mon",
+            "tue",
+            "wed",
+            "thu",
+            "fri",
+            "sat",
+            "sun"
+          ],
+          "open": "00:00",
+          "close": "06:00",
+          "timezone": "Europe/Stockholm"
+        }
+      ],
+      "note": "Ring 112 och be att få bli kopplad till jourhavande präst"
+    },
+    {
+      "id": "chat",
+      "channel": "chat",
+      "label": "Chatt",
+      "url": "https://www.svenskakyrkan.se/jourhavandeprast",
+      "openingHours": [
+        {
+          "days": [
+            "mon",
+            "tue",
+            "wed",
+            "thu",
+            "fri",
+            "sat",
+            "sun"
+          ],
+          "open": "20:00",
+          "close": "24:00",
+          "timezone": "Europe/Stockholm"
+        }
+      ]
+    },
+    {
+      "id": "digital-letter",
+      "channel": "web",
+      "label": "Digitalt brev",
+      "url": "https://www.svenskakyrkan.se/jourhavandeprast",
+      "openingHours": [
+        {
+          "days": [
+            "mon",
+            "tue",
+            "wed",
+            "thu",
+            "fri",
+            "sat",
+            "sun"
+          ],
+          "open": "00:00",
+          "close": "24:00",
+          "timezone": "Europe/Stockholm",
+          "note": "Brev kan skrivas via webbplatsen"
+        }
+      ]
+    }
+  ],
+  "accessibility": {
+    "anonymous": true,
+    "free": true,
+    "languages": [
+      "svenska"
+    ],
+    "region": "sweden"
+  },
+  "urgency": {
+    "level": "urgent",
+    "showEmergencyNotice": true,
+    "emergencyText": "Vid akut fara för liv, ring 112."
+  },
+  "source": {
+    "primaryUrl": "https://www.svenskakyrkan.se/jourhavandeprast",
+    "checkedAt": "2026-06-04",
+    "confidence": "high"
+  },
+  "display": {
+    "featured": true,
+    "priority": 94,
+    "primaryLabel": "Ring 112 och fråga efter jourhavande präst",
+    "availabilityLabel": "Telefon: alla nätter 21-06. Chatt: alla kvällar 20-24"
+  },
+  "metadata": {
+    "lastVerified": "2026-06-04",
+    "nextReview": "2026-12-04"
+  }
+}

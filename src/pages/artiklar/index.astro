@@ -1,0 +1,149 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import SiteHeader from "../../components/SiteHeader.astro";
+import Icon from "../../components/Icon.astro";
+import { ARTICLE_COLLECTIONS } from "../../lib/articleCollections";
+
+// Landing for the article section. One card per topic collection, with a live
+// count of published articles in each.
+const articles = await getCollection("articles", (e) => !e.data.draft);
+
+const countBySlug = new Map<string, number>();
+for (const a of articles) {
+  countBySlug.set(a.data.collection, (countBySlug.get(a.data.collection) ?? 0) + 1);
+}
+---
+
+<BaseLayout
+  title="Artiklar | Stödlinjer"
+  description="Texter om psykisk hälsa, kriser, beroende, sorg, rättigheter och att vara anhörig – skrivna för att förstå och orka."
+>
+  <SiteHeader />
+
+  <main id="main" class="page container--wide">
+    <header class="head">
+      <p class="head__eyebrow mono">{articles.length} artiklar · {ARTICLE_COLLECTIONS.length} ämnen</p>
+      <h1 class="head__title">Artiklar</h1>
+      <p class="head__lede">
+        Texter som hjälper dig sätta ord på hur du mår, förstå vad som händer och
+        hitta vägen vidare. Välj ett ämne att börja i.
+      </p>
+    </header>
+
+    <div class="grid">
+      {
+        ARTICLE_COLLECTIONS.map((c) => (
+          <article
+            class="ccard"
+            style={`--c: var(--cat-${c.color}, var(--accent-soft)); --c-fg: var(--cat-${c.color}-fg, var(--accent-soft-fg));`}
+          >
+            <span class="ccard__chip" aria-hidden="true">
+              <Icon name={c.icon} size={24} />
+            </span>
+            <a class="ccard__title" href={`/artiklar/${c.slug}/`}>
+              {c.label}
+            </a>
+            <p class="ccard__desc">{c.description}</p>
+            <span class="ccard__count mono">
+              {countBySlug.get(c.slug) ?? 0} artiklar
+            </span>
+          </article>
+        ))
+      }
+    </div>
+  </main>
+</BaseLayout>
+
+<style>
+  .page {
+    padding-block: var(--space-12) var(--space-16);
+  }
+  .head {
+    max-width: var(--content-max);
+    margin-bottom: var(--space-12);
+  }
+  .head__eyebrow {
+    font-size: 0.8125rem;
+    letter-spacing: 0.02em;
+    color: var(--subtle);
+    margin-bottom: var(--space-4);
+  }
+  .head__title {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 400;
+    line-height: 1.06;
+    letter-spacing: -0.01em;
+  }
+  .head__lede {
+    margin-top: var(--space-6);
+    font-size: clamp(1.08rem, 1.5vw, 1.25rem);
+    line-height: 1.55;
+    color: var(--muted);
+    max-width: var(--measure);
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: var(--space-4);
+  }
+
+  .ccard {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    padding: var(--space-6);
+    border: var(--hairline) solid var(--border);
+    border-radius: var(--radius-card);
+    background: var(--surface);
+    transition:
+      transform 0.16s ease,
+      border-color 0.16s ease,
+      box-shadow 0.16s ease;
+  }
+  .ccard:hover {
+    transform: translateY(-3px);
+    border-color: var(--border-strong);
+    box-shadow: 0 10px 30px -16px oklch(0 0 0 / 0.35);
+  }
+  .ccard__chip {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-chip, 12px);
+    background: var(--c);
+    color: var(--c-fg);
+    margin-bottom: var(--space-1);
+  }
+  .ccard__title {
+    display: block;
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: -0.005em;
+    color: var(--foreground);
+    text-wrap: balance;
+  }
+  .ccard__title::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: var(--radius-card);
+  }
+  .ccard__desc {
+    font-size: 1rem;
+    line-height: 1.55;
+    color: var(--muted);
+  }
+  .ccard__count {
+    margin-top: auto;
+    padding-top: var(--space-2);
+    font-size: 0.8125rem;
+    color: var(--subtle);
+  }
+</style>

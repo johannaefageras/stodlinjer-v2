@@ -1,0 +1,103 @@
+{
+  "id": "anhoriglinjen",
+  "slug": "anhoriglinjen",
+  "name": "Anhöriglinjen",
+  "organization": "Anhörigas Riksförbund",
+  "type": "direct_line",
+  "status": "active",
+  "category": "family_parenting",
+  "shortDescription": "Nationell stödtelefon för dig som är anhörig.",
+  "longDescription": "Anhöriglinjen erbjuder medmänskligt stöd, vägledning och hjälp vidare för anhöriga i hela Sverige. Linjen bemannas av volontärer med stor erfarenhet, och det finns även möjlighet att få juridisk vägledning i anhörigfrågor.",
+  "helpsWith": [
+    "anhorigskap",
+    "vard-och-omsorg",
+    "oro",
+    "avlastning",
+    "juridisk-vagledning"
+  ],
+  "targetGroups": [
+    "anhoriga",
+    "vuxna"
+  ],
+  "contactMethods": [
+    {
+      "id": "phone",
+      "channel": "phone",
+      "label": "Telefon",
+      "value": "0200-239 500",
+      "openingHours": [
+        {
+          "days": [
+            "mon",
+            "tue",
+            "thu",
+            "fri"
+          ],
+          "open": "10:00",
+          "close": "15:00",
+          "timezone": "Europe/Stockholm"
+        },
+        {
+          "days": [
+            "wed",
+            "sun"
+          ],
+          "open": "18:00",
+          "close": "21:00",
+          "timezone": "Europe/Stockholm"
+        }
+      ]
+    },
+    {
+      "id": "email",
+      "channel": "email",
+      "label": "Mejl",
+      "value": "info@anhoriglinjen.se",
+      "openingHours": [
+        {
+          "days": [
+            "mon",
+            "tue",
+            "wed",
+            "thu",
+            "fri",
+            "sat",
+            "sun"
+          ],
+          "open": "00:00",
+          "close": "24:00",
+          "timezone": "Europe/Stockholm",
+          "note": "Svar ges när verksamheten är bemannad"
+        }
+      ]
+    }
+  ],
+  "accessibility": {
+    "anonymous": true,
+    "free": true,
+    "languages": [
+      "svenska"
+    ],
+    "region": "sweden"
+  },
+  "urgency": {
+    "level": "standard",
+    "showEmergencyNotice": true,
+    "emergencyText": "Vid akut fara för liv, ring 112."
+  },
+  "source": {
+    "primaryUrl": "https://anhorigasriksforbund.se/anhoriglinjen/",
+    "checkedAt": "2026-06-04",
+    "confidence": "high"
+  },
+  "display": {
+    "featured": true,
+    "priority": 68,
+    "primaryLabel": "Ring 0200-239 500",
+    "availabilityLabel": "Telefon: mån-tis och tors-fre 10-15, ons och sön 18-21"
+  },
+  "metadata": {
+    "lastVerified": "2026-06-04",
+    "nextReview": "2026-12-04"
+  }
+}

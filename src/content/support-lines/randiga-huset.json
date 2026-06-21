@@ -1,0 +1,68 @@
+{
+  "id": "randiga-huset",
+  "slug": "randiga-huset",
+  "name": "Randiga Huset",
+  "organization": "Randiga Huset",
+  "type": "support_organization",
+  "status": "active",
+  "category": "grief_loss",
+  "shortDescription": "Stöd för barnfamiljer i sorg.",
+  "longDescription": "Randiga Huset erbjuder stöd till barn, unga och familjer som har förlorat eller kommer att förlora en nära och viktig person. Stödet omfattar första kontakt, enskilda stödsamtal, mötesplatser och stödgrupper.",
+  "helpsWith": [
+    "barn-i-sorg",
+    "familj-i-sorg",
+    "forlust-av-narstaende",
+    "stodgrupp",
+    "enskilda-stodsamtal"
+  ],
+  "targetGroups": [
+    "barn",
+    "unga",
+    "familjer",
+    "anhoriga"
+  ],
+  "contactMethods": [
+    {
+      "id": "support-application",
+      "channel": "web",
+      "label": "Ansök om stöd",
+      "url": "https://www.randigahuset.se/stod",
+      "openingHours": []
+    },
+    {
+      "id": "website",
+      "channel": "web",
+      "label": "Stöd och mötesplatser",
+      "url": "https://www.randigahuset.se/stod",
+      "openingHours": []
+    }
+  ],
+  "accessibility": {
+    "anonymous": false,
+    "free": true,
+    "languages": [
+      "svenska"
+    ],
+    "region": "sweden"
+  },
+  "urgency": {
+    "level": "standard",
+    "showEmergencyNotice": true,
+    "emergencyText": "Vid akut fara för liv, ring 112."
+  },
+  "source": {
+    "primaryUrl": "https://www.randigahuset.se/stod",
+    "checkedAt": "2026-06-05",
+    "confidence": "high"
+  },
+  "display": {
+    "featured": true,
+    "priority": 61,
+    "primaryLabel": "Ansök om stöd",
+    "availabilityLabel": "Stöd via första kontakt, stödsamtal, mötesplatser och stödgrupper"
+  },
+  "metadata": {
+    "lastVerified": "2026-06-05",
+    "nextReview": "2026-12-05"
+  }
+}

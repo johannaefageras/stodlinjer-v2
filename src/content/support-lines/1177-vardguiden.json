@@ -1,0 +1,93 @@
+{
+  "id": "1177-vardguiden",
+  "slug": "1177-vardguiden",
+  "name": "1177 Vårdguiden",
+  "organization": "1177",
+  "type": "public_service",
+  "status": "active",
+  "category": "care_guidance",
+  "shortDescription": "Nationell sjukvårdsrådgivning och vårdinformation.",
+  "longDescription": "1177 är ett nationellt telefonnummer och en digital vårdportal för sjukvårdsrådgivning, vårdinformation och vägledning till rätt vårdmottagning. Det är inte en specialiserad stödlinje, men kan vara en viktig väg in till vården när någon behöver medicinsk bedömning eller råd.",
+  "helpsWith": [
+    "sjukvardsradgivning",
+    "symtom",
+    "vardniva",
+    "hitta-vard",
+    "journal-och-vardtjanster"
+  ],
+  "targetGroups": [
+    "allmanheten",
+    "patienter",
+    "anhoriga"
+  ],
+  "contactMethods": [
+    {
+      "id": "phone",
+      "channel": "phone",
+      "label": "Sjukvårdsrådgivning",
+      "value": "1177",
+      "openingHours": [
+        {
+          "days": [
+            "mon",
+            "tue",
+            "wed",
+            "thu",
+            "fri",
+            "sat",
+            "sun"
+          ],
+          "open": "00:00",
+          "close": "24:00",
+          "timezone": "Europe/Stockholm"
+        }
+      ],
+      "note": "Kostar som ett vanligt telefonsamtal. Vid livshotande tillstånd, ring 112."
+    },
+    {
+      "id": "phone-abroad",
+      "channel": "phone",
+      "label": "Från utlandet eller utländskt nummer",
+      "value": "+46 771 11 77 00",
+      "openingHours": []
+    },
+    {
+      "id": "website",
+      "channel": "web",
+      "label": "1177.se",
+      "url": "https://www.1177.se/",
+      "openingHours": []
+    }
+  ],
+  "accessibility": {
+    "anonymous": false,
+    "free": false,
+    "languages": [
+      "svenska",
+      "engelska"
+    ],
+    "region": "sweden"
+  },
+  "urgency": {
+    "level": "standard",
+    "showEmergencyNotice": true,
+    "emergencyText": "Vid livshotande tillstånd, ring 112."
+  },
+  "source": {
+    "primaryUrl": "https://www.1177.se/om-1177/nar-du-ringer-1177/nar-du-ringer-1177/",
+    "checkedAt": "2026-06-05",
+    "confidence": "high"
+  },
+  "display": {
+    "featured": false,
+    "priority": 40,
+    "primaryLabel": "Ring 1177",
+    "availabilityLabel": "Sjukvårdsrådgivning dygnet runt. Inte en specialiserad stödlinje"
+  },
+  "metadata": {
+    "lastVerified": "2026-06-05",
+    "nextReview": "2026-12-05",
+    "resourceKind": "governmental_public_service",
+    "supportLine": false
+  }
+}

@@ -1,0 +1,235 @@
+---
+import MIcon from "./MIcon.astro";
+
+type LiveStatus = { tone: "open" | "soon" | "closed"; label: string };
+interface Props {
+  name: string;
+  shortDescription: string;
+  categoryColor: string;
+  categoryLabel: string;
+  phone: string | null;
+  telHref: string | null;
+  primaryLabel: string;
+  status: LiveStatus | null;
+  href: string;
+}
+const {
+  name,
+  shortDescription,
+  categoryColor,
+  categoryLabel,
+  phone,
+  telHref,
+  primaryLabel,
+  status,
+  href,
+} = Astro.props;
+---
+
+<article
+  class="cf"
+  style={`--c: var(--cat-${categoryColor}, var(--accent-soft)); --c-fg: var(--cat-${categoryColor}-fg, var(--accent-soft-fg));`}
+>
+  <div class="cf__body">
+    <div class="cf__top">
+      <span class="cf__cat">{categoryLabel}</span>
+      {
+        status && (
+          <span class={`cf__status cf__status--${status.tone}`}>
+            <span class="cf__dot" aria-hidden="true" />
+            {status.label}
+          </span>
+        )
+      }
+    </div>
+
+    <a class="cf__name" href={href}>{name}</a>
+    <p class="cf__desc">{shortDescription}</p>
+  </div>
+
+  {
+    phone && telHref ? (
+      <a class="cf__call" href={telHref}>
+        <span class="cf__num mono">{phone}</span>
+        <span class="cf__ring">
+          Ring
+          <MIcon name="arrow" size={14} />
+        </span>
+      </a>
+    ) : (
+      <a class="cf__call cf__call--label" href={href}>
+        <span class="cf__labeltext">{primaryLabel}</span>
+        <MIcon name="arrow" size={14} />
+      </a>
+    )
+  }
+</article>
+
+<style>
+  .cf {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border: var(--hairline) solid var(--border);
+    border-radius: var(--radius-card);
+    background: var(--surface);
+    box-shadow:
+      0 1px 2px oklch(0 0 0 / 0.04),
+      0 14px 30px -22px oklch(0 0 0 / 0.3);
+    transition:
+      transform 0.16s ease,
+      border-color 0.16s ease,
+      box-shadow 0.16s ease;
+  }
+  .cf:hover {
+    transform: translateY(-3px);
+    border-color: var(--border-strong);
+    box-shadow:
+      0 2px 4px oklch(0 0 0 / 0.05),
+      0 24px 46px -24px oklch(0 0 0 / 0.42);
+  }
+
+  .cf__body {
+    display: flex;
+    flex-direction: column;
+    padding: var(--space-4) var(--space-4) var(--space-4);
+  }
+
+  /* ── Top line: category (mono) + live status ────────────────── */
+  .cf__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-2);
+    margin-bottom: 11px;
+  }
+  .cf__cat {
+    font-family: var(--font-mono);
+    font-size: 0.65625rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--subtle);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-width: 0;
+  }
+  .cf__status {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+    font-size: 0.75rem;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+  .cf__dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--subtle);
+  }
+  .cf__status--open {
+    color: var(--foreground);
+  }
+  .cf__status--open .cf__dot {
+    background: var(--status-open);
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--status-open) 18%, transparent);
+  }
+  .cf__status--soon .cf__dot {
+    background: var(--status-soon);
+  }
+
+  /* ── Name (hero) + stretched link ───────────────────────────── */
+  .cf__name {
+    display: block;
+    font-family: var(--font-serif);
+    font-size: 1.3125rem;
+    font-weight: 500;
+    line-height: 1.16;
+    letter-spacing: -0.01em;
+    color: var(--foreground);
+    text-decoration: none;
+    text-wrap: balance;
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+  .cf__name::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+  }
+  .cf__desc {
+    margin: 8px 0 0;
+    font-size: 0.84375rem;
+    line-height: 1.5;
+    color: var(--muted);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* ── Signature: the category-tinted call band ───────────────── */
+  .cf__call {
+    position: relative;
+    z-index: 1;
+    margin-top: auto;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space-3);
+    padding: 13px var(--space-4) 14px;
+    background: var(--c);
+    border-top: var(--hairline) solid color-mix(in oklch, var(--c-fg) 16%, transparent);
+    text-decoration: none;
+  }
+  .cf__num {
+    font-family: var(--font-mono);
+    font-size: 1.25rem;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    font-variant-numeric: tabular-nums;
+    color: var(--foreground);
+    white-space: nowrap;
+  }
+  .cf__ring {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    flex-shrink: 0;
+    align-self: center;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--c-fg);
+  }
+  .cf__ring :global(.icon) {
+    transition: transform 0.16s ease;
+  }
+  .cf__call:hover .cf__num {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .cf__call:hover .cf__ring :global(.icon) {
+    transform: translate(2px, -2px);
+  }
+
+  /* No-phone fallback — same band, the curated label instead of a number. */
+  .cf__call--label {
+    align-items: center;
+    color: var(--c-fg);
+  }
+  .cf__labeltext {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--c-fg);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .cf__call--label :global(.icon) {
+    flex-shrink: 0;
+    color: var(--c-fg);
+  }
+</style>

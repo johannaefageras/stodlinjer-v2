@@ -1,0 +1,96 @@
+{
+  "id": "invidzonen",
+  "slug": "invidzonen",
+  "name": "Invidzonen",
+  "organization": "Invidzonen",
+  "type": "support_organization",
+  "status": "active",
+  "category": "family_parenting",
+  "shortDescription": "Stöd för närstående till personer med internationella eller riskfyllda uppdrag.",
+  "longDescription": "Invidzonen erbjuder stödtelefon, stödchatt, forum, mentorer, coaching och aktiviteter för närstående till tjänstgörande i internationellt riskfyllda uppdrag, bland annat inom Försvarsmakten och Domstolsverket. IZforum är öppet för anhöriga till någon med riskfyllt yrke, uppdrag eller tjänstgöring även utan avtal.",
+  "helpsWith": [
+    "oro-for-narstaende",
+    "utlandstjanst",
+    "riskfyllda-uppdrag",
+    "veteran-och-anhorigstod",
+    "ensamhet",
+    "familjestod"
+  ],
+  "targetGroups": [
+    "anhoriga",
+    "familjer",
+    "veteraner",
+    "tjanstgorande"
+  ],
+  "contactMethods": [
+    {
+      "id": "support-phone",
+      "channel": "phone",
+      "label": "Stödtelefon",
+      "value": "0761-66 33 17",
+      "openingHours": [],
+      "note": "Officiell sida anger stödtelefon men inga fasta telefontider"
+    },
+    {
+      "id": "chat",
+      "channel": "chat",
+      "label": "Stödchatt",
+      "url": "https://invidzonen.se/vart-stod/chatt/",
+      "openingHours": [
+        {
+          "days": [
+            "thu",
+            "sun"
+          ],
+          "open": "21:00",
+          "close": "22:00",
+          "timezone": "Europe/Stockholm",
+          "note": "Under juni, juli och augusti endast söndagar 21-22"
+        }
+      ]
+    },
+    {
+      "id": "email",
+      "channel": "email",
+      "label": "E-post",
+      "value": "kontakt@invidzonen.se",
+      "openingHours": []
+    },
+    {
+      "id": "forum",
+      "channel": "web",
+      "label": "IZforum",
+      "url": "https://izforum.org/",
+      "openingHours": []
+    }
+  ],
+  "accessibility": {
+    "anonymous": true,
+    "free": true,
+    "languages": [
+      "svenska"
+    ],
+    "region": "sweden"
+  },
+  "urgency": {
+    "level": "standard",
+    "showEmergencyNotice": true,
+    "emergencyText": "Vid akut fara för liv, ring 112."
+  },
+  "source": {
+    "primaryUrl": "https://invidzonen.se/",
+    "secondaryUrl": "https://invidzonen.se/vart-stod/chatt/",
+    "checkedAt": "2026-06-05",
+    "confidence": "high"
+  },
+  "display": {
+    "featured": true,
+    "priority": 55,
+    "primaryLabel": "Ring 0761-66 33 17",
+    "availabilityLabel": "Stödtelefon och e-post. Chatt: tors och sön 21-22, sommartid endast sön 21-22"
+  },
+  "metadata": {
+    "lastVerified": "2026-06-05",
+    "nextReview": "2026-12-05"
+  }
+}

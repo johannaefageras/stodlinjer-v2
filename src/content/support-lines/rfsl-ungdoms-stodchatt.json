@@ -1,0 +1,71 @@
+{
+  "id": "rfsl-ungdoms-stodchatt",
+  "slug": "rfsl-ungdoms-stodchatt",
+  "name": "RFSL Ungdomsstödchatt",
+  "organization": "RFSL Ungdom",
+  "type": "direct_line",
+  "status": "active",
+  "category": "identity_inclusion",
+  "shortDescription": "Chattstöd för unga hbtqia-personer och unga som funderar kring sexuell identitet eller könsidentitet.",
+  "longDescription": "RFSL Ungdomsstödchatt bemannas av kuratorer och erbjuder anonymt stöd för unga hbtqia-personer och unga som funderar kring sin sexuella identitet eller könsidentitet. Chatten tar upp hbtqia, sex, relationer, utsatthet, mående, rättigheter och vägar till annat stöd.",
+  "helpsWith": [
+    "hbtqia-fragor",
+    "konsidentitet",
+    "sexuell-identitet",
+    "relationer",
+    "vald-och-krankningar",
+    "maende"
+  ],
+  "targetGroups": [
+    "unga-hbtqia-personer",
+    "unga",
+    "personer-som-funderar-pa-konsidentitet",
+    "personer-som-funderar-pa-sexualitet"
+  ],
+  "contactMethods": [
+    {
+      "id": "chat",
+      "channel": "chat",
+      "label": "Chatt",
+      "url": "https://rfslungdom.se/hbtqia/stod/chatten/",
+      "openingHours": [
+        {
+          "days": [
+            "mon"
+          ],
+          "open": "18:00",
+          "close": "20:00",
+          "timezone": "Europe/Stockholm"
+        }
+      ]
+    }
+  ],
+  "accessibility": {
+    "anonymous": true,
+    "free": true,
+    "languages": [
+      "svenska"
+    ],
+    "region": "sweden"
+  },
+  "urgency": {
+    "level": "standard",
+    "showEmergencyNotice": true,
+    "emergencyText": "Vid akut fara för liv, ring 112."
+  },
+  "source": {
+    "primaryUrl": "https://rfslungdom.se/hbtqia/stod/chatten/",
+    "checkedAt": "2026-06-05",
+    "confidence": "high"
+  },
+  "display": {
+    "featured": true,
+    "priority": 63,
+    "primaryLabel": "Chatta med RFSL Ungdom",
+    "availabilityLabel": "Chatt: måndagar 18-20"
+  },
+  "metadata": {
+    "lastVerified": "2026-06-05",
+    "nextReview": "2026-12-05"
+  }
+}

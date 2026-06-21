@@ -1,0 +1,108 @@
+{
+  "id": "jourhavande-medmanniska",
+  "slug": "jourhavande-medmanniska",
+  "name": "Jourhavande Medmänniska",
+  "organization": "Jourhavande Medmänniska",
+  "type": "direct_line",
+  "status": "active",
+  "category": "mental_health",
+  "shortDescription": "Anonymt medmänskligt stöd via telefon på kvällar och nätter.",
+  "longDescription": "Jourhavande Medmänniska erbjuder anonymt stöd via telefon varje natt och via chatt vissa kvällar för personer som behöver någon som lyssnar.",
+  "helpsWith": [
+    "ensamhet",
+    "oro",
+    "sorg",
+    "nedstamdhet",
+    "behov-av-samtal"
+  ],
+  "targetGroups": [
+    "vuxna",
+    "unga",
+    "aldre"
+  ],
+  "contactMethods": [
+    {
+      "id": "phone",
+      "channel": "phone",
+      "label": "Telefon",
+      "value": "08-702 16 80",
+      "openingHours": [
+        {
+          "days": [
+            "mon",
+            "tue",
+            "wed",
+            "thu",
+            "fri",
+            "sat",
+            "sun"
+          ],
+          "open": "21:00",
+          "close": "24:00",
+          "timezone": "Europe/Stockholm"
+        },
+        {
+          "days": [
+            "mon",
+            "tue",
+            "wed",
+            "thu",
+            "fri",
+            "sat",
+            "sun"
+          ],
+          "open": "00:00",
+          "close": "06:00",
+          "timezone": "Europe/Stockholm"
+        }
+      ]
+    },
+    {
+      "id": "chat",
+      "channel": "chat",
+      "label": "Chatt",
+      "url": "https://www.jourhavande-medmanniska.se/chatt/",
+      "openingHours": [
+        {
+          "days": [
+            "sat",
+            "sun",
+            "mon",
+            "tue"
+          ],
+          "open": "21:00",
+          "close": "24:00",
+          "timezone": "Europe/Stockholm"
+        }
+      ]
+    }
+  ],
+  "accessibility": {
+    "anonymous": true,
+    "free": true,
+    "languages": [
+      "svenska"
+    ],
+    "region": "sweden"
+  },
+  "urgency": {
+    "level": "standard",
+    "showEmergencyNotice": true,
+    "emergencyText": "Vid akut fara för liv, ring 112."
+  },
+  "source": {
+    "primaryUrl": "https://www.jourhavande-medmanniska.se/",
+    "checkedAt": "2026-06-04",
+    "confidence": "high"
+  },
+  "display": {
+    "featured": true,
+    "priority": 75,
+    "primaryLabel": "Ring 08-702 16 80",
+    "availabilityLabel": "Telefon: alla nätter 21-06. Chatt: lör-tis 21-24"
+  },
+  "metadata": {
+    "lastVerified": "2026-06-04",
+    "nextReview": "2026-12-04"
+  }
+}

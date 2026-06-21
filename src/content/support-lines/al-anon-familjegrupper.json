@@ -1,0 +1,110 @@
+{
+  "id": "al-anon-familjegrupper",
+  "slug": "al-anon-familjegrupper",
+  "name": "Al-Anon Familjegrupper",
+  "organization": "Al-Anon Familjegrupper i Sverige",
+  "type": "support_organization",
+  "status": "active",
+  "category": "substance_use",
+  "shortDescription": "Stöd och vägledning för anhöriga till personer med alkoholproblem.",
+  "longDescription": "Al-Anon Familjegrupper erbjuder stöd till anhöriga till alkoholister genom en servicetelefon, möten och information om Al-Anons tolvstegsprogram.",
+  "helpsWith": [
+    "anhorig-till-alkoholist",
+    "medberoende",
+    "stodgrupp",
+    "hitta-mote",
+    "tolvstegsprogram"
+  ],
+  "targetGroups": [
+    "anhoriga",
+    "familjer",
+    "vanner",
+    "yrkesverksamma"
+  ],
+  "contactMethods": [
+    {
+      "id": "service-phone",
+      "channel": "phone",
+      "label": "Servicetelefon",
+      "value": "070-610 96 61",
+      "openingHours": [
+        {
+          "days": [
+            "mon"
+          ],
+          "open": "19:00",
+          "close": "21:00",
+          "timezone": "Europe/Stockholm"
+        }
+      ],
+      "note": "Övrig tid kan telefonen vara påslagen eller ha telefonsvarare för återuppringning"
+    },
+    {
+      "id": "service-office",
+      "channel": "phone",
+      "label": "Servicekontoret",
+      "value": "08-643 13 93",
+      "openingHours": [
+        {
+          "days": [
+            "mon"
+          ],
+          "open": "10:00",
+          "close": "17:00",
+          "timezone": "Europe/Stockholm"
+        },
+        {
+          "days": [
+            "tue",
+            "wed"
+          ],
+          "open": "10:00",
+          "close": "16:30",
+          "timezone": "Europe/Stockholm"
+        }
+      ]
+    },
+    {
+      "id": "email",
+      "channel": "email",
+      "label": "E-post",
+      "value": "afg@al-anon.se",
+      "openingHours": []
+    },
+    {
+      "id": "website",
+      "channel": "web",
+      "label": "Möten och information",
+      "url": "https://www.al-anon.se/kontakt/",
+      "openingHours": []
+    }
+  ],
+  "accessibility": {
+    "anonymous": true,
+    "free": true,
+    "languages": [
+      "svenska"
+    ],
+    "region": "sweden"
+  },
+  "urgency": {
+    "level": "standard",
+    "showEmergencyNotice": true,
+    "emergencyText": "Vid akut fara för liv, ring 112."
+  },
+  "source": {
+    "primaryUrl": "https://www.al-anon.se/kontakt/",
+    "checkedAt": "2026-06-04",
+    "confidence": "high"
+  },
+  "display": {
+    "featured": false,
+    "priority": 45,
+    "primaryLabel": "Ring 070-610 96 61",
+    "availabilityLabel": "Servicetelefon: måndagar 19-21"
+  },
+  "metadata": {
+    "lastVerified": "2026-06-04",
+    "nextReview": "2026-12-04"
+  }
+}

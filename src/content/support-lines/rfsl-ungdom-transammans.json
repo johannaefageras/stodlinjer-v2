@@ -1,0 +1,95 @@
+{
+  "id": "rfsl-ungdom-transammans",
+  "slug": "rfsl-ungdom-transammans",
+  "name": "RFSL Ungdom / Transammans",
+  "organization": "RFSL Ungdom och Transammans",
+  "type": "support_organization",
+  "status": "active",
+  "category": "identity_inclusion",
+  "shortDescription": "Stöd, rådgivning och samtalsmottagning för unga hbtqia-personer, transpersoner och närstående.",
+  "longDescription": "RFSL Ungdom erbjuder chattstöd och vidare stödvägar för unga hbtqia-personer. RFSL och RFSL Ungdom driver Transformering för transfrågor, och Transammans erbjuder samtalsmottagning, mötesplatser och stöd för transpersoner, personer med transerfarenhet, personer som funderar kring könsidentitet och närstående.",
+  "helpsWith": [
+    "konsidentitet",
+    "hbtqia-fragor",
+    "transfragor",
+    "komma-ut",
+    "anhorigstod",
+    "trygga-motesplatser"
+  ],
+  "targetGroups": [
+    "hbtqia-personer",
+    "unga-upp-till-30",
+    "transpersoner",
+    "personer-fran-12-ar",
+    "anhoriga"
+  ],
+  "contactMethods": [
+    {
+      "id": "rfsl-ungdom-chat",
+      "channel": "chat",
+      "label": "RFSL Ungdomschatt",
+      "url": "https://rfslungdom.se/hbtqia/stod/",
+      "openingHours": [
+        {
+          "days": [
+            "mon"
+          ],
+          "open": "18:00",
+          "close": "20:00",
+          "timezone": "Europe/Stockholm"
+        }
+      ]
+    },
+    {
+      "id": "transformering",
+      "channel": "web",
+      "label": "Transformering stöd- och infomejl",
+      "url": "https://transfragor.transformering.se/",
+      "openingHours": []
+    },
+    {
+      "id": "transammans-counselling",
+      "channel": "web",
+      "label": "Transammans samtalsmottagning",
+      "url": "https://transammans.se/hitta-stod/",
+      "openingHours": []
+    },
+    {
+      "id": "transammans-email",
+      "channel": "email",
+      "label": "Transammans",
+      "value": "info@transammans.se",
+      "openingHours": []
+    }
+  ],
+  "accessibility": {
+    "anonymous": true,
+    "free": true,
+    "languages": [
+      "svenska",
+      "engelska"
+    ],
+    "region": "sweden"
+  },
+  "urgency": {
+    "level": "standard",
+    "showEmergencyNotice": true,
+    "emergencyText": "Vid akut fara för liv, ring 112."
+  },
+  "source": {
+    "primaryUrl": "https://rfslungdom.se/hbtqia/stod/",
+    "secondaryUrl": "https://transammans.se/hitta-stod/",
+    "checkedAt": "2026-06-05",
+    "confidence": "high"
+  },
+  "display": {
+    "featured": true,
+    "priority": 62,
+    "primaryLabel": "Chatta med RFSL Ungdom",
+    "availabilityLabel": "RFSL Ungdomschatt: måndagar 18-20. Transformering och Transammans nås via webbformulär"
+  },
+  "metadata": {
+    "lastVerified": "2026-06-05",
+    "nextReview": "2026-12-05"
+  }
+}

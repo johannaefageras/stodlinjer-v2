@@ -1,0 +1,73 @@
+{
+  "id": "killar-se",
+  "slug": "killar-se",
+  "name": "Killar.se",
+  "organization": "MÄN",
+  "type": "direct_line",
+  "status": "active",
+  "category": "children_youth",
+  "shortDescription": "Anonym stödchatt för killar 10-25 år.",
+  "longDescription": "Killar.se erbjuder anonymt och kostnadsfritt stöd för killar 10-25 år, cis och trans, via stödchatt med vuxna volontärer.",
+  "helpsWith": [
+    "psykiskt-maende",
+    "relationer",
+    "sex-och-kropp",
+    "vald-och-krankningar",
+    "identitet"
+  ],
+  "targetGroups": [
+    "killar-10-25",
+    "cis-killar",
+    "trans-killar"
+  ],
+  "contactMethods": [
+    {
+      "id": "chat",
+      "channel": "chat",
+      "label": "Chatt",
+      "url": "https://killar.se/vara-stod/om-chatten",
+      "openingHours": [
+        {
+          "days": [
+            "sun",
+            "mon",
+            "tue",
+            "wed",
+            "thu"
+          ],
+          "open": "19:00",
+          "close": "22:00",
+          "timezone": "Europe/Stockholm"
+        }
+      ]
+    }
+  ],
+  "accessibility": {
+    "anonymous": true,
+    "free": true,
+    "languages": [
+      "svenska"
+    ],
+    "region": "sweden"
+  },
+  "urgency": {
+    "level": "standard",
+    "showEmergencyNotice": true,
+    "emergencyText": "Vid akut fara för liv, ring 112."
+  },
+  "source": {
+    "primaryUrl": "https://killar.se/",
+    "checkedAt": "2026-06-04",
+    "confidence": "high"
+  },
+  "display": {
+    "featured": true,
+    "priority": 55,
+    "primaryLabel": "Chatta med Killar.se",
+    "availabilityLabel": "Chatt: sön-tors 19-22"
+  },
+  "metadata": {
+    "lastVerified": "2026-06-04",
+    "nextReview": "2026-12-04"
+  }
+}

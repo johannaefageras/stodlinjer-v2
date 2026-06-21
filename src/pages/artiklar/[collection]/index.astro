@@ -1,0 +1,121 @@
+---
+import type { GetStaticPaths } from "astro";
+import { getCollection } from "astro:content";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import SiteHeader from "../../../components/SiteHeader.astro";
+import Icon from "../../../components/Icon.astro";
+import ArticleCard from "../../../components/ArticleCard.astro";
+import {
+  ARTICLE_COLLECTIONS,
+  getArticleCollection,
+} from "../../../lib/articleCollections";
+
+// One page per topic collection, listing its articles (newest first).
+export const getStaticPaths = (async () => {
+  const articles = await getCollection("articles", (e) => !e.data.draft);
+
+  return ARTICLE_COLLECTIONS.map((c) => {
+    const entries = articles
+      .filter((a) => a.data.collection === c.slug)
+      .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+    return { params: { collection: c.slug }, props: { entries } };
+  });
+}) satisfies GetStaticPaths;
+
+const { collection } = Astro.params;
+const { entries } = Astro.props;
+const meta = getArticleCollection(collection);
+---
+
+<BaseLayout title={`${meta.label} | Artiklar`} description={meta.description}>
+  <SiteHeader />
+
+  <main id="main" class="page container--wide">
+    <a class="back" href="/artiklar/">
+      <Icon name="thin-left-arrow" size={15} />
+      Alla artiklar
+    </a>
+
+    <header
+      class="head"
+      style={`--c: var(--cat-${meta.color}, var(--accent-soft)); --c-fg: var(--cat-${meta.color}-fg, var(--accent-soft-fg));`}
+    >
+      <span class="head__chip" aria-hidden="true">
+        <Icon name={meta.icon} size={26} />
+      </span>
+      <div>
+        <h1 class="head__title">{meta.label}</h1>
+        <p class="head__lede">{meta.description}</p>
+      </div>
+    </header>
+
+    <div class="grid">
+      {
+        entries.map((entry) => (
+          <ArticleCard
+            href={`/artiklar/${entry.data.collection}/${entry.id.split("/").pop()}/`}
+            title={entry.data.title}
+            description={entry.data.description}
+            readingTime={entry.data.readingTime}
+            color={meta.color}
+          />
+        ))
+      }
+    </div>
+  </main>
+</BaseLayout>
+
+<style>
+  .page {
+    padding-block: var(--space-8) var(--space-16);
+  }
+  .back {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.90625rem;
+    color: var(--muted);
+    margin-bottom: var(--space-8);
+    transition: color 0.15s ease;
+  }
+  .back:hover {
+    color: var(--foreground);
+  }
+
+  .head {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-4);
+    max-width: var(--content-max);
+    margin-bottom: var(--space-12);
+  }
+  .head__chip {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 54px;
+    height: 54px;
+    flex-shrink: 0;
+    border-radius: var(--radius-chip, 13px);
+    background: var(--c);
+    color: var(--c-fg);
+  }
+  .head__title {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 400;
+    line-height: 1.08;
+    letter-spacing: -0.01em;
+  }
+  .head__lede {
+    margin-top: var(--space-3);
+    font-size: 1.125rem;
+    line-height: 1.5;
+    color: var(--muted);
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: var(--space-4);
+  }
+</style>

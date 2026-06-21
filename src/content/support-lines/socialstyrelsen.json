@@ -1,0 +1,93 @@
+{
+  "id": "socialstyrelsen",
+  "slug": "socialstyrelsen",
+  "name": "Socialstyrelsen",
+  "organization": "Socialstyrelsen",
+  "type": "public_service",
+  "status": "active",
+  "category": "rights_public_authority",
+  "shortDescription": "Nationell kunskapsmyndighet för vård, omsorg och socialtjänst.",
+  "longDescription": "Socialstyrelsen är en statlig kunskapsmyndighet för vård, omsorg och socialtjänst. Posten är en myndighetskontakt och informationsresurs, inte en direkt stödlinje. Vid behov av socialtjänst hänvisar Socialstyrelsen till den egna kommunen eller socialjouren.",
+  "helpsWith": [
+    "myndighetsinformation",
+    "vard-och-omsorg",
+    "socialtjanst",
+    "juridiska-fragor",
+    "register-och-statistik",
+    "kunskapsstod"
+  ],
+  "targetGroups": [
+    "allmanheten",
+    "yrkesverksamma",
+    "vardgivare",
+    "kommuner",
+    "myndigheter"
+  ],
+  "contactMethods": [
+    {
+      "id": "switchboard",
+      "channel": "phone",
+      "label": "Växel",
+      "value": "075-247 30 00",
+      "openingHours": [
+        {
+          "days": [
+            "mon",
+            "tue",
+            "wed",
+            "thu",
+            "fri"
+          ],
+          "open": "08:00",
+          "close": "17:00",
+          "timezone": "Europe/Stockholm"
+        }
+      ]
+    },
+    {
+      "id": "email",
+      "channel": "email",
+      "label": "E-post",
+      "value": "socialstyrelsen@socialstyrelsen.se",
+      "openingHours": []
+    },
+    {
+      "id": "website",
+      "channel": "web",
+      "label": "Socialstyrelsen",
+      "url": "https://www.socialstyrelsen.se/",
+      "openingHours": []
+    }
+  ],
+  "accessibility": {
+    "anonymous": false,
+    "free": false,
+    "languages": [
+      "svenska",
+      "engelska"
+    ],
+    "region": "sweden"
+  },
+  "urgency": {
+    "level": "standard",
+    "showEmergencyNotice": true,
+    "emergencyText": "Vid akut fara för liv, ring 112."
+  },
+  "source": {
+    "primaryUrl": "https://www.socialstyrelsen.se/om-socialstyrelsen/kontakta-oss/",
+    "checkedAt": "2026-06-05",
+    "confidence": "high"
+  },
+  "display": {
+    "featured": false,
+    "priority": 20,
+    "primaryLabel": "Myndighetsinformation",
+    "availabilityLabel": "Myndighetsväxel: vardagar 08-17. Inte en stödlinje"
+  },
+  "metadata": {
+    "lastVerified": "2026-06-05",
+    "nextReview": "2026-12-05",
+    "resourceKind": "governmental_information_resource",
+    "supportLine": false
+  }
+}

@@ -1,0 +1,110 @@
+{
+  "id": "mansjouren",
+  "slug": "mansjouren",
+  "name": "Mansjouren",
+  "organization": "Mansjouren Sverige",
+  "type": "direct_line",
+  "status": "active",
+  "category": "mental_health",
+  "shortDescription": "Samtalsstöd för män som behöver prata om livskriser, relationer, ensamhet eller svåra känslor.",
+  "longDescription": "Mansjouren erbjuder anonymt samtalsstöd via telefonjour, samtalsgrupper, digitala möten och individuella samtal för män som vill prata om sin situation och hitta en väg framåt.",
+  "helpsWith": [
+    "livskris",
+    "relationer",
+    "separation",
+    "ensamhet",
+    "angest",
+    "nedstamdhet"
+  ],
+  "targetGroups": [
+    "man",
+    "vuxna"
+  ],
+  "contactMethods": [
+    {
+      "id": "phone",
+      "channel": "phone",
+      "label": "Telefonjour",
+      "value": "08-30 30 20",
+      "openingHours": [
+        {
+          "days": [
+            "sun",
+            "mon",
+            "tue",
+            "wed",
+            "thu",
+            "fri"
+          ],
+          "open": "12:00",
+          "close": "14:00",
+          "timezone": "Europe/Stockholm"
+        },
+        {
+          "days": [
+            "sun",
+            "mon",
+            "tue",
+            "wed",
+            "thu",
+            "fri"
+          ],
+          "open": "17:00",
+          "close": "20:00",
+          "timezone": "Europe/Stockholm"
+        },
+        {
+          "days": [
+            "sat"
+          ],
+          "open": "12:00",
+          "close": "14:00",
+          "timezone": "Europe/Stockholm"
+        }
+      ]
+    },
+    {
+      "id": "email",
+      "channel": "email",
+      "label": "E-post",
+      "value": "info@mansjouren.se",
+      "openingHours": []
+    },
+    {
+      "id": "callback-form",
+      "channel": "web",
+      "label": "Bli uppringd",
+      "url": "https://www.mansjouren.se/",
+      "openingHours": []
+    }
+  ],
+  "accessibility": {
+    "anonymous": true,
+    "free": true,
+    "languages": [
+      "svenska",
+      "engelska"
+    ],
+    "region": "sweden"
+  },
+  "urgency": {
+    "level": "standard",
+    "showEmergencyNotice": true,
+    "emergencyText": "Vid akut fara för liv, ring 112."
+  },
+  "source": {
+    "primaryUrl": "https://www.mansjouren.se/",
+    "checkedAt": "2026-06-05",
+    "confidence": "high"
+  },
+  "display": {
+    "featured": true,
+    "priority": 64,
+    "primaryLabel": "Ring 08-30 30 20",
+    "availabilityLabel": "Telefonjour: sön-fre 12-14 och 17-20, lör 12-14"
+  },
+  "metadata": {
+    "lastVerified": "2026-06-05",
+    "nextReview": "2026-12-05"
+  }
+}

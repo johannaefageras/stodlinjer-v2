@@ -1,0 +1,143 @@
+{
+  "id": "atstorningslinjen",
+  "slug": "atstorningslinjen",
+  "name": "Ätstörningslinjen",
+  "organization": "Frisk & Fri - Riksföreningen mot ätstörningar",
+  "type": "direct_line",
+  "status": "active",
+  "category": "eating_disorders",
+  "shortDescription": "Anonym telefonlinje för dig som är drabbad av ätstörningar.",
+  "longDescription": "Ätstörningslinjen är Frisk & Fris telefonstöd för personer som är drabbade av ätstörningar eller oro kring kropp, mat och träning. Stödet är anonymt, kostnadsfritt och bemannas av personer med egen erfarenhet eller närståendeerfarenhet.",
+  "helpsWith": [
+    "atstorningar",
+    "oro-for-mat-kropp-och-traning",
+    "sjalvbild",
+    "skam-och-oro",
+    "behov-av-samtal"
+  ],
+  "targetGroups": [
+    "drabbade",
+    "personer-med-atstorningsproblematik"
+  ],
+  "contactMethods": [
+    {
+      "id": "phone",
+      "channel": "phone",
+      "label": "Telefon",
+      "value": "020-20 80 18",
+      "openingHours": [
+        {
+          "days": [
+            "mon"
+          ],
+          "open": "19:00",
+          "close": "20:00",
+          "timezone": "Europe/Stockholm",
+          "note": "Röda dagar stängt"
+        },
+        {
+          "days": [
+            "tue"
+          ],
+          "open": "13:00",
+          "close": "14:00",
+          "timezone": "Europe/Stockholm",
+          "note": "Röda dagar stängt"
+        },
+        {
+          "days": [
+            "tue"
+          ],
+          "open": "19:00",
+          "close": "20:00",
+          "timezone": "Europe/Stockholm",
+          "note": "Röda dagar stängt"
+        },
+        {
+          "days": [
+            "wed"
+          ],
+          "open": "13:00",
+          "close": "14:00",
+          "timezone": "Europe/Stockholm",
+          "note": "Röda dagar stängt"
+        },
+        {
+          "days": [
+            "wed"
+          ],
+          "open": "19:00",
+          "close": "20:00",
+          "timezone": "Europe/Stockholm",
+          "note": "Röda dagar stängt"
+        },
+        {
+          "days": [
+            "thu"
+          ],
+          "open": "19:00",
+          "close": "20:00",
+          "timezone": "Europe/Stockholm",
+          "note": "Röda dagar stängt"
+        },
+        {
+          "days": [
+            "sun"
+          ],
+          "open": "19:00",
+          "close": "20:00",
+          "timezone": "Europe/Stockholm",
+          "note": "Röda dagar stängt"
+        },
+        {
+          "days": [
+            "fri"
+          ],
+          "open": "12:15",
+          "close": "13:15",
+          "timezone": "Europe/Stockholm",
+          "note": "English support"
+        },
+        {
+          "days": [
+            "sun"
+          ],
+          "open": "20:00",
+          "close": "21:00",
+          "timezone": "Europe/Stockholm",
+          "note": "Arabic support, ojämna veckor"
+        }
+      ]
+    }
+  ],
+  "accessibility": {
+    "anonymous": true,
+    "free": true,
+    "languages": [
+      "svenska",
+      "engelska",
+      "arabiska"
+    ],
+    "region": "sweden"
+  },
+  "urgency": {
+    "level": "standard",
+    "showEmergencyNotice": true,
+    "emergencyText": "Vid akut fara för liv, ring 112."
+  },
+  "source": {
+    "primaryUrl": "https://www.friskfri.se/fa-stod/telefonlinjer/",
+    "checkedAt": "2026-06-04",
+    "confidence": "high"
+  },
+  "display": {
+    "featured": true,
+    "priority": 77,
+    "primaryLabel": "Ring 020-20 80 18",
+    "availabilityLabel": "Telefon: mån, tis, ons, tors och sön med särskilda språkpass"
+  },
+  "metadata": {
+    "lastVerified": "2026-06-04",
+    "nextReview": "2026-12-04"
+  }
+}

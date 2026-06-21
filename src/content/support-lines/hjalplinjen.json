@@ -1,0 +1,120 @@
+{
+  "id": "hjalplinjen",
+  "slug": "hjalplinjen",
+  "name": "Hjälplinjen",
+  "organization": "Hjälplinjen",
+  "type": "direct_line",
+  "status": "active",
+  "category": "mental_health",
+  "shortDescription": "Nationell stödlinje för vuxna som behöver professionellt samtalsstöd.",
+  "longDescription": "Hjälplinjen erbjuder anonymt och kostnadsfritt professionellt samtalsstöd dygnet runt för personer över 18 år som själva mår dåligt eller är närstående till någon som mår dåligt.",
+  "helpsWith": [
+    "psykiskt-maende",
+    "kris",
+    "svar-livssituation",
+    "sjalvmordstankar",
+    "oro-for-nagon-annan"
+  ],
+  "targetGroups": [
+    "vuxna-over-18",
+    "anhoriga"
+  ],
+  "contactMethods": [
+    {
+      "id": "phone",
+      "channel": "phone",
+      "label": "Telefon",
+      "value": "90390",
+      "openingHours": [
+        {
+          "days": [
+            "mon",
+            "tue",
+            "wed",
+            "thu",
+            "fri",
+            "sat",
+            "sun"
+          ],
+          "open": "00:00",
+          "close": "24:00",
+          "timezone": "Europe/Stockholm"
+        }
+      ]
+    },
+    {
+      "id": "phone-alt",
+      "channel": "phone",
+      "label": "Alternativt telefonnummer",
+      "value": "0202-90390",
+      "openingHours": [
+        {
+          "days": [
+            "mon",
+            "tue",
+            "wed",
+            "thu",
+            "fri",
+            "sat",
+            "sun"
+          ],
+          "open": "00:00",
+          "close": "24:00",
+          "timezone": "Europe/Stockholm",
+          "note": "För samtal som inte kopplas fram till 90390, exempelvis från växel eller utländskt SIM-kort"
+        }
+      ]
+    },
+    {
+      "id": "written-advice",
+      "channel": "web",
+      "label": "Skriftlig rådgivning",
+      "url": "https://hjalplinjen.se/",
+      "openingHours": [
+        {
+          "days": [
+            "mon",
+            "tue",
+            "wed",
+            "thu",
+            "fri",
+            "sat",
+            "sun"
+          ],
+          "open": "00:00",
+          "close": "24:00",
+          "timezone": "Europe/Stockholm",
+          "note": "Skriftlig fråga kan skickas dygnet runt"
+        }
+      ]
+    }
+  ],
+  "accessibility": {
+    "anonymous": true,
+    "free": true,
+    "languages": [
+      "svenska"
+    ],
+    "region": "sweden"
+  },
+  "urgency": {
+    "level": "urgent",
+    "showEmergencyNotice": true,
+    "emergencyText": "Vid akut fara för liv, ring 112."
+  },
+  "source": {
+    "primaryUrl": "https://hjalplinjen.se/telefon",
+    "checkedAt": "2026-06-04",
+    "confidence": "high"
+  },
+  "display": {
+    "featured": true,
+    "priority": 96,
+    "primaryLabel": "Ring 90390",
+    "availabilityLabel": "Telefon: dygnet runt, året om"
+  },
+  "metadata": {
+    "lastVerified": "2026-06-04",
+    "nextReview": "2026-12-04"
+  }
+}

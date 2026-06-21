@@ -1,0 +1,80 @@
+{
+  "id": "foraldralinjen",
+  "slug": "foraldralinjen",
+  "name": "Föräldralinjen",
+  "organization": "Mind",
+  "type": "direct_line",
+  "status": "active",
+  "category": "family_parenting",
+  "shortDescription": "Rådgivande stöd för föräldrar och andra vuxna som oroar sig för ett barn.",
+  "longDescription": "Föräldralinjen erbjuder anonymt och kostnadsfritt telefonstöd till föräldrar och andra närstående vuxna som vill prata om oro, frågor eller vägval kring barn och unga.",
+  "helpsWith": [
+    "oro-for-barn",
+    "foraldraskap",
+    "familjekonflikter",
+    "stod-och-radgivning",
+    "barns-psykiska-halsa"
+  ],
+  "targetGroups": [
+    "foraldrar",
+    "anhoriga",
+    "viktiga-vuxna"
+  ],
+  "contactMethods": [
+    {
+      "id": "phone",
+      "channel": "phone",
+      "label": "Telefon",
+      "value": "020-85 20 00",
+      "openingHours": [
+        {
+          "days": [
+            "mon",
+            "tue",
+            "wed",
+            "thu"
+          ],
+          "open": "10:00",
+          "close": "15:00",
+          "timezone": "Europe/Stockholm"
+        },
+        {
+          "days": [
+            "thu"
+          ],
+          "open": "19:00",
+          "close": "21:00",
+          "timezone": "Europe/Stockholm"
+        }
+      ]
+    }
+  ],
+  "accessibility": {
+    "anonymous": true,
+    "free": true,
+    "languages": [
+      "svenska"
+    ],
+    "region": "sweden"
+  },
+  "urgency": {
+    "level": "standard",
+    "showEmergencyNotice": true,
+    "emergencyText": "Vid akut fara för liv, ring 112."
+  },
+  "source": {
+    "primaryUrl": "https://mind.se/stod-kunskap/prata-eller-chatta-med-volontar/foraldralinjen/",
+    "checkedAt": "2026-06-04",
+    "confidence": "high"
+  },
+  "display": {
+    "featured": true,
+    "priority": 80,
+    "primaryLabel": "Ring 020-85 20 00",
+    "availabilityLabel": "Telefon: mån-tors 10-15 och tors 19-21, helgfria vardagar"
+  },
+  "metadata": {
+    "lastVerified": "2026-06-04",
+    "nextReview": "2026-12-04"
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "id": "folkhalsomyndigheten",
+  "slug": "folkhalsomyndigheten",
+  "name": "Folkhälsomyndigheten",
+  "organization": "Folkhälsomyndigheten",
+  "type": "public_service",
+  "status": "active",
+  "category": "rights_public_authority",
+  "shortDescription": "Nationell kunskapsmyndighet för folkhälsa och smittskydd.",
+  "longDescription": "Folkhälsomyndigheten är en statlig kunskapsmyndighet som arbetar med folkhälsa, smittskydd, statistik och tillsynsvägledning. Posten är en myndighetskontakt och informationsresurs, inte en stödlinje för personlig rådgivning eller akut hjälp.",
+  "helpsWith": [
+    "folkhalsa",
+    "smittskydd",
+    "andts",
+    "statistik",
+    "kunskapsstod",
+    "myndighetsinformation"
+  ],
+  "targetGroups": [
+    "allmanheten",
+    "yrkesverksamma",
+    "myndigheter",
+    "organisationer"
+  ],
+  "contactMethods": [
+    {
+      "id": "switchboard",
+      "channel": "phone",
+      "label": "Växel",
+      "value": "010-205 20 00",
+      "openingHours": [
+        {
+          "days": [
+            "mon",
+            "tue",
+            "wed",
+            "thu",
+            "fri"
+          ],
+          "open": "08:00",
+          "close": "16:30",
+          "timezone": "Europe/Stockholm"
+        }
+      ]
+    },
+    {
+      "id": "email",
+      "channel": "email",
+      "label": "E-post",
+      "value": "info@folkhalsomyndigheten.se",
+      "openingHours": []
+    },
+    {
+      "id": "website",
+      "channel": "web",
+      "label": "Folkhälsomyndigheten",
+      "url": "https://www.folkhalsomyndigheten.se/",
+      "openingHours": []
+    }
+  ],
+  "accessibility": {
+    "anonymous": false,
+    "free": false,
+    "languages": [
+      "svenska",
+      "engelska"
+    ],
+    "region": "sweden"
+  },
+  "urgency": {
+    "level": "standard",
+    "showEmergencyNotice": true,
+    "emergencyText": "Vid akut fara för liv, ring 112."
+  },
+  "source": {
+    "primaryUrl": "https://www.folkhalsomyndigheten.se/om-folkhalsomyndigheten/kontakta-folkhalsomyndigheten/",
+    "checkedAt": "2026-06-05",
+    "confidence": "high"
+  },
+  "display": {
+    "featured": false,
+    "priority": 20,
+    "primaryLabel": "Myndighetsinformation",
+    "availabilityLabel": "Myndighetsväxel: vardagar 08-16.30. Inte en stödlinje"
+  },
+  "metadata": {
+    "lastVerified": "2026-06-05",
+    "nextReview": "2026-12-05",
+    "resourceKind": "governmental_information_resource",
+    "supportLine": false
+  }
+}

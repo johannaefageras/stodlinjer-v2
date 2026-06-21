@@ -1,0 +1,85 @@
+{
+  "id": "tryggare-sverige",
+  "slug": "tryggare-sverige",
+  "name": "Tryggare Sverige",
+  "organization": "Stiftelsen Tryggare Sverige",
+  "type": "organization_contact",
+  "status": "active",
+  "category": "violence_abuse",
+  "shortDescription": "Kunskaps- och kontaktresurs om brottsutsatthet och trygghetsfrågor.",
+  "longDescription": "Stiftelsen Tryggare Sverige arbetar med brottsutsatthet, trygghet och brottsförebyggande frågor. Den officiella kontakten är organisationens växel och e-post. Posten bör användas som resurs- och organisationskontakt, inte som en akut stödlinje.",
+  "helpsWith": [
+    "brottsutsatthet",
+    "trygghetsfragor",
+    "brottsforebyggande",
+    "vagledning",
+    "kontakt-med-organisation"
+  ],
+  "targetGroups": [
+    "allmanheten",
+    "brottsutsatta",
+    "kommuner",
+    "myndigheter",
+    "yrkesverksamma"
+  ],
+  "contactMethods": [
+    {
+      "id": "region-mitt-switchboard",
+      "channel": "phone",
+      "label": "Växel Region Mitt",
+      "value": "08-29 20 00",
+      "openingHours": []
+    },
+    {
+      "id": "region-syd-switchboard",
+      "channel": "phone",
+      "label": "Växel Region Syd",
+      "value": "040-30 67 00",
+      "openingHours": []
+    },
+    {
+      "id": "email",
+      "channel": "email",
+      "label": "E-post",
+      "value": "info@tryggaresverige.org",
+      "openingHours": []
+    },
+    {
+      "id": "website",
+      "channel": "web",
+      "label": "Stiftelsen Tryggare Sverige",
+      "url": "https://tryggaresverige.org/",
+      "openingHours": []
+    }
+  ],
+  "accessibility": {
+    "anonymous": false,
+    "free": false,
+    "languages": [
+      "svenska"
+    ],
+    "region": "sweden"
+  },
+  "urgency": {
+    "level": "standard",
+    "showEmergencyNotice": true,
+    "emergencyText": "Vid akut fara för liv, ring 112. Vid brott som inte är akut, ring Polisen på 114 14."
+  },
+  "source": {
+    "primaryUrl": "https://tryggaresverige.org/kontakt",
+    "checkedAt": "2026-06-05",
+    "confidence": "high"
+  },
+  "display": {
+    "featured": false,
+    "priority": 20,
+    "primaryLabel": "Ring 08-29 20 00",
+    "availabilityLabel": "Organisationskontakt. Inte en stödlinje"
+  },
+  "metadata": {
+    "lastVerified": "2026-06-05",
+    "nextReview": "2026-12-05",
+    "resourceKind": "knowledge_organization",
+    "supportLine": false
+  }
+}

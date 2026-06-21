@@ -1,0 +1,124 @@
+/* ──────────────────────────────────────────────────────────────
+   Stödlinjer v2 — design tokens
+   Carbon-style editorial system: warm cream paper, GT Alpina (Grilli
+   Type's literary serif, with an expressive italic) for display, Söhne
+   (Klim's neo-grotesque) for UI, Söhne Mono for data, soft
+   per-category tints on the card covers, and a warm (not pure-neutral)
+   dark variant. The chrome stays quiet; colour lives in the covers.
+   The emergency/crisis signal keeps its destructive red for safety.
+   ────────────────────────────────────────────────────────────── */
+
+:root {
+  color-scheme: light;
+
+  /* Periwinkle Dusk — cool violet neutrals, lifted toward white for contrast */
+  --background: oklch(0.984 0.006 286);
+  --surface: oklch(0.997 0.004 286);
+  --hover: oklch(0.95 0.011 286);
+  --foreground: oklch(0.20 0.014 288);
+  --muted: oklch(0.5 0.014 288);
+  --subtle: oklch(0.62 0.012 288);
+  --border: oklch(0.9 0.012 287);
+  --border-strong: oklch(0.83 0.014 287);
+
+  /* Primary — the periwinkle brand colour (deepened so white text clears AA) */
+  --accent: oklch(0.52 0.12 285);
+  --accent-hover: oklch(0.46 0.125 285);
+  --accent-fg: oklch(0.99 0.004 286);
+  --accent-soft: oklch(0.93 0.035 286);
+  --accent-soft-fg: oklch(0.44 0.11 285);
+
+  /* Type — GT Alpina (Grilli Type) display · Söhne (Klim) UI · Söhne Mono data.
+     GT Alpina:  variable, weight 20–1000 · roman + italic (the italic is the showpiece)
+     Söhne:      200 · 300 · 400 · 500 · 600 · 700 · 800 · 900 (+Kursiv italics)
+     Söhne Mono: 200 · 300 · 400 · 500 · 600 · 700 · 800 · 900 (+Kursiv italics) */
+  --font-serif: "GT Alpina", Georgia, "Times New Roman", serif;
+  --font-sans: "Sohne", system-ui, -apple-system, sans-serif;
+  --font-mono: "Sohne Mono", ui-monospace, "SF Mono", monospace;
+
+  /* Geometry */
+  --radius-tile: 10px;
+  --radius-md: 10px;
+  --radius-lg: 12px;
+  --radius-card: 16px;
+  --radius-xl: 20px;
+  --radius-pill: 999px;
+  --hairline: 1px;
+
+  /* Spacing scale (4-based) */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+  --space-16: 64px;
+
+  /* Layout */
+  --content-wide: 1280px; /* card grid + topbar */
+  --content-max: 760px;   /* article / reading width */
+  --measure: 680px;       /* centred hero text */
+
+  /* Category chip — monochrome periwinkle; emergency is the one rose exception.
+     Non-emergency categories fall back to --accent-soft in the components. */
+  --cat-red: var(--urgency-emergency-soft);  --cat-red-fg: var(--urgency-emergency);
+
+  /* Status dots (open / soon) — functional signal, not category decoration */
+  --status-open: oklch(0.48 0.12 150);
+  --status-soon: oklch(0.55 0.13 70);
+
+  /* Urgency — rose + coral, tuned to sit with periwinkle (emergency = rose-red) */
+  --urgency-emergency: oklch(0.58 0.20 12);
+  --urgency-emergency-soft: oklch(0.955 0.032 8);
+  --urgency-urgent: oklch(0.66 0.14 40);
+  --urgency-urgent-soft: oklch(0.96 0.038 38);
+
+  /* Modal scrim — a cool violet-dark dim behind dialogs (theme-aware, never the
+     inverting --foreground, which would wash light over a dark page). */
+  --modal-scrim: oklch(0.18 0.02 285 / 0.45);
+}
+
+/* Dark mode — warm near-black, never the old pure-neutral grey */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --background: oklch(0.155 0.012 285);
+  --surface: oklch(0.205 0.014 285);
+  --hover: oklch(0.245 0.016 285);
+  --foreground: oklch(0.97 0.006 286);
+  --muted: oklch(0.71 0.012 286);
+  --subtle: oklch(0.56 0.012 286);
+  --border: oklch(0.27 0.014 285);
+  --border-strong: oklch(0.37 0.016 285);
+
+  /* Bright periwinkle that pops on the dark ground, dark text on top */
+  --accent: oklch(0.72 0.11 285);
+  --accent-hover: oklch(0.65 0.115 285);
+  --accent-fg: oklch(0.18 0.015 285);
+  --accent-soft: oklch(0.32 0.055 285);
+  --accent-soft-fg: oklch(0.85 0.06 285);
+
+  /* Category chip — monochrome periwinkle; emergency is the one rose exception */
+  --cat-red: var(--urgency-emergency-soft);  --cat-red-fg: var(--urgency-emergency);
+
+  /* Status dots (open / soon), brightened for the dark ground */
+  --status-open: oklch(0.8 0.11 150);
+  --status-soon: oklch(0.84 0.11 75);
+
+  /* Urgency — rose + coral, brightened for the dark ground */
+  --urgency-emergency: oklch(0.70 0.16 12);
+  --urgency-emergency-soft: oklch(0.27 0.07 10);
+  --urgency-urgent: oklch(0.74 0.115 38);
+  --urgency-urgent-soft: oklch(0.28 0.05 40);
+
+  /* Deeper, cooler dim in dark mode — separates the floating modal from the
+     already-dark page that sits behind the blur. */
+  --modal-scrim: oklch(0.06 0.012 285 / 0.64);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+  }
+}

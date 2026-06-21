@@ -1,0 +1,12 @@
+---
+import Icon from "./Icon.astro";
+
+interface Props {
+  name: string;
+  size?: number;
+}
+
+const { name, size = 20 } = Astro.props;
+---
+
+<Icon name={name || "hand-presenting-heart"} size={size} />

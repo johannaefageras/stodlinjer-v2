@@ -1,0 +1,74 @@
+{
+  "id": "tjejzonen",
+  "slug": "tjejzonen",
+  "name": "Tjejzonen",
+  "organization": "Tjejzonen",
+  "type": "direct_line",
+  "status": "active",
+  "category": "children_youth",
+  "shortDescription": "Anonym stödchatt för dig som är 10-25 år och identifierar dig som tjej.",
+  "longDescription": "Tjejzonens allmänna chatt erbjuder anonymt stöd för tjejer 10-25 år som vill prata om känslor, relationer, oro, vardagsproblem eller annat som känns viktigt.",
+  "helpsWith": [
+    "oro",
+    "relationer",
+    "psykiskt-maende",
+    "ensamhet",
+    "vardagsproblem"
+  ],
+  "targetGroups": [
+    "tjejer-10-25"
+  ],
+  "contactMethods": [
+    {
+      "id": "chat",
+      "channel": "chat",
+      "label": "Allmänna chatten",
+      "url": "https://tjejzonen.se/hitta-hjalp/allmanna-chatten/",
+      "openingHours": [
+        {
+          "days": [
+            "mon",
+            "tue",
+            "wed",
+            "thu",
+            "fri",
+            "sat",
+            "sun"
+          ],
+          "open": "20:00",
+          "close": "22:00",
+          "timezone": "Europe/Stockholm",
+          "note": "Kön stänger 21:45"
+        }
+      ]
+    }
+  ],
+  "accessibility": {
+    "anonymous": true,
+    "free": true,
+    "languages": [
+      "svenska"
+    ],
+    "region": "sweden"
+  },
+  "urgency": {
+    "level": "standard",
+    "showEmergencyNotice": true,
+    "emergencyText": "Vid akut fara för liv, ring 112."
+  },
+  "source": {
+    "primaryUrl": "https://tjejzonen.se/hitta-hjalp/allmanna-chatten/",
+    "checkedAt": "2026-06-04",
+    "confidence": "high"
+  },
+  "display": {
+    "featured": true,
+    "priority": 60,
+    "primaryLabel": "Chatta med Tjejzonen",
+    "availabilityLabel": "Chatt: alla dagar 20-22"
+  },
+  "metadata": {
+    "lastVerified": "2026-06-04",
+    "nextReview": "2026-12-04"
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "id": "vi-som-forlorat-barn",
+  "slug": "vi-som-forlorat-barn",
+  "name": "Vi Som Förlorat Barn",
+  "organization": "Föreningen Vi Som Förlorat Barn",
+  "type": "support_organization",
+  "status": "active",
+  "category": "grief_loss",
+  "shortDescription": "Stöd och gemenskap för föräldrar, syskon och anhöriga som har förlorat barn.",
+  "longDescription": "Föreningen Vi Som Förlorat Barn, VSFB, erbjuder kontaktpersoner, samtalsgrupper, lokala sektioner och stödpersoner för föräldrar, syskon och andra anhöriga som har förlorat barn genom dödsfall.",
+  "helpsWith": [
+    "forlust-av-barn",
+    "sorg",
+    "efterlevandestod",
+    "samtalsgrupper",
+    "stodpersoner"
+  ],
+  "targetGroups": [
+    "foraldrar",
+    "syskon",
+    "anhoriga",
+    "efterlevande"
+  ],
+  "contactMethods": [
+    {
+      "id": "support-coordinator",
+      "channel": "phone",
+      "label": "Kansli / stödsamordnare",
+      "value": "072-225 22 11",
+      "openingHours": [
+        {
+          "days": [
+            "mon",
+            "tue",
+            "wed",
+            "thu",
+            "fri"
+          ],
+          "open": "08:00",
+          "close": "12:00",
+          "timezone": "Europe/Stockholm"
+        }
+      ]
+    },
+    {
+      "id": "email",
+      "channel": "email",
+      "label": "E-post",
+      "value": "info@vsfb.se",
+      "openingHours": []
+    },
+    {
+      "id": "local-sections",
+      "channel": "web",
+      "label": "Kontaktpersoner och sektioner",
+      "url": "https://www.vsfb.se/VSFB-i-Sverige",
+      "openingHours": []
+    }
+  ],
+  "accessibility": {
+    "anonymous": false,
+    "free": true,
+    "languages": [
+      "svenska"
+    ],
+    "region": "sweden"
+  },
+  "urgency": {
+    "level": "standard",
+    "showEmergencyNotice": true,
+    "emergencyText": "Vid akut fara för liv, ring 112."
+  },
+  "source": {
+    "primaryUrl": "https://www.vsfb.se/Kontakt",
+    "secondaryUrl": "https://www.vsfb.se/Verksamhet",
+    "checkedAt": "2026-06-05",
+    "confidence": "high"
+  },
+  "display": {
+    "featured": true,
+    "priority": 60,
+    "primaryLabel": "Ring 072-225 22 11",
+    "availabilityLabel": "Stödsamordnare: vardagar 08-12. Kontaktpersoner och samtalsgrupper via lokala sektioner"
+  },
+  "metadata": {
+    "lastVerified": "2026-06-05",
+    "nextReview": "2026-12-05"
+  }
+}

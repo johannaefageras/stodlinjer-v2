@@ -1,0 +1,100 @@
+{
+  "id": "spes",
+  "slug": "spes",
+  "name": "SPES",
+  "organization": "Riksförbundet för Suicidprevention och Efterlevandestöd",
+  "type": "direct_line",
+  "status": "active",
+  "category": "grief_loss",
+  "shortDescription": "Stöd för dig som mist en närstående i suicid.",
+  "longDescription": "SPES erbjuder anonymt och kostnadsfritt stöd via telefon och chatt för efterlevande som har mist någon i suicid. De som svarar har själva erfarenhet av att vara efterlevande.",
+  "helpsWith": [
+    "sorg-efter-suicid",
+    "efterlevandestod",
+    "kris",
+    "ensamhet",
+    "behov-av-samtal"
+  ],
+  "targetGroups": [
+    "efterlevande",
+    "anhoriga"
+  ],
+  "contactMethods": [
+    {
+      "id": "phone",
+      "channel": "phone",
+      "label": "Telefon",
+      "value": "020-18 18 00",
+      "openingHours": [
+        {
+          "days": [
+            "mon",
+            "tue",
+            "wed",
+            "thu",
+            "fri",
+            "sat",
+            "sun"
+          ],
+          "open": "19:00",
+          "close": "22:00",
+          "timezone": "Europe/Stockholm",
+          "note": "Även röda dagar"
+        }
+      ]
+    },
+    {
+      "id": "chat",
+      "channel": "chat",
+      "label": "Chatt",
+      "url": "https://spes.se/chatt/",
+      "openingHours": [
+        {
+          "days": [
+            "wed"
+          ],
+          "open": "19:00",
+          "close": "21:00",
+          "timezone": "Europe/Stockholm"
+        },
+        {
+          "days": [
+            "sun"
+          ],
+          "open": "19:00",
+          "close": "21:00",
+          "timezone": "Europe/Stockholm",
+          "note": "Första söndagen i månaden öppet till 22:00"
+        }
+      ]
+    }
+  ],
+  "accessibility": {
+    "anonymous": true,
+    "free": true,
+    "languages": [
+      "svenska"
+    ],
+    "region": "sweden"
+  },
+  "urgency": {
+    "level": "standard",
+    "showEmergencyNotice": true,
+    "emergencyText": "Vid akut fara för liv, ring 112."
+  },
+  "source": {
+    "primaryUrl": "https://spes.se/blog/fa-stod/",
+    "checkedAt": "2026-06-04",
+    "confidence": "high"
+  },
+  "display": {
+    "featured": true,
+    "priority": 78,
+    "primaryLabel": "Ring 020-18 18 00",
+    "availabilityLabel": "Telefon: alla dagar 19-22. Chatt: ons och sön 19-21"
+  },
+  "metadata": {
+    "lastVerified": "2026-06-04",
+    "nextReview": "2026-12-04"
+  }
+}

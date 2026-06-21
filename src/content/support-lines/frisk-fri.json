@@ -1,0 +1,284 @@
+{
+  "id": "frisk-fri",
+  "slug": "frisk-fri",
+  "name": "Frisk & Fri",
+  "organization": "Frisk & Fri - Riksföreningen mot ätstörningar",
+  "type": "support_organization",
+  "status": "active",
+  "category": "eating_disorders",
+  "shortDescription": "Anonymt stöd via telefon, chatt och stödmejl för drabbade och närstående vid ätstörningar.",
+  "longDescription": "Frisk & Fri erbjuder stöd till personer som är drabbade av ätstörningar, närstående och yrkesverksamma genom Ätstörningslinjen, Närståendelinjen, stödchatt och stödmejl.",
+  "helpsWith": [
+    "atstorningar",
+    "oro-for-kropp-mat-och-traning",
+    "anhorigstod",
+    "sjalvbild",
+    "behov-av-samtal"
+  ],
+  "targetGroups": [
+    "drabbade",
+    "anhoriga",
+    "yrkesverksamma"
+  ],
+  "contactMethods": [
+    {
+      "id": "atstorningslinjen",
+      "channel": "phone",
+      "label": "Ätstörningslinjen",
+      "value": "020-20 80 18",
+      "openingHours": [
+        {
+          "days": [
+            "mon"
+          ],
+          "open": "19:00",
+          "close": "20:00",
+          "timezone": "Europe/Stockholm",
+          "note": "Röda dagar stängt"
+        },
+        {
+          "days": [
+            "tue"
+          ],
+          "open": "13:00",
+          "close": "14:00",
+          "timezone": "Europe/Stockholm",
+          "note": "Röda dagar stängt"
+        },
+        {
+          "days": [
+            "tue"
+          ],
+          "open": "19:00",
+          "close": "20:00",
+          "timezone": "Europe/Stockholm",
+          "note": "Röda dagar stängt"
+        },
+        {
+          "days": [
+            "wed"
+          ],
+          "open": "13:00",
+          "close": "14:00",
+          "timezone": "Europe/Stockholm",
+          "note": "Röda dagar stängt"
+        },
+        {
+          "days": [
+            "wed"
+          ],
+          "open": "19:00",
+          "close": "20:00",
+          "timezone": "Europe/Stockholm",
+          "note": "Röda dagar stängt"
+        },
+        {
+          "days": [
+            "thu"
+          ],
+          "open": "19:00",
+          "close": "20:00",
+          "timezone": "Europe/Stockholm",
+          "note": "Röda dagar stängt"
+        },
+        {
+          "days": [
+            "sun"
+          ],
+          "open": "19:00",
+          "close": "20:00",
+          "timezone": "Europe/Stockholm",
+          "note": "Röda dagar stängt"
+        },
+        {
+          "days": [
+            "fri"
+          ],
+          "open": "12:15",
+          "close": "13:15",
+          "timezone": "Europe/Stockholm",
+          "note": "English support"
+        },
+        {
+          "days": [
+            "sun"
+          ],
+          "open": "20:00",
+          "close": "21:00",
+          "timezone": "Europe/Stockholm",
+          "note": "Arabic support, ojämna veckor"
+        }
+      ]
+    },
+    {
+      "id": "narstaendelinjen",
+      "channel": "phone",
+      "label": "Närståendelinjen",
+      "value": "0200-125 085",
+      "openingHours": [
+        {
+          "days": [
+            "mon"
+          ],
+          "open": "19:00",
+          "close": "20:00",
+          "timezone": "Europe/Stockholm"
+        },
+        {
+          "days": [
+            "tue"
+          ],
+          "open": "19:00",
+          "close": "20:00",
+          "timezone": "Europe/Stockholm"
+        },
+        {
+          "days": [
+            "wed"
+          ],
+          "open": "16:00",
+          "close": "17:00",
+          "timezone": "Europe/Stockholm"
+        },
+        {
+          "days": [
+            "wed"
+          ],
+          "open": "19:00",
+          "close": "20:00",
+          "timezone": "Europe/Stockholm"
+        },
+        {
+          "days": [
+            "thu"
+          ],
+          "open": "09:00",
+          "close": "11:00",
+          "timezone": "Europe/Stockholm"
+        },
+        {
+          "days": [
+            "thu"
+          ],
+          "open": "19:00",
+          "close": "20:00",
+          "timezone": "Europe/Stockholm"
+        },
+        {
+          "days": [
+            "fri"
+          ],
+          "open": "16:00",
+          "close": "17:00",
+          "timezone": "Europe/Stockholm"
+        }
+      ]
+    },
+    {
+      "id": "chat",
+      "channel": "chat",
+      "label": "Chatt",
+      "url": "https://www.friskfri.se/fa-stod/chatt/",
+      "openingHours": [
+        {
+          "days": [
+            "mon"
+          ],
+          "open": "20:00",
+          "close": "21:00",
+          "timezone": "Europe/Stockholm",
+          "note": "Helgdagar stängt"
+        },
+        {
+          "days": [
+            "tue"
+          ],
+          "open": "20:00",
+          "close": "21:00",
+          "timezone": "Europe/Stockholm",
+          "note": "Helgdagar stängt"
+        },
+        {
+          "days": [
+            "wed"
+          ],
+          "open": "19:00",
+          "close": "20:00",
+          "timezone": "Europe/Stockholm",
+          "note": "Ojämna veckor, helgdagar stängt"
+        },
+        {
+          "days": [
+            "wed"
+          ],
+          "open": "20:00",
+          "close": "21:00",
+          "timezone": "Europe/Stockholm",
+          "note": "Alla veckor, helgdagar stängt"
+        },
+        {
+          "days": [
+            "thu"
+          ],
+          "open": "19:00",
+          "close": "21:00",
+          "timezone": "Europe/Stockholm",
+          "note": "Helgdagar stängt"
+        }
+      ]
+    },
+    {
+      "id": "support-email",
+      "channel": "web",
+      "label": "Stödmejl",
+      "url": "https://www.friskfri.se/fa-stod/stodmejl/",
+      "openingHours": [
+        {
+          "days": [
+            "mon",
+            "tue",
+            "wed",
+            "thu",
+            "fri",
+            "sat",
+            "sun"
+          ],
+          "open": "00:00",
+          "close": "24:00",
+          "timezone": "Europe/Stockholm",
+          "note": "Formulär kan skickas via webbplatsen"
+        }
+      ]
+    }
+  ],
+  "accessibility": {
+    "anonymous": true,
+    "free": true,
+    "languages": [
+      "svenska",
+      "engelska",
+      "arabiska"
+    ],
+    "region": "sweden"
+  },
+  "urgency": {
+    "level": "standard",
+    "showEmergencyNotice": true,
+    "emergencyText": "Vid akut fara för liv, ring 112."
+  },
+  "source": {
+    "primaryUrl": "https://www.friskfri.se/fa-stod/telefonlinjer/",
+    "checkedAt": "2026-06-04",
+    "confidence": "high"
+  },
+  "display": {
+    "featured": true,
+    "priority": 76,
+    "primaryLabel": "Ring Ätstörningslinjen 020-20 80 18",
+    "availabilityLabel": "Telefon, chatt och stödmejl med olika tider för drabbade och närstående"
+  },
+  "metadata": {
+    "lastVerified": "2026-06-04",
+    "nextReview": "2026-12-04"
+  }
+}

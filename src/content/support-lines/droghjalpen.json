@@ -1,0 +1,109 @@
+{
+  "id": "droghjalpen",
+  "slug": "droghjalpen",
+  "name": "Droghjälpen",
+  "organization": "Beroendecentrum Stockholm",
+  "type": "direct_line",
+  "status": "active",
+  "category": "substance_use",
+  "shortDescription": "Anonymt stöd via telefon och nätet för dig som funderar över egna eller någon annans drogvanor.",
+  "longDescription": "Droghjälpen erbjuder anonymt och kostnadsfritt stöd via telefon och webb till personer som använder droger, är oroliga för någon närstående eller möter drogfrågor i sitt arbete.",
+  "helpsWith": [
+    "droganvandning",
+    "beroendeframkallande-lakemedel",
+    "oro-for-nagon-annan",
+    "forandring-av-drogvanor",
+    "sjalvhjalp"
+  ],
+  "targetGroups": [
+    "personer-som-anvander-droger",
+    "anhoriga",
+    "vardgivare"
+  ],
+  "contactMethods": [
+    {
+      "id": "phone",
+      "channel": "phone",
+      "label": "Telefon",
+      "value": "020-91 91 91",
+      "openingHours": [
+        {
+          "days": [
+            "mon"
+          ],
+          "open": "09:00",
+          "close": "19:00",
+          "timezone": "Europe/Stockholm",
+          "note": "Helgfri måndag"
+        },
+        {
+          "days": [
+            "thu"
+          ],
+          "open": "09:00",
+          "close": "16:00",
+          "timezone": "Europe/Stockholm",
+          "note": "Helgfri torsdag"
+        }
+      ]
+    },
+    {
+      "id": "web-question",
+      "channel": "web",
+      "label": "Frågelåda och webbstöd",
+      "url": "https://droghjalpen.se/",
+      "openingHours": [
+        {
+          "days": [
+            "mon",
+            "tue",
+            "wed",
+            "thu",
+            "fri",
+            "sat",
+            "sun"
+          ],
+          "open": "00:00",
+          "close": "24:00",
+          "timezone": "Europe/Stockholm",
+          "note": "Meddelanden kan skickas när som helst; svar ges normalt inom tre arbetsdagar"
+        }
+      ]
+    },
+    {
+      "id": "operations-email",
+      "channel": "email",
+      "label": "Verksamhetsfrågor",
+      "value": "kontakt@droghjalpen.se",
+      "openingHours": []
+    }
+  ],
+  "accessibility": {
+    "anonymous": true,
+    "free": true,
+    "languages": [
+      "svenska"
+    ],
+    "region": "sweden"
+  },
+  "urgency": {
+    "level": "standard",
+    "showEmergencyNotice": true,
+    "emergencyText": "Vid akut fara för liv, ring 112."
+  },
+  "source": {
+    "primaryUrl": "https://droghjalpen.se/",
+    "checkedAt": "2026-06-04",
+    "confidence": "high"
+  },
+  "display": {
+    "featured": true,
+    "priority": 69,
+    "primaryLabel": "Ring 020-91 91 91",
+    "availabilityLabel": "Telefon: helgfria måndagar 9-19 och torsdagar 9-16"
+  },
+  "metadata": {
+    "lastVerified": "2026-06-04",
+    "nextReview": "2026-12-04"
+  }
+}

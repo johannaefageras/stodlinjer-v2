@@ -1,0 +1,98 @@
+---
+import Icon from "./Icon.astro";
+
+// Floating ⌘K command bar. Purely presentational — the filter and
+// keyboard wiring live in the homepage script (which also owns the
+// category pills and the card grid it filters).
+interface Props {
+  placeholder?: string;
+}
+const { placeholder = "Sök stödlinjer…" } = Astro.props;
+---
+
+<div class="searchbar" role="search">
+  <label for="line-search" class="sr-only">Sök stödlinjer</label>
+  <span class="searchbar__icon" aria-hidden="true">
+    <Icon name="round-magnifying-glass" size={20} />
+  </span>
+  <input
+    id="line-search"
+    type="search"
+    class="searchbar__input"
+    placeholder={placeholder}
+    autocomplete="off"
+    spellcheck="false"
+  />
+  <kbd class="searchbar__kbd" aria-hidden="true">⌘K</kbd>
+</div>
+
+<style>
+  .searchbar {
+    position: fixed;
+    bottom: var(--space-6);
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 60;
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    width: min(520px, calc(100vw - 32px));
+    padding: 13px 13px 13px 20px;
+    border: 0;
+    border-radius: var(--radius-pill);
+    background: color-mix(in oklch, var(--surface) 90%, transparent);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    /* Edge + elevation are drawn entirely with box-shadow. A 1px border over a
+       backdrop-filter seams at the rounded corners (reads as a "broken" edge),
+       so we ring it instead — the ring hugs the radius cleanly. The layered
+       drop shadows also lift the pill off the page even when its fill matches
+       the (light) background behind it. */
+    box-shadow:
+      0 0 0 1px color-mix(in oklch, var(--foreground) 18%, transparent),
+      0 2px 4px -1px oklch(0 0 0 / 0.08),
+      0 12px 24px -8px oklch(0 0 0 / 0.22),
+      0 28px 56px -18px oklch(0 0 0 / 0.4);
+    transition: box-shadow 0.16s ease;
+  }
+  .searchbar:focus-within {
+    box-shadow:
+      0 0 0 2px var(--accent),
+      0 2px 4px -1px oklch(0 0 0 / 0.1),
+      0 14px 28px -8px oklch(0 0 0 / 0.26),
+      0 32px 64px -18px oklch(0 0 0 / 0.48);
+  }
+  .searchbar__icon {
+    display: flex;
+    color: var(--muted);
+    flex-shrink: 0;
+  }
+  .searchbar__input {
+    flex: 1;
+    min-width: 0;
+    border: 0;
+    outline: none;
+    background: transparent;
+    font: inherit;
+    font-size: 1.09375rem;
+    color: var(--foreground);
+  }
+  .searchbar__input::placeholder {
+    color: var(--subtle);
+  }
+  /* Hide the native search clear affordance for a cleaner look. */
+  .searchbar__input::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+  }
+  .searchbar__kbd {
+    flex-shrink: 0;
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    color: var(--muted);
+    background: var(--accent-soft);
+    border: var(--hairline) solid var(--border);
+    border-radius: 7px;
+    padding: 6px 9px;
+    line-height: 1;
+  }
+</style>

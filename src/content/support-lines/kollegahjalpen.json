@@ -1,0 +1,72 @@
+{
+  "id": "kollegahjalpen",
+  "slug": "kollegahjalpen",
+  "name": "Kollegahjälpen",
+  "organization": "Sveriges Åkeriföretag och TYA",
+  "type": "direct_line",
+  "status": "active",
+  "category": "mental_health",
+  "shortDescription": "Kamratstöd för lastbilsförare efter olyckor, rån, överfall eller andra svåra händelser i arbetet.",
+  "longDescription": "Kollegahjälpen är ett nätverk av utbildade lastbilsförare och åkeriföretagare som ger medmänskligt stöd efter svåra händelser i arbetet. Förare, anhöriga, kollegor och arbetsgivare kan ringa numret till SOS Alarm, som kontaktar en kollegahjälpare nära den drabbade.",
+  "helpsWith": [
+    "trafikolycka",
+    "ran-eller-overfall",
+    "svarkris-i-arbetet",
+    "chockreaktioner",
+    "kamratstod",
+    "yrkesrelaterat-trauma"
+  ],
+  "targetGroups": [
+    "lastbilsforare",
+    "akeriforetagare",
+    "anhoriga",
+    "kollegor",
+    "arbetsgivare"
+  ],
+  "contactMethods": [
+    {
+      "id": "phone",
+      "channel": "phone",
+      "label": "Telefon via SOS Alarm",
+      "value": "020-59 60 00",
+      "openingHours": [],
+      "note": "SOS Alarm kontaktar en kollegahjälpare som ringer upp och kommer överens om vidare stöd"
+    },
+    {
+      "id": "website",
+      "channel": "web",
+      "label": "Kollegahjälpen",
+      "url": "https://kollegahjalpen.se/",
+      "openingHours": []
+    }
+  ],
+  "accessibility": {
+    "anonymous": true,
+    "free": true,
+    "languages": [
+      "svenska"
+    ],
+    "region": "sweden"
+  },
+  "urgency": {
+    "level": "standard",
+    "showEmergencyNotice": true,
+    "emergencyText": "Vid akut fara för liv, ring 112."
+  },
+  "source": {
+    "primaryUrl": "https://www.akeri.se/produkter-och-tjanster/foretagande/kollegahjalpen",
+    "secondaryUrl": "https://tya-se-wp.azurewebsites.net/kollegahjalpen/",
+    "checkedAt": "2026-06-05",
+    "confidence": "high"
+  },
+  "display": {
+    "featured": false,
+    "priority": 50,
+    "primaryLabel": "Ring 020-59 60 00",
+    "availabilityLabel": "Ring via SOS Alarm; en kollegahjälpare kontaktar den drabbade för vidare stöd"
+  },
+  "metadata": {
+    "lastVerified": "2026-06-05",
+    "nextReview": "2026-12-05"
+  }
+}

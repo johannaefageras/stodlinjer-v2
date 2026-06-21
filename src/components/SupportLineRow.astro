@@ -1,0 +1,82 @@
+---
+import CategoryIcon from "./CategoryIcon.astro";
+
+interface Props {
+  name: string;
+  shortDescription: string;
+  categoryColor: string;
+  categoryIcon: string;
+  primaryValue: string;
+  href?: string;
+}
+
+const {
+  name,
+  shortDescription,
+  categoryColor,
+  categoryIcon,
+  primaryValue,
+  href = "#",
+} = Astro.props;
+---
+
+<a class="row" href={href} style={`--c: var(--cat-${categoryColor}, var(--accent-soft)); --c-fg: var(--cat-${categoryColor}-fg, var(--accent-soft-fg));`}>
+  <span class="row__tile" aria-hidden="true">
+    <CategoryIcon name={categoryIcon} size={17} />
+  </span>
+  <span class="row__body">
+    <span class="row__name">{name}</span>
+    <span class="row__desc">{shortDescription}</span>
+  </span>
+  <span class="row__value mono">{primaryValue}</span>
+</a>
+
+<style>
+  .row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px;
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    color: inherit;
+    transition: background 0.12s ease;
+  }
+  .row:hover {
+    background: var(--hover);
+  }
+  .row__tile {
+    width: 30px;
+    height: 30px;
+    border-radius: var(--radius-tile);
+    background: var(--c);
+    color: var(--c-fg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .row__body {
+    flex: 1;
+    min-width: 0;
+  }
+  .row__name {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--foreground);
+  }
+  .row__desc {
+    display: block;
+    font-size: 0.78125rem;
+    color: var(--muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .row__value {
+    font-size: 0.8125rem;
+    color: var(--muted);
+    flex-shrink: 0;
+  }
+</style>

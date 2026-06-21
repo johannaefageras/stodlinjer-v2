@@ -1,0 +1,59 @@
+---
+import Icon from "./Icon.astro";
+
+// Small theme toggle. No-flash init lives in BaseLayout; this just flips
+// the attribute and persists the choice. Shows a moon in light mode and a
+// sun in dark mode (the icon of the theme you'd switch to).
+---
+
+<button class="toggle" type="button" aria-label="Växla mörkt läge">
+  <span class="toggle__icon toggle__icon--moon">
+    <Icon name="crescent-moon" size={16} />
+  </span>
+  <span class="toggle__icon toggle__icon--sun">
+    <Icon name="sun-with-wavy-outer-rays" size={16} />
+  </span>
+</button>
+
+<style>
+  .toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    background: var(--surface);
+    border: var(--hairline) solid var(--border);
+    border-radius: var(--radius-pill);
+    color: var(--muted);
+    transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+  }
+  .toggle:hover {
+    color: var(--foreground);
+    border-color: var(--border-strong);
+  }
+  .toggle__icon {
+    display: inline-flex;
+  }
+  .toggle__icon--sun {
+    display: none;
+  }
+  :global([data-theme="dark"]) .toggle__icon--moon {
+    display: none;
+  }
+  :global([data-theme="dark"]) .toggle__icon--sun {
+    display: inline-flex;
+  }
+</style>
+
+<script>
+  const t = document.querySelector(".toggle");
+  t?.addEventListener("click", () => {
+    const root = document.documentElement;
+    const next = root.dataset.theme === "dark" ? "light" : "dark";
+    root.dataset.theme = next;
+    try {
+      localStorage.setItem("theme", next);
+    } catch (_) {}
+  });
+</script>

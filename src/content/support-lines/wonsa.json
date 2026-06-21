@@ -1,0 +1,68 @@
+{
+  "id": "wonsa",
+  "slug": "wonsa",
+  "name": "WONSA",
+  "organization": "WONSA - World of No Sexual Abuse",
+  "type": "organization_contact",
+  "status": "active",
+  "category": "violence_abuse",
+  "shortDescription": "Specialistorganisation och klinisk kunskapsresurs för sexuella trauman.",
+  "longDescription": "WONSA arbetar med specialistkunskap, behandling, forskning och metodutveckling kring sexuella trauman. Den nuvarande offentliga webbplatsen presenterar organisationen och kommande plattform, men ingen öppen stödlinje med bemannade tider.",
+  "helpsWith": [
+    "sexuella-trauman",
+    "behandling",
+    "traumakunskap",
+    "stodnatverk",
+    "professionell-vagledning"
+  ],
+  "targetGroups": [
+    "overlevare",
+    "yrkesverksamma",
+    "anhoriga"
+  ],
+  "contactMethods": [
+    {
+      "id": "email",
+      "channel": "email",
+      "label": "E-post",
+      "value": "info@wonsa.org",
+      "openingHours": []
+    },
+    {
+      "id": "website",
+      "channel": "web",
+      "label": "Webbplats",
+      "url": "https://www.wonsa.se/",
+      "openingHours": []
+    }
+  ],
+  "accessibility": {
+    "anonymous": false,
+    "free": false,
+    "languages": [
+      "svenska",
+      "engelska"
+    ],
+    "region": "sweden"
+  },
+  "urgency": {
+    "level": "standard",
+    "showEmergencyNotice": true,
+    "emergencyText": "Vid akut fara för liv, ring 112."
+  },
+  "source": {
+    "primaryUrl": "https://www.wonsa.se/",
+    "checkedAt": "2026-06-05",
+    "confidence": "medium"
+  },
+  "display": {
+    "featured": false,
+    "priority": 32,
+    "primaryLabel": "Besök WONSA",
+    "availabilityLabel": "Specialistorganisation; ingen öppen stödlinje verifierad"
+  },
+  "metadata": {
+    "lastVerified": "2026-06-05",
+    "nextReview": "2026-12-05"
+  }
+}

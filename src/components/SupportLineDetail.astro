@@ -1,0 +1,539 @@
+---
+import type { CollectionEntry } from "astro:content";
+import CategoryIcon from "./CategoryIcon.astro";
+import Icon from "./Icon.astro";
+import categoriesData from "../content/categories.json";
+import { detailHours, closedDays, liveStatus, type Hours } from "../lib/hours";
+import { lineNeedsCrisisBanner, DEFAULT_EMERGENCY_TEXT } from "../lib/crisis";
+
+interface Props {
+  line: CollectionEntry<"supportLines">;
+  /** Name heading level — h1 on the standalone page, h2 inside the modal. */
+  heading?: "h1" | "h2";
+}
+
+const { line, heading = "h2" } = Astro.props;
+const Heading = heading;
+const d = line.data;
+
+const catById = Object.fromEntries(categoriesData.categories.map((c) => [c.id, c]));
+const cat = catById[d.category.id];
+
+// Channel → icon + how the action link behaves. Phones/SMS/email-with-address
+// stay in-app (tel:/sms:/mailto:); chat, web and form-style email open externally.
+const CHANNEL_ICON: Record<string, string> = {
+  phone: "plain-telephone-receiver",
+  sms: "square-speech-bubble-with-three-typing-dots",
+  chat: "square-speech-bubble-with-two-text-lines",
+  email: "closed-envelope-with-rounded-corners",
+  web: "globe-with-continents",
+};
+const ACTION_FALLBACK: Record<string, string> = {
+  chat: "Starta chatt",
+  web: "Till webbplatsen",
+  email: "Öppna mejl",
+};
+
+type Method = (typeof d.contactMethods)[number];
+
+function contactView(m: Method) {
+  const digits = (m.value ?? "").replace(/\D/g, "");
+  const isEmailAddr = m.channel === "email" && (m.value ?? "").includes("@");
+
+  let href: string | null = null;
+  if (m.channel === "phone" && digits) href = `tel:${digits}`;
+  else if (m.channel === "sms" && digits) href = `sms:${digits}`;
+  else if (isEmailAddr) href = `mailto:${m.value}`;
+  else href = m.url ?? null;
+
+  const external = !!href && /^https?:/.test(href);
+  // Phones/SMS show the number; an email shows the address; otherwise a verb.
+  const dialled = m.channel === "phone" || m.channel === "sms";
+  const text = m.value ?? ACTION_FALLBACK[m.channel] ?? m.label;
+
+  const entries = (m.openingHours ?? []) as Hours[];
+  return {
+    icon: CHANNEL_ICON[m.channel] ?? "square-speech-bubble-with-two-text-lines",
+    label: m.label,
+    href,
+    external,
+    mono: dialled,
+    text,
+    note: m.note,
+    hours: detailHours(entries),
+    closed: closedDays(entries),
+    live: liveStatus(entries),
+  };
+}
+
+const contacts = d.contactMethods.map(contactView);
+
+const showCrisis = lineNeedsCrisisBanner(d.urgency);
+const crisisText = d.urgency.emergencyText ?? DEFAULT_EMERGENCY_TEXT;
+
+// helpsWith / targetGroups are ascii-folded slugs (e.g. "akut-psykisk-kris").
+// Prettify for display; a curated label map can replace this later.
+const pretty = (s: string) =>
+  s.replace(/-/g, " ").replace(/^./, (c) => c.toUpperCase());
+const REGION_LABEL: Record<string, string> = { sweden: "Hela Sverige" };
+
+const verified = new Intl.DateTimeFormat("sv-SE", { dateStyle: "long" }).format(
+  new Date(d.metadata.lastVerified),
+);
+const showOrg = d.organization && d.organization !== d.name;
+---
+
+<article
+  class="line"
+  style={`--c: var(--cat-${cat.color}, var(--accent-soft)); --c-fg: var(--cat-${cat.color}-fg, var(--accent-soft-fg));`}
+>
+  <header class="line__head">
+    <span class="cat">
+      <span class="cat__chip" aria-hidden="true">
+        <CategoryIcon name={cat.icon} size={18} />
+      </span>
+      <span class="cat__label">{cat.label}</span>
+    </span>
+
+    <Heading class="line__name">{d.name}</Heading>
+    {showOrg && <p class="line__org">av {d.organization}</p>}
+    <p class="line__lede">{d.shortDescription}</p>
+    {
+      d.display.availabilityLabel && (
+        <p class="line__avail">{d.display.availabilityLabel}</p>
+      )
+    }
+  </header>
+
+  {
+    showCrisis && (
+      <div class="crisis" role="note">
+        <span class="crisis__dot" aria-hidden="true" />
+        {crisisText}
+      </div>
+    )
+  }
+
+  <section class="section">
+    <h3 class="section__h">Kontakt</h3>
+    <ul class="contacts">
+      {
+        contacts.map((c) => (
+          <li class="contact">
+            <span class="contact__icon" aria-hidden="true">
+              <Icon name={c.icon} size={20} />
+            </span>
+            <div class="contact__body">
+              <div class="contact__top">
+                <span class="contact__label">{c.label}</span>
+                {c.live && (
+                  <span class={`status status--${c.live.tone}`}>{c.live.label}</span>
+                )}
+              </div>
+
+              {c.href ? (
+                <a
+                  class:list={["contact__action", c.mono && "mono"]}
+                  href={c.href}
+                  target={c.external ? "_blank" : undefined}
+                  rel={c.external ? "noopener noreferrer" : undefined}
+                >
+                  <span>{c.text}</span>
+                  {c.external && (
+                    <Icon name="share-arrow-exiting-rounded-square" size={14} />
+                  )}
+                </a>
+              ) : (
+                <span class:list={["contact__action contact__action--static", c.mono && "mono"]}>
+                  {c.text}
+                </span>
+              )}
+
+              {c.note && <p class="contact__note">{c.note}</p>}
+
+              {c.hours.length > 0 && (
+                <dl class="hours">
+                  {c.hours.map((row) => (
+                    <div class="hours__row">
+                      <dt class="hours__day">{row.dayRange}</dt>
+                      <dd class="hours__time mono">{row.time}</dd>
+                    </div>
+                  ))}
+                  {c.closed && (
+                    <div class="hours__row hours__row--off">
+                      <dt class="hours__day">{c.closed}</dt>
+                      <dd class="hours__time">Stängt</dd>
+                    </div>
+                  )}
+                </dl>
+              )}
+            </div>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  {
+    d.longDescription && (
+      <section class="section">
+        <h3 class="section__h">Om {d.name}</h3>
+        <p class="prose">{d.longDescription}</p>
+      </section>
+    )
+  }
+
+  {
+    (d.helpsWith.length > 0 || d.targetGroups.length > 0) && (
+      <section class="section">
+        <h3 class="section__h">Vad de hjälper med</h3>
+        {d.helpsWith.length > 0 && (
+          <ul class="chips">
+            {d.helpsWith.map((t) => (
+              <li class="chip">{pretty(t)}</li>
+            ))}
+          </ul>
+        )}
+        {d.targetGroups.length > 0 && (
+          <>
+            <h4 class="section__sub">För</h4>
+            <ul class="chips">
+              {d.targetGroups.map((t) => (
+                <li class="chip">{pretty(t)}</li>
+              ))}
+            </ul>
+          </>
+        )}
+      </section>
+    )
+  }
+
+  <section class="section">
+    <h3 class="section__h">Bra att veta</h3>
+    <ul class="facts">
+      {d.accessibility.anonymous && (
+        <li class="fact"><Icon name="check-mark" size={15} />Anonymt</li>
+      )}
+      {d.accessibility.free && (
+        <li class="fact"><Icon name="check-mark" size={15} />Kostnadsfritt</li>
+      )}
+      {d.accessibility.languages.length > 0 && (
+        <li class="fact">
+          <Icon name="check-mark" size={15} />
+          {d.accessibility.languages.map(pretty).join(", ")}
+        </li>
+      )}
+      <li class="fact">
+        <Icon name="check-mark" size={15} />
+        {REGION_LABEL[d.accessibility.region] ?? pretty(d.accessibility.region)}
+      </li>
+    </ul>
+    {d.accessibility.notes && <p class="prose prose--note">{d.accessibility.notes}</p>}
+  </section>
+
+  <footer class="line__foot">
+    <a class="weblink" href={d.source.primaryUrl} target="_blank" rel="noopener noreferrer">
+      Besök webbplats
+      <Icon name="share-arrow-exiting-rounded-square" size={14} />
+    </a>
+    <p class="verified">Senast verifierad {verified}</p>
+  </footer>
+</article>
+
+<style>
+  /* ── Header ─────────────────────────────────────────────── */
+  .cat {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin-bottom: var(--space-4);
+    width: fit-content;
+  }
+  .cat__chip {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: var(--radius-chip, 11px);
+    background: var(--c);
+    color: var(--c-fg);
+  }
+  .cat__label {
+    font-size: 0.8125rem;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--subtle);
+  }
+  .line__name {
+    font-size: clamp(2.1rem, 5vw, 3rem);
+    font-weight: 500;
+    line-height: 1.08;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+  }
+  .line__org {
+    font-size: 0.9375rem;
+    color: var(--subtle);
+    margin-top: var(--space-2);
+  }
+  .line__lede {
+    font-size: clamp(1.1rem, 1.6vw, 1.3rem);
+    line-height: 1.5;
+    color: var(--muted);
+    margin-top: var(--space-4);
+    max-width: var(--measure);
+  }
+  .line__avail {
+    font-size: 0.875rem;
+    color: var(--subtle);
+    margin-top: var(--space-3);
+  }
+
+  /* ── Crisis banner ──────────────────────────────────────── */
+  .crisis {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin-top: var(--space-6);
+    padding: 11px 18px;
+    border-radius: var(--radius-lg);
+    background: var(--urgency-emergency-soft);
+    color: var(--urgency-emergency);
+    font-size: 0.9375rem;
+  }
+  .crisis__dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--urgency-emergency);
+    flex-shrink: 0;
+  }
+
+  /* ── Sections ───────────────────────────────────────────── */
+  .section {
+    margin-top: var(--space-12);
+  }
+  .section__h {
+    font-size: 0.8125rem;
+    font-family: var(--font-sans);
+    font-weight: 600;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--subtle);
+    margin-bottom: var(--space-4);
+  }
+  .section__sub {
+    font-size: 0.8125rem;
+    font-family: var(--font-sans);
+    font-weight: 500;
+    color: var(--muted);
+    margin: var(--space-4) 0 var(--space-2);
+  }
+  .prose {
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    color: var(--foreground);
+    max-width: var(--measure);
+  }
+  .prose--note {
+    font-size: 0.90625rem;
+    color: var(--muted);
+    margin-top: var(--space-4);
+  }
+
+  /* ── Contact list ───────────────────────────────────────── */
+  .contacts {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+  .contact {
+    display: flex;
+    gap: var(--space-4);
+    padding: var(--space-4);
+    border: var(--hairline) solid var(--border);
+    border-radius: var(--radius-card);
+    background: var(--surface);
+  }
+  .contact__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    flex-shrink: 0;
+    border-radius: var(--radius-md);
+    background: var(--hover);
+    color: var(--muted);
+  }
+  .contact__body {
+    min-width: 0;
+    flex: 1;
+  }
+  .contact__top {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    margin-bottom: 2px;
+  }
+  .contact__label {
+    font-size: 0.8125rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--subtle);
+  }
+  .contact__action {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 1.3125rem;
+    line-height: 1.2;
+    color: var(--foreground);
+  }
+  a.contact__action:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .contact__action--static {
+    color: var(--muted);
+  }
+  .contact__note {
+    font-size: 0.875rem;
+    color: var(--muted);
+    margin-top: var(--space-2);
+  }
+
+  /* ── Live status — a quiet dot + label, not a coloured pill ── */
+  .status {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.8125rem;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+  .status::before {
+    content: "";
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--subtle);
+    flex-shrink: 0;
+  }
+  .status--open::before {
+    background: var(--status-open);
+  }
+  .status--soon::before {
+    background: var(--status-soon);
+  }
+
+  /* ── Opening hours ──────────────────────────────────────── */
+  .hours {
+    margin-top: var(--space-3);
+    max-width: 320px;
+  }
+  .hours__row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space-4);
+    padding: 6px 0;
+    font-size: 0.875rem;
+  }
+  .hours__row + .hours__row {
+    border-top: var(--hairline) solid
+      color-mix(in oklch, var(--border) 72%, transparent);
+  }
+  .hours__day {
+    color: var(--muted);
+  }
+  .hours__time {
+    color: var(--foreground);
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .hours__row--off .hours__day,
+  .hours__row--off .hours__time {
+    color: var(--subtle);
+    font-weight: 400;
+  }
+
+  /* ── Chips & facts ──────────────────────────────────────── */
+  .chips {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+  /* Neutral, hairline tags — metadata, not colourful pills. */
+  .chip {
+    font-size: 0.84375rem;
+    padding: 5px 12px;
+    border-radius: 8px;
+    border: var(--hairline) solid var(--border);
+    color: var(--muted);
+  }
+  .facts {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3) var(--space-6);
+  }
+  .fact {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 0.9375rem;
+    color: var(--foreground);
+  }
+  .fact :global(.icon) {
+    color: var(--subtle);
+  }
+
+  /* ── Footer ─────────────────────────────────────────────── */
+  .line__foot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    margin-top: var(--space-12);
+    padding-top: var(--space-6);
+    border-top: var(--hairline) solid var(--border);
+  }
+  .weblink {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 0.96875rem;
+    font-weight: 500;
+    padding: 10px 18px;
+    border: var(--hairline) solid var(--border-strong);
+    border-radius: var(--radius-pill);
+    background: var(--surface);
+    color: var(--foreground);
+    transition: background 0.15s ease;
+  }
+  .weblink:hover {
+    background: var(--hover);
+  }
+  .verified {
+    font-size: 0.84375rem;
+    color: var(--subtle);
+  }
+
+  @media (max-width: 560px) {
+    .contact {
+      flex-direction: column;
+      gap: var(--space-3);
+    }
+  }
+</style>

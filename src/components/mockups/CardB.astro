@@ -1,0 +1,189 @@
+---
+import CategoryIcon from "../CategoryIcon.astro";
+import MIcon from "./MIcon.astro";
+
+interface Props {
+  name: string;
+  shortDescription: string;
+  categoryColor: string;
+  categoryIcon: string;
+  categoryLabel: string;
+  phone: string | null;
+  telHref: string | null;
+  primaryLabel: string;
+  hoursShort: string | null;
+  href: string;
+}
+const {
+  name,
+  categoryColor,
+  categoryIcon,
+  categoryLabel,
+  phone,
+  telHref,
+  primaryLabel,
+  hoursShort,
+  href,
+} = Astro.props;
+---
+
+<article
+  class="cb"
+  style={`--c: var(--cat-${categoryColor}, var(--accent-soft)); --c-fg: var(--cat-${categoryColor}-fg, var(--accent-soft-fg));`}
+>
+  <div class="cb__top">
+    <span class="cb__box" aria-hidden="true">
+      <CategoryIcon name={categoryIcon} size={18} />
+    </span>
+    <span class="cb__cat">{categoryLabel}</span>
+  </div>
+
+  <a class="cb__name" href={href}>{name}</a>
+
+  <div class="cb__phonewrap">
+    {
+      phone && telHref ? (
+        <a class="cb__phone mono" href={telHref}>
+          {phone}
+        </a>
+      ) : (
+        <span class="cb__label">{primaryLabel}</span>
+      )
+    }
+    {
+      hoursShort && (
+        <span class="cb__hours">
+          <MIcon name="clock" size={13} />
+          <span>{hoursShort}</span>
+        </span>
+      )
+    }
+  </div>
+
+  <span class="cb__arrow" aria-hidden="true">
+    <MIcon name="arrow" size={16} />
+  </span>
+</article>
+
+<style>
+  .cb {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    min-height: 200px;
+    padding: var(--space-4);
+    border: var(--hairline) solid var(--border);
+    border-radius: var(--radius-card);
+    background: var(--surface);
+    transition:
+      transform 0.16s ease,
+      border-color 0.16s ease,
+      box-shadow 0.16s ease;
+  }
+  .cb:hover {
+    transform: translateY(-3px);
+    border-color: var(--border-strong);
+    box-shadow: 0 10px 30px -16px oklch(0 0 0 / 0.35);
+  }
+
+  .cb__top {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+  }
+  .cb__box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    flex-shrink: 0;
+    border-radius: calc(var(--radius-card) - 8px);
+    background: var(--c);
+    color: var(--c-fg);
+  }
+  .cb__cat {
+    font-size: 0.6875rem;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--subtle);
+  }
+
+  .cb__name {
+    font-family: var(--font-serif);
+    font-size: 1.1875rem;
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: -0.005em;
+    color: var(--foreground);
+    text-decoration: none;
+    text-wrap: balance;
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+  .cb__name::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: var(--radius-card);
+  }
+
+  .cb__phonewrap {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    margin-top: auto;
+    padding-top: var(--space-2);
+  }
+  /* The number is the hero — large mono, above the stretched link. */
+  .cb__phone {
+    position: relative;
+    z-index: 1;
+    width: fit-content;
+    font-size: 1.75rem;
+    font-weight: 500;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    color: var(--foreground);
+    text-decoration: none;
+  }
+  .cb__phone:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .cb__label {
+    font-family: var(--font-serif);
+    font-size: 1.0625rem;
+    font-weight: 500;
+    line-height: 1.2;
+    color: var(--foreground);
+  }
+  .cb__hours {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    width: fit-content;
+    font-size: 0.75rem;
+    color: var(--subtle);
+  }
+  .cb__hours :global(.icon) {
+    color: var(--c-fg);
+    flex-shrink: 0;
+  }
+
+  .cb__arrow {
+    position: absolute;
+    top: var(--space-4);
+    right: var(--space-4);
+    display: flex;
+    color: var(--subtle);
+    transition:
+      color 0.16s ease,
+      transform 0.16s ease;
+  }
+  .cb:hover .cb__arrow {
+    color: var(--foreground);
+    transform: translate(2px, -2px);
+  }
+</style>

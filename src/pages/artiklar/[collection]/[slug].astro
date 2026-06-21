@@ -1,0 +1,56 @@
+---
+import type { GetStaticPaths } from "astro";
+import { getCollection } from "astro:content";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import SiteHeader from "../../../components/SiteHeader.astro";
+import Icon from "../../../components/Icon.astro";
+import ArticleDetail from "../../../components/ArticleDetail.astro";
+import { getArticleCollection } from "../../../lib/articleCollections";
+
+// One static page per article. URL shape /artiklar/<collection>/<slug>/ matches
+// the cross-links authored in each article's `relatedArticles`.
+export const getStaticPaths = (async () => {
+  const articles = await getCollection("articles", (e) => !e.data.draft);
+  return articles.map((entry) => ({
+    params: {
+      collection: entry.data.collection,
+      slug: entry.id.split("/").pop()!,
+    },
+    props: { entry },
+  }));
+}) satisfies GetStaticPaths;
+
+const { entry } = Astro.props;
+const meta = getArticleCollection(entry.data.collection);
+---
+
+<BaseLayout title={`${entry.data.title} | Artiklar`} description={entry.data.description}>
+  <SiteHeader />
+
+  <main id="main" class="page container">
+    <a class="back" href={`/artiklar/${meta.slug}/`}>
+      <Icon name="thin-left-arrow" size={15} />
+      {meta.label}
+    </a>
+
+    <ArticleDetail entry={entry} />
+  </main>
+</BaseLayout>
+
+<style>
+  .page {
+    padding-block: var(--space-8) var(--space-16);
+  }
+  .back {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.90625rem;
+    color: var(--muted);
+    margin-bottom: var(--space-8);
+    transition: color 0.15s ease;
+  }
+  .back:hover {
+    color: var(--foreground);
+  }
+</style>

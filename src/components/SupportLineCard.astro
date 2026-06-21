@@ -1,0 +1,420 @@
+---
+import CategoryIcon from "./CategoryIcon.astro";
+import Icon from "./Icon.astro";
+
+interface HoursRow {
+  dayRange: string;
+  time: string;
+}
+
+interface Props {
+  name: string;
+  shortDescription: string;
+  categoryColor: string;
+  categoryIcon: string;
+  categoryId: string;
+  categoryLabel: string;
+  /** Headline contact: a phone number or a chat/other action label. */
+  primaryValue: string;
+  /** "phone" renders a phone icon + tel: link; anything else = message icon. */
+  primaryChannel: "phone" | "chat" | "sms" | "email" | "web";
+  /** Where the foot value links: tel: for phones, the chat/web URL otherwise. */
+  primaryHref: string | null;
+  /** Opening hours for the headline contact, pre-grouped for display. */
+  hoursDetail?: HoursRow[];
+  hoursClosed?: string | null;
+  /** The support line's own website (source.primaryUrl). */
+  website?: string | null;
+  keywords?: string[];
+  href?: string;
+}
+
+const {
+  name,
+  shortDescription,
+  categoryColor,
+  categoryIcon,
+  categoryId,
+  categoryLabel,
+  primaryValue,
+  primaryChannel,
+  primaryHref,
+  hoursDetail = [],
+  hoursClosed = null,
+  website = null,
+  keywords = [],
+  href = "#",
+} = Astro.props;
+
+const isPhone = primaryChannel === "phone";
+
+// One lowercased haystack the ⌘K filter matches against.
+const search = [name, shortDescription, categoryLabel, ...keywords]
+  .join(" ")
+  .toLowerCase();
+---
+
+<article
+  class="card"
+  data-card
+  data-cat={categoryId}
+  data-search={search}
+  style={`--c: var(--cat-${categoryColor}, var(--accent-soft)); --c-fg: var(--cat-${categoryColor}-fg, var(--accent-soft-fg));`}
+>
+  <span class="card__head">
+    <span class="card__chip" aria-hidden="true">
+      <CategoryIcon name={categoryIcon} size={22} />
+    </span>
+    <span class="card__cat">{categoryLabel}</span>
+
+    {
+      website && (
+        <a
+          class="card__ext"
+          href={website}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`Öppna ${name}s webbplats i ny flik`}
+          title="Öppna webbplats i ny flik"
+        >
+          <Icon name="share-arrow-exiting-rounded-square" size={16} />
+        </a>
+      )
+    }
+  </span>
+
+  <span class="card__body">
+    <a class="card__name" href={href}>{name}</a>
+    <span class="card__desc">{shortDescription}</span>
+  </span>
+
+  <span class="card__foot">
+    {
+      primaryHref ? (
+        <a
+          class="card__value mono"
+          href={primaryHref}
+          target={isPhone ? undefined : "_blank"}
+          rel={isPhone ? undefined : "noopener noreferrer"}
+        >
+          <span class="card__valicon" aria-hidden="true">
+            {isPhone ? (
+              <Icon name="plain-telephone-receiver" size={20} />
+            ) : (
+              <Icon name="square-speech-bubble-with-two-text-lines" size={19} />
+            )}
+          </span>
+          <span class="card__valtext">{primaryValue}</span>
+        </a>
+      ) : (
+        <span class="card__value mono">
+          <span class="card__valicon" aria-hidden="true">
+            <Icon name="square-speech-bubble-with-two-text-lines" size={19} />
+          </span>
+          <span class="card__valtext">{primaryValue}</span>
+        </span>
+      )
+    }
+
+    {
+      hoursDetail.length > 0 && (
+        <details class="card__hours">
+          <summary class="card__hourstrigger">
+            <Icon name="round-clock-face" size={14} />
+            <span>Öppettider</span>
+          </summary>
+          <div class="card__hourspanel">
+            {hoursDetail.map((row) => (
+              <div class="card__hoursrow">
+                <span class="card__hoursday">{row.dayRange}</span>
+                <span class="card__hourstime mono">{row.time}</span>
+              </div>
+            ))}
+            {hoursClosed && (
+              <div class="card__hoursrow card__hoursrow--off">
+                <span class="card__hoursday">{hoursClosed}</span>
+                <span class="card__hourstime">Stängt</span>
+              </div>
+            )}
+          </div>
+        </details>
+      )
+    }
+  </span>
+</article>
+
+<style>
+  .card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    padding: var(--space-4);
+    border: var(--hairline) solid var(--border);
+    border-radius: var(--radius-card);
+    background: var(--surface);
+    color: inherit;
+    text-decoration: none;
+    transition:
+      transform 0.16s ease,
+      border-color 0.16s ease,
+      box-shadow 0.16s ease;
+  }
+  .card:hover {
+    transform: translateY(-3px);
+    border-color: var(--border-strong);
+    box-shadow: 0 10px 30px -16px oklch(0 0 0 / 0.35);
+  }
+  .card:has(.card__hours[open]) {
+    z-index: 5;
+  }
+
+  /* Eyebrow row: a contained tinted chip (the framed colour, surface all
+     around it, corners rounded), the category label, and a top-right
+     external-link affordance pushed to the far edge. */
+  .card__head {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+  }
+  .card__chip {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    flex-shrink: 0;
+    border-radius: var(--radius-chip, 11px);
+    background: var(--c);
+    color: var(--c-fg);
+  }
+  .card__cat {
+    font-size: 0.85rem;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--subtle);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-width: 0;
+    font-weight: 500;
+  }
+  /* External link sits above the stretched name link (z-index) so it opens
+     the website rather than the detail page. */
+  .card__ext {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+    border-radius: var(--radius-md, 8px);
+    color: var(--subtle);
+    transition:
+      color 0.15s ease,
+      background 0.15s ease;
+  }
+  .card__ext:hover {
+    color: var(--foreground);
+    background: var(--hover);
+  }
+
+  .card__body {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  /* The name is the card's primary link, stretched over the whole card. */
+  .card__name {
+    display: block;
+    font-family: var(--font-serif);
+    font-size: 1.625rem;
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: -0.005em;
+    color: var(--foreground);
+    text-decoration: none;
+    text-wrap: balance;
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+  .card__name::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: var(--radius-card);
+  }
+  .card__desc {
+    font-size: 1.0625rem;
+    line-height: 1.55;
+    color: var(--muted);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .card__foot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+    margin-top: auto;
+    padding-top: var(--space-4);
+    border-top: var(--hairline) solid var(--border);
+    /* Reserve the hours-toggle's height (~36px button + padding-top + border)
+       even on cards with no toggle, so the divider sits at a constant offset
+       from the card bottom and every border-top lines up across a row. */
+    min-height: calc(36px + var(--space-4) + var(--hairline));
+  }
+  /* Phone/chat action — above the stretched link so it triggers the call
+     or opens the chat, not the detail page. */
+  .card__value {
+    position: relative;
+    z-index: 1;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1.125rem;
+    line-height: 1;
+    color: var(--foreground);
+    text-decoration: none;
+    min-width: 0;
+  }
+  a.card__value:hover .card__valtext {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .card__valicon {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    color: var(--c-fg);
+  }
+  .card__valtext {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /* The mono face sits a hair high against the icon's optical centre. */
+    transform: translateY(0.5px);
+  }
+
+  /* Öppettider popover — native <details>, keyboard-accessible, no JS.
+     Above the stretched link so toggling it never navigates. */
+  .card__hours {
+    position: relative;
+    z-index: 2;
+    flex-shrink: 0;
+  }
+  .card__hourstrigger {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 6px 11px;
+    border: var(--hairline) solid
+      color-mix(in oklch, var(--border) 60%, transparent);
+    border-radius: var(--radius-md, 8px);
+    font-size: 0.8125rem;
+    color: var(--muted);
+    background: var(--surface);
+    cursor: pointer;
+    list-style: none;
+    user-select: none;
+    white-space: nowrap;
+    transition:
+      color 0.15s ease,
+      border-color 0.15s ease,
+      background 0.15s ease;
+  }
+  /* Kill the native disclosure triangle across engines. Setting the
+     summary to flex (above) already drops display:list-item, but reset
+     both marker pseudo-elements too for older Chrome/Safari. */
+  .card__hourstrigger::marker,
+  .card__hourstrigger::-webkit-details-marker {
+    display: none;
+    content: "";
+  }
+  .card__hourstrigger:hover {
+    color: var(--foreground);
+    border-color: var(--border-strong);
+    background: var(--hover);
+  }
+  .card__hourstrigger :global(.icon) {
+    flex-shrink: 0;
+  }
+  .card__hours[open] .card__hourstrigger {
+    color: var(--foreground);
+    border-color: color-mix(in oklch, var(--c-fg) 32%, var(--border));
+    background: color-mix(in oklch, var(--c) 58%, var(--surface));
+  }
+
+  .card__hourspanel {
+    position: absolute;
+    right: 0;
+    bottom: calc(100% + 12px);
+    z-index: 3;
+    width: max-content;
+    min-width: min(216px, calc(100vw - 32px));
+    max-width: min(260px, calc(100vw - 32px));
+    padding: var(--space-2) var(--space-3);
+    border: var(--hairline) solid
+      color-mix(in oklch, var(--border-strong) 82%, transparent);
+    border-radius: var(--radius-lg);
+    background: var(--surface);
+    box-shadow:
+      0 20px 48px -22px oklch(0 0 0 / 0.48),
+      0 6px 18px -10px oklch(0 0 0 / 0.28);
+    animation: hours-in 0.14s ease-out;
+  }
+  .card__hourspanel::after {
+    content: "";
+    position: absolute;
+    right: 45px;
+    bottom: -5px;
+    width: 9px;
+    height: 9px;
+    border-right: var(--hairline) solid var(--border-strong);
+    border-bottom: var(--hairline) solid var(--border-strong);
+    background: var(--surface);
+    transform: rotate(45deg);
+  }
+  .card__hoursrow {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space-4);
+    padding: 7px 2px;
+    font-size: 0.84375rem;
+    line-height: 1.25;
+  }
+  .card__hoursrow + .card__hoursrow {
+    border-top: var(--hairline) solid
+      color-mix(in oklch, var(--border) 72%, transparent);
+  }
+  .card__hoursday {
+    color: var(--muted);
+  }
+  .card__hourstime {
+    color: var(--foreground);
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .card__hoursrow--off .card__hoursday,
+  .card__hoursrow--off .card__hourstime {
+    color: var(--subtle);
+  }
+
+  @keyframes hours-in {
+    from {
+      opacity: 0;
+      transform: translateY(4px) scale(0.985);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+</style>

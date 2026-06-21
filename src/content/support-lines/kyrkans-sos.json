@@ -1,0 +1,264 @@
+{
+  "id": "kyrkans-sos",
+  "slug": "kyrkans-sos",
+  "name": "Kyrkans SOS",
+  "organization": "Stiftelsen Kyrkans SOS",
+  "type": "support_organization",
+  "status": "active",
+  "category": "mental_health",
+  "shortDescription": "Flera anonyma stödlinjer via telefon, chatt och digitala brev.",
+  "longDescription": "Kyrkans SOS driver flera anonyma och kostnadsfria stödlinjer: SOS-linjen för alla, Regnbågslinjen för HBTQIA+ och allierade, Nätvandrarchatten för unga 12-25 år samt Girku SOS för samer i hela Sápmi. Stödet ges av utbildade volontärer eller nätvandrare och är avlastande samtalsstöd, inte vård eller myndighetskontakt.",
+  "helpsWith": [
+    "samtalsstod",
+    "ensamhet",
+    "psykisk-ohalsa",
+    "suicidtankar",
+    "livsfragor",
+    "hbtqia-stod",
+    "stod-till-unga",
+    "stod-till-samer"
+  ],
+  "targetGroups": [
+    "allmanheten",
+    "unga-12-25",
+    "hbtqia-personer",
+    "anhoriga",
+    "samer"
+  ],
+  "contactMethods": [
+    {
+      "id": "sos-linjen-phone",
+      "channel": "phone",
+      "label": "SOS-linjen telefon",
+      "value": "0771-800 650",
+      "url": "https://kyrkanssos.se/hitta-hjalp/sos-telefonen/",
+      "openingHours": [
+        {
+          "days": [
+            "mon",
+            "tue",
+            "wed",
+            "thu",
+            "fri"
+          ],
+          "open": "13:00",
+          "close": "21:00",
+          "timezone": "Europe/Stockholm"
+        },
+        {
+          "days": [
+            "sat",
+            "sun"
+          ],
+          "open": "16:00",
+          "close": "21:00",
+          "timezone": "Europe/Stockholm"
+        }
+      ],
+      "note": "Max fyra samtal per person och dag enligt Kyrkans SOS."
+    },
+    {
+      "id": "sos-linjen-chat",
+      "channel": "chat",
+      "label": "SOS-linjen chatt",
+      "url": "https://kyrkanssos.se/hitta-hjalp/sos-telefonen/",
+      "openingHours": [
+        {
+          "days": [
+            "tue"
+          ],
+          "open": "13:00",
+          "close": "16:00",
+          "timezone": "Europe/Stockholm"
+        },
+        {
+          "days": [
+            "wed",
+            "thu"
+          ],
+          "open": "18:00",
+          "close": "21:00",
+          "timezone": "Europe/Stockholm"
+        }
+      ]
+    },
+    {
+      "id": "sos-linjen-letter",
+      "channel": "web",
+      "label": "SOS-linjen digitala brev",
+      "url": "https://kyrkanssos.se/hitta-hjalp/sos-telefonen/",
+      "openingHours": [
+        {
+          "days": [
+            "mon",
+            "tue",
+            "wed",
+            "thu",
+            "fri",
+            "sat",
+            "sun"
+          ],
+          "open": "00:00",
+          "close": "24:00",
+          "timezone": "Europe/Stockholm"
+        }
+      ],
+      "note": "Svar inom 72 timmar enligt Kyrkans SOS."
+    },
+    {
+      "id": "regnbagslinjen-phone",
+      "channel": "phone",
+      "label": "Regnbågslinjen telefon",
+      "value": "0770-55 00 10",
+      "url": "https://kyrkanssos.se/hitta-hjalp/regnbagslinjen",
+      "openingHours": [
+        {
+          "days": [
+            "tue",
+            "thu"
+          ],
+          "open": "18:00",
+          "close": "21:00",
+          "timezone": "Europe/Stockholm"
+        }
+      ]
+    },
+    {
+      "id": "regnbagslinjen-chat",
+      "channel": "chat",
+      "label": "Regnbågslinjen chatt",
+      "url": "https://kyrkanssos.se/hitta-hjalp/regnbagslinjen",
+      "openingHours": [
+        {
+          "days": [
+            "tue",
+            "thu"
+          ],
+          "open": "18:00",
+          "close": "21:00",
+          "timezone": "Europe/Stockholm"
+        }
+      ]
+    },
+    {
+      "id": "regnbagslinjen-letter",
+      "channel": "web",
+      "label": "Regnbågslinjen digitala brev",
+      "url": "https://kyrkanssos.se/hitta-hjalp/regnbagslinjen",
+      "openingHours": [
+        {
+          "days": [
+            "mon",
+            "tue",
+            "wed",
+            "thu",
+            "fri",
+            "sat",
+            "sun"
+          ],
+          "open": "00:00",
+          "close": "24:00",
+          "timezone": "Europe/Stockholm"
+        }
+      ],
+      "note": "Svar senast inom 72 timmar enligt Kyrkans SOS."
+    },
+    {
+      "id": "natvandrarchatten-chat",
+      "channel": "chat",
+      "label": "Nätvandrarchatten",
+      "url": "https://kyrkanssos.se/hitta-hjalp/natvandrarchatten/",
+      "openingHours": [
+        {
+          "days": [
+            "mon",
+            "wed",
+            "thu",
+            "sun"
+          ],
+          "open": "19:00",
+          "close": "22:00",
+          "timezone": "Europe/Stockholm"
+        }
+      ]
+    },
+    {
+      "id": "natvandrarchatten-letter",
+      "channel": "web",
+      "label": "Nätvandrarchatten digitala brev",
+      "url": "https://kyrkanssos.se/hitta-hjalp/natvandrarchatten/",
+      "openingHours": [
+        {
+          "days": [
+            "mon",
+            "tue",
+            "wed",
+            "thu",
+            "fri",
+            "sat",
+            "sun"
+          ],
+          "open": "00:00",
+          "close": "24:00",
+          "timezone": "Europe/Stockholm"
+        }
+      ],
+      "note": "Svar inom fyra dagar enligt Kyrkans SOS."
+    },
+    {
+      "id": "girku-sos-letter",
+      "channel": "web",
+      "label": "Girku SOS digitala brev",
+      "url": "https://kyrkanssos.se/hitta-hjalp/girku-sos-svenska/",
+      "openingHours": [
+        {
+          "days": [
+            "mon",
+            "tue",
+            "wed",
+            "thu",
+            "fri",
+            "sat",
+            "sun"
+          ],
+          "open": "00:00",
+          "close": "24:00",
+          "timezone": "Europe/Stockholm"
+        }
+      ],
+      "note": "Anonym brevväxling för samer, med svar inom 48 timmar enligt Kyrkans SOS."
+    }
+  ],
+  "accessibility": {
+    "anonymous": true,
+    "free": true,
+    "languages": [
+      "svenska",
+      "samiska"
+    ],
+    "region": "sweden"
+  },
+  "urgency": {
+    "level": "standard",
+    "showEmergencyNotice": true,
+    "emergencyText": "Vid akut fara för liv, ring 112."
+  },
+  "source": {
+    "primaryUrl": "https://kyrkanssos.se/",
+    "secondaryUrl": "https://kyrkanssos.se/hitta-hjalp/sos-telefonen/",
+    "checkedAt": "2026-06-05",
+    "confidence": "high"
+  },
+  "display": {
+    "featured": false,
+    "priority": 80,
+    "primaryLabel": "Ring 0771-800 650",
+    "availabilityLabel": "Flera stödlinjer med olika öppettider"
+  },
+  "metadata": {
+    "lastVerified": "2026-06-05",
+    "nextReview": "2026-12-05",
+    "resourceKind": "multi_service_support_organization",
+    "supportLine": true
+  }
+}

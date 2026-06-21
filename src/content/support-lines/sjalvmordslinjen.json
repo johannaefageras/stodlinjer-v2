@@ -1,0 +1,96 @@
+{
+  "id": "sjalvmordslinjen",
+  "slug": "sjalvmordslinjen",
+  "name": "Självmordslinjen",
+  "organization": "Mind",
+  "type": "direct_line",
+  "status": "active",
+  "category": "mental_health",
+  "shortDescription": "Stöd för dig som har självmordstankar eller oroar dig för någon annan.",
+  "longDescription": "Självmordslinjen erbjuder anonymt stöd via telefon och chatt för personer med självmordstankar, psykisk kris eller oro för någon närstående.",
+  "helpsWith": [
+    "sjalvmordstankar",
+    "akut-psykisk-kris",
+    "oro-for-nagon-annan",
+    "hopploshet"
+  ],
+  "targetGroups": [
+    "vuxna",
+    "unga",
+    "anhoriga"
+  ],
+  "contactMethods": [
+    {
+      "id": "phone",
+      "channel": "phone",
+      "label": "Telefon",
+      "value": "90 101",
+      "openingHours": [
+        {
+          "days": [
+            "mon",
+            "tue",
+            "wed",
+            "thu",
+            "fri",
+            "sat",
+            "sun"
+          ],
+          "open": "00:00",
+          "close": "24:00",
+          "timezone": "Europe/Stockholm"
+        }
+      ]
+    },
+    {
+      "id": "chat",
+      "channel": "chat",
+      "label": "Chatt",
+      "url": "https://mind.se/stod-kunskap/prata-eller-chatta-med-volontar/sjalvmordslinjen/chatt/",
+      "openingHours": [
+        {
+          "days": [
+            "mon",
+            "tue",
+            "wed",
+            "thu",
+            "fri",
+            "sat",
+            "sun"
+          ],
+          "open": "00:00",
+          "close": "24:00",
+          "timezone": "Europe/Stockholm"
+        }
+      ]
+    }
+  ],
+  "accessibility": {
+    "anonymous": true,
+    "free": true,
+    "languages": [
+      "svenska"
+    ],
+    "region": "sweden"
+  },
+  "urgency": {
+    "level": "urgent",
+    "showEmergencyNotice": true,
+    "emergencyText": "Vid akut fara för liv, ring 112."
+  },
+  "source": {
+    "primaryUrl": "https://mind.se/stod-kunskap/prata-eller-chatta-med-volontar/sjalvmordslinjen/",
+    "checkedAt": "2026-06-04",
+    "confidence": "high"
+  },
+  "display": {
+    "featured": true,
+    "priority": 100,
+    "primaryLabel": "Ring 90 101",
+    "availabilityLabel": "Telefon och chatt: dygnet runt"
+  },
+  "metadata": {
+    "lastVerified": "2026-06-04",
+    "nextReview": "2026-12-04"
+  }
+}

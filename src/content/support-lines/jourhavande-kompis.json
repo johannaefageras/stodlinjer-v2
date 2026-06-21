@@ -1,0 +1,102 @@
+{
+  "id": "jourhavande-kompis",
+  "slug": "jourhavande-kompis",
+  "name": "Jourhavande Kompis",
+  "organization": "Röda Korsets Ungdomsförbund",
+  "type": "direct_line",
+  "status": "active",
+  "category": "children_youth",
+  "shortDescription": "Anonym stödchatt av unga för unga upp till 25 år.",
+  "longDescription": "Jourhavande Kompis är en anonym stödchatt där barn och unga upp till 25 år kan prata med en annan ung person om vad som helst.",
+  "helpsWith": [
+    "oro",
+    "ensamhet",
+    "vardagsproblem",
+    "konflikter",
+    "behov-av-samtal"
+  ],
+  "targetGroups": [
+    "barn",
+    "unga-upp-till-25"
+  ],
+  "contactMethods": [
+    {
+      "id": "chat",
+      "channel": "chat",
+      "label": "Chatt",
+      "url": "https://www.rkuf.se/fa-stod/jourhavande-kompis/",
+      "openingHours": [
+        {
+          "days": [
+            "mon",
+            "tue",
+            "wed",
+            "thu",
+            "fri"
+          ],
+          "open": "18:00",
+          "close": "21:00",
+          "timezone": "Europe/Stockholm"
+        },
+        {
+          "days": [
+            "sat",
+            "sun"
+          ],
+          "open": "14:00",
+          "close": "17:00",
+          "timezone": "Europe/Stockholm"
+        },
+        {
+          "days": [
+            "tue",
+            "wed",
+            "thu"
+          ],
+          "open": "18:00",
+          "close": "21:00",
+          "timezone": "Europe/Stockholm",
+          "note": "Sommartid 15 juni-23 augusti"
+        },
+        {
+          "days": [
+            "sun"
+          ],
+          "open": "14:00",
+          "close": "17:00",
+          "timezone": "Europe/Stockholm",
+          "note": "Sommartid 15 juni-23 augusti"
+        }
+      ]
+    }
+  ],
+  "accessibility": {
+    "anonymous": true,
+    "free": true,
+    "languages": [
+      "svenska",
+      "engelska"
+    ],
+    "region": "sweden"
+  },
+  "urgency": {
+    "level": "standard",
+    "showEmergencyNotice": true,
+    "emergencyText": "Vid akut fara för liv, ring 112."
+  },
+  "source": {
+    "primaryUrl": "https://www.rkuf.se/fa-stod/jourhavande-kompis/",
+    "checkedAt": "2026-06-04",
+    "confidence": "high"
+  },
+  "display": {
+    "featured": true,
+    "priority": 65,
+    "primaryLabel": "Chatta med Jourhavande Kompis",
+    "availabilityLabel": "Chatt: mån-fre 18-21, lör-sön 14-17. Sommartid: tis-tors 18-21, sön 14-17"
+  },
+  "metadata": {
+    "lastVerified": "2026-06-04",
+    "nextReview": "2026-12-04"
+  }
+}

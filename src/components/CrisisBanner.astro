@@ -1,0 +1,71 @@
+---
+import Icon from "./Icon.astro";
+import { DEFAULT_EMERGENCY_TEXT } from "../lib/crisis";
+
+// Shared crisis strip. The caller decides *whether* to render it (via the
+// rules in src/lib/crisis.ts); this component only displays it. Built generic
+// so SupportLineDetail can reuse it later with its own `text`.
+interface Props {
+  heading?: string;
+  /** May contain inline markup (e.g. <strong>112</strong>). Author/config-controlled. */
+  text?: string;
+}
+
+const { heading = "Är det akut just nu?", text = DEFAULT_EMERGENCY_TEXT } =
+  Astro.props;
+---
+
+<aside class="crisis" role="note" aria-label="Akut hjälp">
+  <span class="crisis__icon" aria-hidden="true">
+    <Icon name="ambulance-with-medical-cross" size={22} />
+  </span>
+  <div class="crisis__body">
+    <p class="crisis__heading">{heading}</p>
+    <p class="crisis__text" set:html={text}></p>
+  </div>
+</aside>
+
+<style>
+  .crisis {
+    display: flex;
+    gap: var(--space-3);
+    align-items: flex-start;
+    padding: var(--space-4) var(--space-4);
+    border: var(--hairline) solid
+      color-mix(in oklch, var(--urgency-emergency) 32%, var(--border));
+    border-left: 3px solid var(--urgency-emergency);
+    border-radius: var(--radius-card);
+    background: var(--urgency-emergency-soft);
+  }
+  .crisis__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 38px;
+    height: 38px;
+    border-radius: var(--radius-md);
+    color: var(--urgency-emergency);
+    background: color-mix(in oklch, var(--urgency-emergency) 14%, transparent);
+  }
+  .crisis__body {
+    min-width: 0;
+  }
+  .crisis__heading {
+    font-family: var(--font-serif);
+    font-size: 1.0625rem;
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--foreground);
+    margin-bottom: 2px;
+  }
+  .crisis__text {
+    font-size: 0.96875rem;
+    line-height: 1.5;
+    color: var(--foreground);
+  }
+  .crisis__text :global(strong) {
+    font-weight: 600;
+    white-space: nowrap;
+  }
+</style>

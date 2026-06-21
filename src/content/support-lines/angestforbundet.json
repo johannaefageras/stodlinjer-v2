@@ -1,0 +1,105 @@
+{
+  "id": "angestforbundet",
+  "slug": "angestforbundet",
+  "name": "Ångestförbundet",
+  "organization": "Ångestförbundet ÅSS",
+  "type": "support_organization",
+  "status": "active",
+  "category": "mental_health",
+  "shortDescription": "Stöd och information för personer med ångestsyndrom och deras anhöriga.",
+  "longDescription": "Ångestförbundet ÅSS är en patient- och stödorganisation för personer med ångestsyndrom och anhöriga. Förbundet hänvisar till ÅSS Göteborgs jourtelefon för stödsamtal till personer från hela landet, och förbundet kan kontaktas via e-post och egen telefontid.",
+  "helpsWith": [
+    "angest",
+    "panikangest",
+    "social-fobi",
+    "gad",
+    "oro",
+    "anhorigstod",
+    "stod-och-radgivning"
+  ],
+  "targetGroups": [
+    "personer-med-angest",
+    "anhoriga",
+    "vuxna"
+  ],
+  "contactMethods": [
+    {
+      "id": "gothenburg-support-phone",
+      "channel": "phone",
+      "label": "ÅSS Göteborg jourtelefon",
+      "value": "031-13 70 91",
+      "openingHours": [
+        {
+          "days": [
+            "mon",
+            "tue",
+            "wed",
+            "thu",
+            "fri"
+          ],
+          "open": "13:00",
+          "close": "15:00",
+          "timezone": "Europe/Stockholm",
+          "note": "Helgfria vardagar"
+        }
+      ]
+    },
+    {
+      "id": "national-phone",
+      "channel": "phone",
+      "label": "Ångestförbundet ÅSS telefontid",
+      "value": "0708-65 76 65",
+      "openingHours": [
+        {
+          "days": [
+            "mon",
+            "tue",
+            "wed",
+            "thu",
+            "fri"
+          ],
+          "open": "13:00",
+          "close": "18:00",
+          "timezone": "Europe/Stockholm",
+          "note": "Övrig tid telefonsvarare"
+        }
+      ]
+    },
+    {
+      "id": "email",
+      "channel": "email",
+      "label": "E-post",
+      "value": "info@angest.se",
+      "openingHours": []
+    }
+  ],
+  "accessibility": {
+    "anonymous": true,
+    "free": true,
+    "languages": [
+      "svenska"
+    ],
+    "region": "sweden"
+  },
+  "urgency": {
+    "level": "standard",
+    "showEmergencyNotice": true,
+    "emergencyText": "Vid akut fara för liv, ring 112."
+  },
+  "source": {
+    "primaryUrl": "https://angest.se/st-dtelefon-vardagar-kl-13-15.html",
+    "secondaryUrl": "https://angestgoteborg.se/telefonjour/",
+    "checkedAt": "2026-06-05",
+    "confidence": "high"
+  },
+  "display": {
+    "featured": true,
+    "priority": 67,
+    "primaryLabel": "Ring 031-13 70 91",
+    "availabilityLabel": "ÅSS Göteborg jourtelefon: helgfria vardagar 13-15. Förbundets telefontid: vardagar 13-18"
+  },
+  "metadata": {
+    "lastVerified": "2026-06-05",
+    "nextReview": "2026-12-05"
+  }
+}

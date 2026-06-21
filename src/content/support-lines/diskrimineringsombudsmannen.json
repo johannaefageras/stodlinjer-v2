@@ -1,0 +1,104 @@
+{
+  "id": "diskrimineringsombudsmannen",
+  "slug": "diskrimineringsombudsmannen",
+  "name": "Diskrimineringsombudsmannen",
+  "organization": "Diskrimineringsombudsmannen",
+  "type": "public_service",
+  "status": "active",
+  "category": "rights_public_authority",
+  "shortDescription": "Myndighetskontakt för frågor och anmälningar om diskriminering.",
+  "longDescription": "Diskrimineringsombudsmannen (DO) är en myndighet som arbetar mot diskriminering. DO kan kontaktas via telefon, e-post, hjälptjänsten Fråga DO och anmälningsformulär. Posten är en offentlig rättighets- och anmälningsresurs, inte en stödlinje eller akut krishjälp.",
+  "helpsWith": [
+    "diskriminering",
+    "anmalan",
+    "rattighetsinformation",
+    "juridiska-fragor",
+    "tillganglighet"
+  ],
+  "targetGroups": [
+    "allmanheten",
+    "barn-och-unga",
+    "diskriminerade",
+    "arbetsgivare",
+    "utbildningsanordnare"
+  ],
+  "contactMethods": [
+    {
+      "id": "phone",
+      "channel": "phone",
+      "label": "Telefon",
+      "value": "08-120 20 700",
+      "openingHours": []
+    },
+    {
+      "id": "fraga-do-phone",
+      "channel": "phone",
+      "label": "Fråga DO",
+      "value": "08-120 20 700",
+      "openingHours": [
+        {
+          "days": [
+            "tue",
+            "thu"
+          ],
+          "open": "09:30",
+          "close": "11:30",
+          "timezone": "Europe/Stockholm"
+        }
+      ],
+      "note": "Be att få prata med Fråga DO. Gäller helgfria tisdagar och torsdagar."
+    },
+    {
+      "id": "email",
+      "channel": "email",
+      "label": "E-post",
+      "value": "do@do.se",
+      "openingHours": []
+    },
+    {
+      "id": "report-web",
+      "channel": "web",
+      "label": "Anmäl diskriminering",
+      "url": "https://www.do.se/anmal-diskriminering",
+      "openingHours": []
+    },
+    {
+      "id": "website",
+      "channel": "web",
+      "label": "DO",
+      "url": "https://www.do.se/",
+      "openingHours": []
+    }
+  ],
+  "accessibility": {
+    "anonymous": false,
+    "free": false,
+    "languages": [
+      "svenska"
+    ],
+    "region": "sweden",
+    "notes": "DO beskriver alternativa kontaktsätt via teckenspråkstolk, texttelefoni, teletal och tal-, läs- och skrivstöd."
+  },
+  "urgency": {
+    "level": "standard",
+    "showEmergencyNotice": true,
+    "emergencyText": "Vid akut fara för liv, ring 112. Vid pågående brott, ring 112; vid polisanmälan som inte är akut, ring 114 14."
+  },
+  "source": {
+    "primaryUrl": "https://www.do.se/diskriminerad/om-diskriminering-for-barn-och-unga/kontakta-do",
+    "checkedAt": "2026-06-05",
+    "confidence": "high"
+  },
+  "display": {
+    "featured": false,
+    "priority": 25,
+    "primaryLabel": "Ring 08-120 20 700",
+    "availabilityLabel": "Fråga DO: helgfria tis/tor 09:30-11:30. Inte en stödlinje"
+  },
+  "metadata": {
+    "lastVerified": "2026-06-05",
+    "nextReview": "2026-12-05",
+    "resourceKind": "governmental_rights_resource",
+    "supportLine": false
+  }
+}

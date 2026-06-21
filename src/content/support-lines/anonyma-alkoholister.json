@@ -1,0 +1,88 @@
+{
+  "id": "anonyma-alkoholister",
+  "slug": "anonyma-alkoholister",
+  "name": "Anonyma Alkoholister",
+  "organization": "Anonyma Alkoholister i Sverige",
+  "type": "direct_line",
+  "status": "active",
+  "category": "substance_use",
+  "shortDescription": "Telejour och mötesgemenskap för dig som vill sluta dricka.",
+  "longDescription": "Anonyma Alkoholister erbjuder en telejour och lokala eller digitala möten för personer som vill sluta dricka. Stödet bygger på erfarenhetsutbyte mellan personer med egen erfarenhet av alkoholism.",
+  "helpsWith": [
+    "alkoholism",
+    "alkoholberoende",
+    "nykterhet",
+    "stodgrupp",
+    "hitta-mote"
+  ],
+  "targetGroups": [
+    "personer-som-vill-sluta-dricka"
+  ],
+  "contactMethods": [
+    {
+      "id": "telejour",
+      "channel": "phone",
+      "label": "AA Telejour",
+      "value": "08-720 38 42",
+      "openingHours": [
+        {
+          "days": [
+            "mon",
+            "tue",
+            "wed",
+            "thu",
+            "fri",
+            "sat",
+            "sun"
+          ],
+          "open": "11:00",
+          "close": "20:00",
+          "timezone": "Europe/Stockholm",
+          "note": "Även helgdagar"
+        }
+      ]
+    },
+    {
+      "id": "email",
+      "channel": "email",
+      "label": "E-post",
+      "value": "help@aa.se",
+      "openingHours": []
+    },
+    {
+      "id": "meetings",
+      "channel": "web",
+      "label": "Hitta möte",
+      "url": "https://www.aa.se/",
+      "openingHours": []
+    }
+  ],
+  "accessibility": {
+    "anonymous": true,
+    "free": true,
+    "languages": [
+      "svenska"
+    ],
+    "region": "sweden"
+  },
+  "urgency": {
+    "level": "standard",
+    "showEmergencyNotice": true,
+    "emergencyText": "Vid akut fara för liv, ring 112."
+  },
+  "source": {
+    "primaryUrl": "https://www.aa.se/",
+    "checkedAt": "2026-06-04",
+    "confidence": "high"
+  },
+  "display": {
+    "featured": true,
+    "priority": 66,
+    "primaryLabel": "Ring 08-720 38 42",
+    "availabilityLabel": "AA Telejour: alla dagar 11-20, även helgdagar"
+  },
+  "metadata": {
+    "lastVerified": "2026-06-04",
+    "nextReview": "2026-12-04"
+  }
+}

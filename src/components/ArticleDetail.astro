@@ -1,0 +1,261 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { render } from "astro:content";
+import Icon from "./Icon.astro";
+import CrisisBanner from "./CrisisBanner.astro";
+import { articleNeedsCrisisBanner } from "../lib/crisis";
+import { getArticleCollection } from "../lib/articleCollections";
+
+interface Props {
+  entry: CollectionEntry<"articles">;
+}
+
+const { entry } = Astro.props;
+const d = entry.data;
+const { Content } = await render(entry);
+
+const collection = getArticleCollection(d.collection);
+const showCrisis = articleNeedsCrisisBanner({
+  crisisBanner: d.crisisBanner,
+  tags: d.tags,
+});
+
+const fmtDate = (date: Date) =>
+  date.toLocaleDateString("sv-SE", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+
+// Citations may carry a trailing URL — escape, then linkify it.
+function linkifyReference(s: string): string {
+  const escaped = s
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
+  return escaped.replace(
+    /(https?:\/\/[^\s]+)/g,
+    '<a href="$1" target="_blank" rel="noopener noreferrer">$1</a>',
+  );
+}
+
+const crisisText =
+  "Vid akut fara, ring <strong>112</strong>. Vill du prata med någon nu? " +
+  "<strong>Mind Självmordslinjen 90101</strong> och <strong>Hjälplinjen 90&nbsp;390</strong> " +
+  "är öppna dygnet runt.";
+---
+
+<article
+  class="article"
+  style={`--c: var(--cat-${collection.color}, var(--accent-soft)); --c-fg: var(--cat-${collection.color}-fg, var(--accent-soft-fg));`}
+>
+  <a class="article__eyebrow" href={`/artiklar/${collection.slug}/`}>
+    <span class="article__chip" aria-hidden="true">
+      <Icon name={collection.icon} size={18} />
+    </span>
+    <span class="article__cat">{collection.label}</span>
+  </a>
+
+  <h1 class="article__title">{d.title}</h1>
+  <p class="article__lede">{d.description}</p>
+
+  <div class="article__meta mono">
+    <span>{d.author}</span>
+    <span aria-hidden="true">·</span>
+    <time datetime={d.date.toISOString()}>{fmtDate(d.date)}</time>
+    {
+      d.readingTime && (
+        <>
+          <span aria-hidden="true">·</span>
+          <span>{d.readingTime}</span>
+        </>
+      )
+    }
+  </div>
+
+  {showCrisis && <CrisisBanner text={crisisText} />}
+
+  <div class="prose">
+    <Content />
+  </div>
+
+  {
+    d.references.length > 0 && (
+      <section class="article__refs" aria-labelledby="refs-heading">
+        <h2 id="refs-heading">Källor</h2>
+        <ol>
+          {d.references.map((ref) => (
+            <li set:html={linkifyReference(ref)} />
+          ))}
+        </ol>
+      </section>
+    )
+  }
+
+  {
+    d.relatedArticles.length > 0 && (
+      <section class="article__related" aria-labelledby="related-heading">
+        <h2 id="related-heading">Relaterade artiklar</h2>
+        <ul>
+          {d.relatedArticles.map((rel) => (
+            <li>
+              <a href={rel.url}>
+                <span class="article__related-title">{rel.title}</span>
+                <Icon name="thin-right-arrow" size={14} />
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )
+  }
+</article>
+
+<style>
+  .article {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Eyebrow — tinted chip + collection label, links back to the collection. */
+  .article__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    align-self: flex-start;
+    margin-bottom: var(--space-4);
+  }
+  .article__chip {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    flex-shrink: 0;
+    border-radius: var(--radius-md);
+    background: var(--c);
+    color: var(--c-fg);
+  }
+  .article__cat {
+    font-size: 0.85rem;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: var(--subtle);
+    transition: color 0.15s ease;
+  }
+  .article__eyebrow:hover .article__cat {
+    color: var(--foreground);
+  }
+
+  .article__title {
+    font-size: clamp(2rem, 5vw, 2.75rem);
+    line-height: 1.08;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+  }
+  .article__lede {
+    margin-top: var(--space-4);
+    font-size: 1.25rem;
+    line-height: 1.5;
+    color: var(--muted);
+    text-wrap: pretty;
+  }
+  .article__meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-2);
+    margin-top: var(--space-6);
+    font-size: 0.84375rem;
+    color: var(--subtle);
+  }
+  .article__meta time {
+    text-transform: capitalize;
+  }
+
+  /* CrisisBanner, when present, sits between meta and body. */
+  .article :global(.crisis) {
+    margin-top: var(--space-6);
+  }
+
+  .prose {
+    margin-top: var(--space-8);
+  }
+
+  /* References */
+  .article__refs {
+    margin-top: var(--space-12);
+    padding-top: var(--space-8);
+    border-top: var(--hairline) solid var(--border);
+  }
+  .article__refs h2 {
+    font-size: 1.375rem;
+    margin-bottom: var(--space-4);
+  }
+  .article__refs ol {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    padding-left: 1.4em;
+  }
+  .article__refs li {
+    font-size: 0.9375rem;
+    line-height: 1.5;
+    color: var(--muted);
+    overflow-wrap: anywhere;
+  }
+  .article__refs :global(a) {
+    color: var(--accent);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  /* Related articles */
+  .article__related {
+    margin-top: var(--space-12);
+    padding-top: var(--space-8);
+    border-top: var(--hairline) solid var(--border);
+  }
+  .article__related h2 {
+    font-size: 1.375rem;
+    margin-bottom: var(--space-4);
+  }
+  .article__related ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+  .article__related a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+    padding: var(--space-3) var(--space-4);
+    border: var(--hairline) solid var(--border);
+    border-radius: var(--radius-md);
+    background: var(--surface);
+    color: var(--foreground);
+    transition:
+      border-color 0.15s ease,
+      background 0.15s ease,
+      transform 0.15s ease;
+  }
+  .article__related a:hover {
+    border-color: var(--border-strong);
+    background: var(--hover);
+    transform: translateX(2px);
+  }
+  .article__related-title {
+    font-family: var(--font-serif);
+    font-size: 1.0625rem;
+    font-weight: 500;
+    line-height: 1.3;
+  }
+  .article__related :global(.icon) {
+    flex-shrink: 0;
+    color: var(--subtle);
+  }
+</style>

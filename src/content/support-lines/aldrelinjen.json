@@ -1,0 +1,81 @@
+{
+  "id": "aldrelinjen",
+  "slug": "aldrelinjen",
+  "name": "Äldrelinjen",
+  "organization": "Mind",
+  "type": "direct_line",
+  "status": "active",
+  "category": "mental_health",
+  "shortDescription": "Medmänskligt stöd för äldre som längtar efter någon att prata med.",
+  "longDescription": "Äldrelinjen erbjuder anonymt och kostnadsfritt telefonstöd för äldre personer som mår psykiskt dåligt, känner ensamhet eller behöver någon som lyssnar.",
+  "helpsWith": [
+    "ensamhet",
+    "oro",
+    "nedstamdhet",
+    "livsfragor",
+    "behov-av-samtal"
+  ],
+  "targetGroups": [
+    "aldre",
+    "anhoriga"
+  ],
+  "contactMethods": [
+    {
+      "id": "phone",
+      "channel": "phone",
+      "label": "Telefon",
+      "value": "020-22 22 33",
+      "openingHours": [
+        {
+          "days": [
+            "mon",
+            "tue",
+            "wed",
+            "thu",
+            "fri"
+          ],
+          "open": "08:00",
+          "close": "19:00",
+          "timezone": "Europe/Stockholm"
+        },
+        {
+          "days": [
+            "sat",
+            "sun"
+          ],
+          "open": "10:00",
+          "close": "16:00",
+          "timezone": "Europe/Stockholm"
+        }
+      ]
+    }
+  ],
+  "accessibility": {
+    "anonymous": true,
+    "free": true,
+    "languages": [
+      "svenska"
+    ],
+    "region": "sweden"
+  },
+  "urgency": {
+    "level": "standard",
+    "showEmergencyNotice": true,
+    "emergencyText": "Vid akut fara för liv, ring 112."
+  },
+  "source": {
+    "primaryUrl": "https://mind.se/stod-kunskap/prata-eller-chatta-med-volontar/aldrelinjen/",
+    "checkedAt": "2026-06-04",
+    "confidence": "high"
+  },
+  "display": {
+    "featured": true,
+    "priority": 90,
+    "primaryLabel": "Ring 020-22 22 33",
+    "availabilityLabel": "Telefon: mån-fre 8-19, lör-sön 10-16"
+  },
+  "metadata": {
+    "lastVerified": "2026-06-04",
+    "nextReview": "2026-12-04"
+  }
+}

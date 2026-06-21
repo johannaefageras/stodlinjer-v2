@@ -1,0 +1,71 @@
+{
+  "id": "livslinjen",
+  "slug": "livslinjen",
+  "name": "Livslinjen",
+  "organization": "Mind",
+  "type": "direct_line",
+  "status": "active",
+  "category": "mental_health",
+  "shortDescription": "Anonym chatt för dig mellan 16 och 25 år när livet känns jobbigt.",
+  "longDescription": "Livslinjen erbjuder anonymt och kostnadsfritt chattstöd för unga mellan 16 och 25 år som vill prata med en vuxen om känslor, tankar och sådant som känns svårt i livet.",
+  "helpsWith": [
+    "psykiskt-daligt-maende",
+    "tunga-tankar",
+    "ensamhet",
+    "oro",
+    "behov-av-samtal"
+  ],
+  "targetGroups": [
+    "unga-16-25"
+  ],
+  "contactMethods": [
+    {
+      "id": "chat",
+      "channel": "chat",
+      "label": "Chatt",
+      "url": "https://mind.se/stod-kunskap/prata-eller-chatta-med-volontar/livslinjen/chatt/",
+      "openingHours": [
+        {
+          "days": [
+            "sun",
+            "mon",
+            "tue",
+            "wed",
+            "thu"
+          ],
+          "open": "17:00",
+          "close": "24:00",
+          "timezone": "Europe/Stockholm"
+        }
+      ]
+    }
+  ],
+  "accessibility": {
+    "anonymous": true,
+    "free": true,
+    "languages": [
+      "svenska"
+    ],
+    "region": "sweden"
+  },
+  "urgency": {
+    "level": "standard",
+    "showEmergencyNotice": true,
+    "emergencyText": "Vid akut fara för liv, ring 112."
+  },
+  "source": {
+    "primaryUrl": "https://mind.se/stod-kunskap/prata-eller-chatta-med-volontar/livslinjen/",
+    "checkedAt": "2026-06-04",
+    "confidence": "high"
+  },
+  "display": {
+    "featured": true,
+    "priority": 70,
+    "primaryLabel": "Chatta med Livslinjen",
+    "availabilityLabel": "Chatt: sön-tors 17-24"
+  },
+  "metadata": {
+    "lastVerified": "2026-06-04",
+    "nextReview": "2026-12-04"
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "id": "112-sos-alarm",
+  "slug": "112-sos-alarm",
+  "name": "112 / SOS Alarm",
+  "organization": "SOS Alarm",
+  "type": "public_service",
+  "status": "active",
+  "category": "acute_emergency",
+  "shortDescription": "Sveriges nödnummer vid akut fara för liv, egendom eller miljö.",
+  "longDescription": "112 är Sveriges och EU:s nödnummer för akuta nödsituationer. Via SOS Alarm nås bland annat ambulans, räddningstjänst, polis, giftinformation, socialjour, sjö- och fjällräddning samt jourhavande präst. Det är en akut samhällstjänst, inte en stödlinje för rådgivande samtal.",
+  "helpsWith": [
+    "akut-fara",
+    "ambulans",
+    "raddningstjanst",
+    "polis",
+    "giftinformation",
+    "socialjour",
+    "sjoraeddning",
+    "fjallraddning"
+  ],
+  "targetGroups": [
+    "allmanheten",
+    "personer-i-akut-nod"
+  ],
+  "contactMethods": [
+    {
+      "id": "phone",
+      "channel": "phone",
+      "label": "Nödnummer",
+      "value": "112",
+      "openingHours": [
+        {
+          "days": [
+            "mon",
+            "tue",
+            "wed",
+            "thu",
+            "fri",
+            "sat",
+            "sun"
+          ],
+          "open": "00:00",
+          "close": "24:00",
+          "timezone": "Europe/Stockholm"
+        }
+      ],
+      "note": "Ring endast vid akuta nödsituationer som kräver omedelbar hjälp"
+    },
+    {
+      "id": "website",
+      "channel": "web",
+      "label": "SOS Alarm om 112",
+      "url": "https://www.sosalarm.se/112-och-andra-viktiga-nummer/viktiga-nummer/112/",
+      "openingHours": []
+    }
+  ],
+  "accessibility": {
+    "anonymous": false,
+    "free": true,
+    "languages": [
+      "svenska",
+      "engelska",
+      "tolk"
+    ],
+    "region": "sweden"
+  },
+  "urgency": {
+    "level": "emergency",
+    "showEmergencyNotice": false,
+    "emergencyText": "Ring 112 vid akut fara för liv, egendom eller miljö."
+  },
+  "source": {
+    "primaryUrl": "https://www.sosalarm.se/112-och-andra-viktiga-nummer/viktiga-nummer/112/",
+    "checkedAt": "2026-06-05",
+    "confidence": "high"
+  },
+  "display": {
+    "featured": true,
+    "priority": 100,
+    "primaryLabel": "Ring 112",
+    "availabilityLabel": "Nödnummer dygnet runt. Endast vid akut fara"
+  },
+  "metadata": {
+    "lastVerified": "2026-06-05",
+    "nextReview": "2026-12-05",
+    "resourceKind": "emergency_public_service",
+    "supportLine": false
+  }
+}

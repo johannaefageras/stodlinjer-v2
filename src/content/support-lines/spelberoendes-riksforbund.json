@@ -1,0 +1,83 @@
+{
+  "id": "spelberoendes-riksforbund",
+  "slug": "spelberoendes-riksforbund",
+  "name": "Spelberoendes Riksförbund",
+  "organization": "Spelberoendes Riksförbund",
+  "type": "support_organization",
+  "status": "active",
+  "category": "gambling",
+  "shortDescription": "Självhjälpsmöten, rådgivning och lokalt stöd för spelberoende och anhöriga.",
+  "longDescription": "Spelberoendes Riksförbund är en sammanslutning av lokala föreningar och stödgrupper för spelberoende och anhöriga. De erbjuder självhjälpsmöten, samtal och kontaktvägar via lokala kanslier och onlineverksamhet.",
+  "helpsWith": [
+    "spelberoende",
+    "spelproblem",
+    "anhorigstod",
+    "sjalvhjalpsmoten",
+    "lokalt-stod"
+  ],
+  "targetGroups": [
+    "spelare",
+    "anhoriga"
+  ],
+  "contactMethods": [
+    {
+      "id": "stockholm-phone",
+      "channel": "phone",
+      "label": "Stockholm",
+      "value": "072-503 48 08",
+      "openingHours": [],
+      "note": "Lokalt kansli; inte en enhetlig nationell stödlinje"
+    },
+    {
+      "id": "goteborg-phone",
+      "channel": "phone",
+      "label": "Göteborg",
+      "value": "031-704 14 41",
+      "openingHours": [],
+      "note": "Lokalt kansli"
+    },
+    {
+      "id": "malmo-phone",
+      "channel": "phone",
+      "label": "Malmö",
+      "value": "072-557 99 19",
+      "openingHours": [],
+      "note": "Lokalt kansli"
+    },
+    {
+      "id": "website",
+      "channel": "web",
+      "label": "Möten och kontakt",
+      "url": "https://spelberoende.se/",
+      "openingHours": []
+    }
+  ],
+  "accessibility": {
+    "anonymous": false,
+    "free": true,
+    "languages": [
+      "svenska"
+    ],
+    "region": "sweden"
+  },
+  "urgency": {
+    "level": "standard",
+    "showEmergencyNotice": true,
+    "emergencyText": "Vid akut fara för liv, ring 112."
+  },
+  "source": {
+    "primaryUrl": "https://spelberoende.se/",
+    "checkedAt": "2026-06-04",
+    "confidence": "high"
+  },
+  "display": {
+    "featured": false,
+    "priority": 40,
+    "primaryLabel": "Hitta lokal förening",
+    "availabilityLabel": "Självhjälpsmöten och lokala kontaktvägar via webbplatsen"
+  },
+  "metadata": {
+    "lastVerified": "2026-06-04",
+    "nextReview": "2026-12-04"
+  }
+}

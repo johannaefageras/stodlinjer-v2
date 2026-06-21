@@ -1,0 +1,100 @@
+{
+  "id": "valj-att-sluta",
+  "slug": "valj-att-sluta",
+  "name": "Välj att sluta",
+  "organization": "Manscentrum Stockholm",
+  "type": "direct_line",
+  "status": "active",
+  "category": "violence_abuse",
+  "shortDescription": "Nationell anonym stödlinje för dig som vill förändra ett kontrollerande eller våldsamt beteende.",
+  "longDescription": "Välj att sluta erbjuder anonymt och kostnadsfritt stöd via telefon och chatt till personer som vill förändra ett kontrollerande eller våldsamt beteende mot närstående. Även våldsutsatta, anhöriga och yrkesverksamma kan kontakta linjen.",
+  "helpsWith": [
+    "voldsamt-beteende",
+    "kontrollerande-beteende",
+    "vald-i-nara-relation",
+    "hjalp-vidare-till-behandling",
+    "radgivning-for-yrkesverksamma"
+  ],
+  "targetGroups": [
+    "valdsutovare",
+    "valdsutsatta",
+    "anhoriga",
+    "yrkesverksamma"
+  ],
+  "contactMethods": [
+    {
+      "id": "phone",
+      "channel": "phone",
+      "label": "Telefon",
+      "value": "020-555 666",
+      "openingHours": [
+        {
+          "days": [
+            "mon",
+            "tue",
+            "wed",
+            "thu",
+            "fri"
+          ],
+          "open": "08:30",
+          "close": "16:00",
+          "timezone": "Europe/Stockholm",
+          "note": "Vardagar"
+        }
+      ]
+    },
+    {
+      "id": "chat",
+      "channel": "chat",
+      "label": "Chatt",
+      "url": "https://valjattsluta.se/",
+      "openingHours": [
+        {
+          "days": [
+            "mon"
+          ],
+          "open": "18:00",
+          "close": "21:30",
+          "timezone": "Europe/Stockholm"
+        }
+      ]
+    },
+    {
+      "id": "email",
+      "channel": "email",
+      "label": "Allmänna frågor",
+      "value": "info@valjattsluta.se",
+      "openingHours": []
+    }
+  ],
+  "accessibility": {
+    "anonymous": true,
+    "free": true,
+    "languages": [
+      "svenska",
+      "engelska",
+      "tolk"
+    ],
+    "region": "sweden"
+  },
+  "urgency": {
+    "level": "standard",
+    "showEmergencyNotice": true,
+    "emergencyText": "Vid akut fara för liv, ring 112."
+  },
+  "source": {
+    "primaryUrl": "https://valjattsluta.se/eng/",
+    "checkedAt": "2026-06-04",
+    "confidence": "high"
+  },
+  "display": {
+    "featured": true,
+    "priority": 71,
+    "primaryLabel": "Ring 020-555 666",
+    "availabilityLabel": "Telefon: vardagar 8:30-16. Chatt: måndagar 18-21:30"
+  },
+  "metadata": {
+    "lastVerified": "2026-06-04",
+    "nextReview": "2026-12-04"
+  }
+}

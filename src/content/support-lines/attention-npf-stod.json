@@ -1,0 +1,132 @@
+{
+  "id": "attention-npf-stod",
+  "slug": "attention-npf-stod",
+  "name": "Attention NPF-stöd",
+  "organization": "Riksförbundet Attention",
+  "type": "support_organization",
+  "status": "active",
+  "category": "family_parenting",
+  "shortDescription": "Råd, stöd och gemenskap för personer med NPF och anhöriga.",
+  "longDescription": "Riksförbundet Attention erbjuder kostnadsfritt och anonymt NPF-stöd för personer med egen NPF-diagnos, personer med frågor om NPF och anhöriga. Stödet omfattar NPF-linjen, anhörigtelefon, anhörigmail och digitala mötesplatser.",
+  "helpsWith": [
+    "adhd",
+    "autism",
+    "npf-fragor",
+    "anhorigskap",
+    "vardagsstod",
+    "gemenskap"
+  ],
+  "targetGroups": [
+    "personer-med-npf",
+    "anhoriga",
+    "foraldrar",
+    "unga-med-npf"
+  ],
+  "contactMethods": [
+    {
+      "id": "npf-line",
+      "channel": "phone",
+      "label": "NPF-linjen",
+      "value": "08-642 12 34",
+      "openingHours": [
+        {
+          "days": [
+            "mon"
+          ],
+          "open": "11:00",
+          "close": "13:00",
+          "timezone": "Europe/Stockholm",
+          "note": "Samtal begränsas till 20 minuter"
+        },
+        {
+          "days": [
+            "wed"
+          ],
+          "open": "18:00",
+          "close": "19:30",
+          "timezone": "Europe/Stockholm",
+          "note": "Samtal begränsas till 20 minuter"
+        }
+      ]
+    },
+    {
+      "id": "relative-phone",
+      "channel": "phone",
+      "label": "Anhörigtelefon",
+      "value": "08-642 12 34",
+      "openingHours": [
+        {
+          "days": [
+            "mon"
+          ],
+          "open": "18:00",
+          "close": "19:30",
+          "timezone": "Europe/Stockholm",
+          "note": "Samtal begränsas till 20 minuter"
+        },
+        {
+          "days": [
+            "wed"
+          ],
+          "open": "11:00",
+          "close": "13:00",
+          "timezone": "Europe/Stockholm",
+          "note": "Samtal begränsas till 20 minuter"
+        },
+        {
+          "days": [
+            "thu"
+          ],
+          "open": "18:00",
+          "close": "19:30",
+          "timezone": "Europe/Stockholm",
+          "note": "Samtal begränsas till 20 minuter"
+        }
+      ]
+    },
+    {
+      "id": "relative-email",
+      "channel": "email",
+      "label": "Anhörigmail",
+      "value": "anhorig@attention.se",
+      "openingHours": [],
+      "note": "Besvaras som regel inom 48 timmar, med undantag för helger, röda dagar och semesterstängt"
+    },
+    {
+      "id": "digital-meeting-places",
+      "channel": "web",
+      "label": "Digitala mötesplatser",
+      "url": "https://attention.se/digitala-motesplatsen/",
+      "openingHours": []
+    }
+  ],
+  "accessibility": {
+    "anonymous": true,
+    "free": true,
+    "languages": [
+      "svenska"
+    ],
+    "region": "sweden"
+  },
+  "urgency": {
+    "level": "standard",
+    "showEmergencyNotice": true,
+    "emergencyText": "Vid akut fara för liv, ring 112."
+  },
+  "source": {
+    "primaryUrl": "https://attention.se/leva-med-npf/npf-stod/",
+    "secondaryUrl": "https://attention.se/npf-linjen/",
+    "checkedAt": "2026-06-05",
+    "confidence": "high"
+  },
+  "display": {
+    "featured": true,
+    "priority": 64,
+    "primaryLabel": "Ring 08-642 12 34",
+    "availabilityLabel": "NPF-linjen: mån 11-13, ons 18-19.30. Anhörigtelefon: mån 18-19.30, ons 11-13, tors 18-19.30"
+  },
+  "metadata": {
+    "lastVerified": "2026-06-05",
+    "nextReview": "2026-12-05"
+  }
+}

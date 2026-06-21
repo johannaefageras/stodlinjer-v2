@@ -1,0 +1,102 @@
+{
+  "id": "rfsl-stodmottagning",
+  "slug": "rfsl-stodmottagning",
+  "name": "RFSL Stödmottagning",
+  "organization": "RFSL",
+  "type": "direct_line",
+  "status": "active",
+  "category": "violence_abuse",
+  "shortDescription": "Stöd för hbtqi-personer som utsatts för trakasserier, hot eller våld.",
+  "longDescription": "RFSL Stödmottagning erbjuder kostnadsfritt stöd till hbtqi-personer som utsatts för trakasserier, hot eller våld. Närstående, vänner och yrkesverksamma som möter våldsutsatta hbtqi-personer kan också kontakta mottagningen.",
+  "helpsWith": [
+    "trakasserier",
+    "hot",
+    "vald",
+    "krankningar",
+    "stod-for-hbtqi-personer"
+  ],
+  "targetGroups": [
+    "hbtqia-personer",
+    "anhoriga",
+    "vanner",
+    "yrkesverksamma"
+  ],
+  "contactMethods": [
+    {
+      "id": "phone",
+      "channel": "phone",
+      "label": "Telefon",
+      "value": "020-34 13 16",
+      "openingHours": [
+        {
+          "days": [
+            "thu"
+          ],
+          "open": "09:00",
+          "close": "12:00",
+          "timezone": "Europe/Stockholm",
+          "note": "Direkt anonym kontakt med kurator"
+        }
+      ]
+    },
+    {
+      "id": "callback",
+      "channel": "phone",
+      "label": "Telefonsvarare för återuppringning",
+      "value": "020-34 13 16",
+      "openingHours": [
+        {
+          "days": [
+            "mon",
+            "tue",
+            "wed",
+            "thu",
+            "fri",
+            "sat",
+            "sun"
+          ],
+          "open": "00:00",
+          "close": "24:00",
+          "timezone": "Europe/Stockholm",
+          "note": "Tala in namn och nummer så ringer stödmottagningen upp"
+        }
+      ]
+    },
+    {
+      "id": "email",
+      "channel": "email",
+      "label": "E-post",
+      "value": "stod@rfsl.se",
+      "openingHours": []
+    }
+  ],
+  "accessibility": {
+    "anonymous": true,
+    "free": true,
+    "languages": [
+      "svenska",
+      "engelska"
+    ],
+    "region": "sweden"
+  },
+  "urgency": {
+    "level": "standard",
+    "showEmergencyNotice": true,
+    "emergencyText": "Vid akut fara för liv, ring 112."
+  },
+  "source": {
+    "primaryUrl": "https://www.rfsl.se/verksamhet/stod/stodmottagning/",
+    "checkedAt": "2026-06-04",
+    "confidence": "high"
+  },
+  "display": {
+    "featured": true,
+    "priority": 70,
+    "primaryLabel": "Ring 020-34 13 16",
+    "availabilityLabel": "Telefon: återuppringning via meddelande. Direkt anonym kontakt torsdagar 9-12"
+  },
+  "metadata": {
+    "lastVerified": "2026-06-04",
+    "nextReview": "2026-12-04"
+  }
+}

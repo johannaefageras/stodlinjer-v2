@@ -1,0 +1,147 @@
+{
+  "id": "stodlinjen",
+  "slug": "stodlinjen",
+  "name": "Stödlinjen",
+  "organization": "Stockholms läns sjukvårdsområde",
+  "type": "direct_line",
+  "status": "active",
+  "category": "gambling",
+  "shortDescription": "Anonym hjälp för dig som är orolig för ditt eget eller någon annans spelande om pengar.",
+  "longDescription": "Stödlinjen ger kostnadsfritt och anonymt stöd via telefon och chatt till personer med spelproblem och till anhöriga. Rådgivning finns på svenska, engelska och arabiska, och tolk kan bokas.",
+  "helpsWith": [
+    "spelproblem",
+    "spelberoende",
+    "oro-for-nagon-annans-spelande",
+    "motivation-till-forandring",
+    "radgivning"
+  ],
+  "targetGroups": [
+    "spelare",
+    "anhoriga",
+    "vuxna"
+  ],
+  "contactMethods": [
+    {
+      "id": "phone",
+      "channel": "phone",
+      "label": "Telefon",
+      "value": "020-81 91 00",
+      "openingHours": [
+        {
+          "days": [
+            "mon"
+          ],
+          "open": "09:00",
+          "close": "19:00",
+          "timezone": "Europe/Stockholm",
+          "note": "Helgfri vardag"
+        },
+        {
+          "days": [
+            "tue",
+            "wed"
+          ],
+          "open": "09:00",
+          "close": "17:00",
+          "timezone": "Europe/Stockholm",
+          "note": "Helgfri vardag"
+        },
+        {
+          "days": [
+            "thu"
+          ],
+          "open": "11:00",
+          "close": "19:00",
+          "timezone": "Europe/Stockholm",
+          "note": "Helgfri vardag. Arabisk rådgivning via telefon 15-19"
+        },
+        {
+          "days": [
+            "fri"
+          ],
+          "open": "09:00",
+          "close": "15:00",
+          "timezone": "Europe/Stockholm",
+          "note": "Helgfri vardag"
+        }
+      ]
+    },
+    {
+      "id": "chat",
+      "channel": "chat",
+      "label": "Chatt",
+      "url": "https://stodlinjen.se/chatt",
+      "openingHours": [
+        {
+          "days": [
+            "mon"
+          ],
+          "open": "09:00",
+          "close": "18:45",
+          "timezone": "Europe/Stockholm",
+          "note": "Helgfri vardag"
+        },
+        {
+          "days": [
+            "tue",
+            "wed"
+          ],
+          "open": "09:00",
+          "close": "16:45",
+          "timezone": "Europe/Stockholm",
+          "note": "Helgfri vardag"
+        },
+        {
+          "days": [
+            "thu"
+          ],
+          "open": "11:00",
+          "close": "18:45",
+          "timezone": "Europe/Stockholm",
+          "note": "Helgfri vardag"
+        },
+        {
+          "days": [
+            "fri"
+          ],
+          "open": "09:00",
+          "close": "14:45",
+          "timezone": "Europe/Stockholm",
+          "note": "Helgfri vardag"
+        }
+      ]
+    }
+  ],
+  "accessibility": {
+    "anonymous": true,
+    "free": true,
+    "languages": [
+      "svenska",
+      "engelska",
+      "arabiska",
+      "tolk"
+    ],
+    "region": "sweden"
+  },
+  "urgency": {
+    "level": "standard",
+    "showEmergencyNotice": true,
+    "emergencyText": "Vid akut fara för liv, ring 112."
+  },
+  "source": {
+    "primaryUrl": "https://stodlinjen.se/om-oss/ett-samtal-med-oss",
+    "checkedAt": "2026-06-04",
+    "sourceUpdatedAt": "2025-12-30",
+    "confidence": "high"
+  },
+  "display": {
+    "featured": true,
+    "priority": 73,
+    "primaryLabel": "Ring 020-81 91 00",
+    "availabilityLabel": "Telefon: mån 9-19, tis-ons 9-17, tors 11-19, fre 9-15. Chatt stänger 15 minuter tidigare"
+  },
+  "metadata": {
+    "lastVerified": "2026-06-04",
+    "nextReview": "2026-12-04"
+  }
+}

@@ -1,0 +1,74 @@
+---
+import ThemeToggle from "./ThemeToggle.astro";
+
+// Shared sticky topbar for the inner pages (mirrors the homepage header in
+// src/pages/index.astro). Brand + primary nav + theme toggle + chat CTA.
+---
+
+<header class="topbar">
+  <div class="topbar__inner container--wide">
+    <a class="brand" href="/">Stödlinjer</a>
+    <nav class="nav">
+      <a class="nav__link" href="/#stodlinjer">Stödlinjer</a>
+      <a class="nav__link" href="/artiklar/">Artiklar</a>
+      <ThemeToggle />
+      <a class="nav__cta" href="/chatt/">Fråga Stödkompassen</a>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    border-bottom: var(--hairline) solid var(--border);
+    background: color-mix(in oklch, var(--background) 80%, transparent);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+  .topbar__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-block: var(--space-3);
+  }
+  .brand {
+    font-family: var(--font-serif);
+    font-size: 1.375rem;
+    font-weight: 500;
+    letter-spacing: -0.005em;
+    color: var(--foreground);
+  }
+  .nav {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    font-size: 0.9375rem;
+  }
+  .nav__link {
+    color: var(--muted);
+    transition: color 0.15s ease;
+  }
+  .nav__link:hover {
+    color: var(--foreground);
+  }
+  .nav__cta {
+    padding: 8px 15px;
+    border-radius: var(--radius-pill);
+    background: var(--accent);
+    color: var(--accent-fg);
+    font-size: 0.90625rem;
+    font-weight: 500;
+    transition: background 0.15s ease;
+  }
+  .nav__cta:hover {
+    background: var(--accent-hover);
+  }
+  /* On narrow screens, drop the secondary text links; keep toggle + CTA. */
+  @media (max-width: 560px) {
+    .nav__link {
+      display: none;
+    }
+  }
+</style>

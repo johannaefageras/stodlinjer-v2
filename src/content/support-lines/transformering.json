@@ -1,0 +1,73 @@
+{
+  "id": "transformering",
+  "slug": "transformering",
+  "name": "Transformering",
+  "organization": "RFSL och RFSL Ungdom",
+  "type": "support_organization",
+  "status": "active",
+  "category": "identity_inclusion",
+  "shortDescription": "Information, rådgivning och stöd kring trans och könsidentitet.",
+  "longDescription": "Transformering är RFSL:s och RFSL Ungdoms verksamhet för transfrågor. Den erbjuder aktuell information om trans, könsidentitet, rättigheter, relationer och könsbekräftande vård samt en stöd- och infomejl där kuratorer och sakkunniga ger stöd, information och rådgivning.",
+  "helpsWith": [
+    "transfragor",
+    "konsidentitet",
+    "komma-ut",
+    "konsbekraftande-vard",
+    "konsdysfori",
+    "relationer",
+    "rattigheter"
+  ],
+  "targetGroups": [
+    "transpersoner",
+    "personer-som-funderar-pa-konsidentitet",
+    "anhoriga",
+    "yrkesverksamma",
+    "alla-aldrar"
+  ],
+  "contactMethods": [
+    {
+      "id": "support-form",
+      "channel": "web",
+      "label": "Skriv till Transformering",
+      "url": "https://transfragor.transformering.se/",
+      "openingHours": []
+    },
+    {
+      "id": "website",
+      "channel": "web",
+      "label": "Transformering.se",
+      "url": "https://transformering.se/",
+      "openingHours": []
+    }
+  ],
+  "accessibility": {
+    "anonymous": true,
+    "free": true,
+    "languages": [
+      "svenska",
+      "engelska"
+    ],
+    "region": "sweden"
+  },
+  "urgency": {
+    "level": "standard",
+    "showEmergencyNotice": true,
+    "emergencyText": "Vid akut fara för liv, ring 112."
+  },
+  "source": {
+    "primaryUrl": "https://transformering.se/",
+    "secondaryUrl": "https://transfragor.transformering.se/",
+    "checkedAt": "2026-06-05",
+    "confidence": "high"
+  },
+  "display": {
+    "featured": true,
+    "priority": 58,
+    "primaryLabel": "Skriv till Transformering",
+    "availabilityLabel": "Stöd och rådgivning via webbformulär"
+  },
+  "metadata": {
+    "lastVerified": "2026-06-05",
+    "nextReview": "2026-12-05"
+  }
+}

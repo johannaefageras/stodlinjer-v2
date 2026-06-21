@@ -1,0 +1,141 @@
+{
+  "id": "bris",
+  "slug": "bris",
+  "name": "BRIS",
+  "organization": "BRIS",
+  "type": "direct_line",
+  "status": "active",
+  "category": "children_youth",
+  "shortDescription": "Dygnet-runt-stöd för barn och unga upp till 18 år.",
+  "longDescription": "BRIS erbjuder anonymt och kostnadsfritt stöd för barn och unga upp till 18 år via telefon, sms, chatt och mejl med utbildade kuratorer.",
+  "helpsWith": [
+    "oro",
+    "angest",
+    "familj",
+    "skola",
+    "vald-och-krankningar",
+    "ensamhet"
+  ],
+  "targetGroups": [
+    "barn",
+    "unga-under-18"
+  ],
+  "contactMethods": [
+    {
+      "id": "phone",
+      "channel": "phone",
+      "label": "Telefon",
+      "value": "116 111",
+      "openingHours": [
+        {
+          "days": [
+            "mon",
+            "tue",
+            "wed",
+            "thu",
+            "fri",
+            "sat",
+            "sun"
+          ],
+          "open": "00:00",
+          "close": "24:00",
+          "timezone": "Europe/Stockholm"
+        }
+      ]
+    },
+    {
+      "id": "sms",
+      "channel": "sms",
+      "label": "SMS",
+      "value": "116 111",
+      "openingHours": [
+        {
+          "days": [
+            "mon",
+            "tue",
+            "wed",
+            "thu",
+            "fri",
+            "sat",
+            "sun"
+          ],
+          "open": "00:00",
+          "close": "24:00",
+          "timezone": "Europe/Stockholm"
+        }
+      ]
+    },
+    {
+      "id": "chat",
+      "channel": "chat",
+      "label": "Chatt",
+      "url": "https://barn.bris.se/",
+      "openingHours": [
+        {
+          "days": [
+            "mon",
+            "tue",
+            "wed",
+            "thu",
+            "fri",
+            "sat",
+            "sun"
+          ],
+          "open": "00:00",
+          "close": "24:00",
+          "timezone": "Europe/Stockholm"
+        }
+      ]
+    },
+    {
+      "id": "email",
+      "channel": "email",
+      "label": "Mejl",
+      "url": "https://barn.bris.se/",
+      "openingHours": [
+        {
+          "days": [
+            "mon",
+            "tue",
+            "wed",
+            "thu",
+            "fri",
+            "sat",
+            "sun"
+          ],
+          "open": "00:00",
+          "close": "24:00",
+          "timezone": "Europe/Stockholm"
+        }
+      ]
+    }
+  ],
+  "accessibility": {
+    "anonymous": true,
+    "free": true,
+    "languages": [
+      "svenska"
+    ],
+    "region": "sweden"
+  },
+  "urgency": {
+    "level": "standard",
+    "showEmergencyNotice": true,
+    "emergencyText": "Vid akut fara för liv, ring 112."
+  },
+  "source": {
+    "primaryUrl": "https://www.bris.se/om-bris/vart-arbete/bris-stodverksamhet/",
+    "checkedAt": "2026-06-04",
+    "confidence": "high"
+  },
+  "display": {
+    "featured": true,
+    "priority": 95,
+    "primaryLabel": "Ring eller sms:a 116 111",
+    "availabilityLabel": "Telefon, sms, chatt och mejl: dygnet runt"
+  },
+  "metadata": {
+    "lastVerified": "2026-06-04",
+    "nextReview": "2026-12-04"
+  }
+}

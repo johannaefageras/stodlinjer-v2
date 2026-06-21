@@ -1,0 +1,66 @@
+{
+  "id": "gamblers-anonymous-sverige",
+  "slug": "gamblers-anonymous-sverige",
+  "name": "Gamblers Anonymous Sverige",
+  "organization": "GA - Gamblers Anonymous Sverige",
+  "type": "support_organization",
+  "status": "active",
+  "category": "gambling",
+  "shortDescription": "Självhjälpsmöten för personer som vill sluta spela.",
+  "longDescription": "Gamblers Anonymous Sverige samlar självhjälpsmöten runt om i Sverige för personer med spelberoende eller spelproblem. Stödet bygger på gemenskap och erfarenhetsutbyte med andra som vill sluta spela.",
+  "helpsWith": [
+    "spelberoende",
+    "spelproblem",
+    "sjalvhjalpsmoten",
+    "tolvstegsprogram",
+    "gemenskap"
+  ],
+  "targetGroups": [
+    "personer-som-vill-sluta-spela"
+  ],
+  "contactMethods": [
+    {
+      "id": "meetings",
+      "channel": "web",
+      "label": "Möten",
+      "url": "https://www.gamblersanonymous.se/m%C3%B6ten",
+      "openingHours": []
+    },
+    {
+      "id": "phone",
+      "channel": "phone",
+      "label": "Kontakttelefon",
+      "value": "073-775 74 52",
+      "openingHours": [],
+      "note": "Kontaktuppgift visas på mötessidan; öppettider ej angivna"
+    }
+  ],
+  "accessibility": {
+    "anonymous": true,
+    "free": true,
+    "languages": [
+      "svenska"
+    ],
+    "region": "sweden"
+  },
+  "urgency": {
+    "level": "standard",
+    "showEmergencyNotice": true,
+    "emergencyText": "Vid akut fara för liv, ring 112."
+  },
+  "source": {
+    "primaryUrl": "https://www.gamblersanonymous.se/m%C3%B6ten",
+    "checkedAt": "2026-06-05",
+    "confidence": "high"
+  },
+  "display": {
+    "featured": false,
+    "priority": 41,
+    "primaryLabel": "Hitta GA-möte",
+    "availabilityLabel": "Självhjälpsmöten enligt möteslistan"
+  },
+  "metadata": {
+    "lastVerified": "2026-06-05",
+    "nextReview": "2026-12-05"
+  }
+}

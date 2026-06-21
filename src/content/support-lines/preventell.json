@@ -1,0 +1,115 @@
+{
+  "id": "preventell",
+  "slug": "preventell",
+  "name": "PrevenTell",
+  "organization": "Karolinska Universitetssjukhuset Anova",
+  "type": "direct_line",
+  "status": "active",
+  "category": "violence_abuse",
+  "shortDescription": "Hjälplinje för dig som oroar dig för din eller någon annans sexualitet.",
+  "longDescription": "PrevenTell erbjuder anonymt och kostnadsfritt stöd via telefon och chatt för personer som oroar sig för sexuella fantasier, impulser eller handlingar som kan skada någon annan, samt för närstående och yrkesverksamma.",
+  "helpsWith": [
+    "oönskad-sexualitet",
+    "sexuella-riskbeteenden",
+    "oro-for-att-skada-andra",
+    "stod-for-narstaende",
+    "yrkesverksam-konsultation"
+  ],
+  "targetGroups": [
+    "personer-med-oonskad-sexualitet",
+    "anhoriga",
+    "yrkesverksamma"
+  ],
+  "contactMethods": [
+    {
+      "id": "phone",
+      "channel": "phone",
+      "label": "Telefon",
+      "value": "020-66 77 88",
+      "openingHours": [
+        {
+          "days": [
+            "mon",
+            "tue",
+            "wed",
+            "thu",
+            "fri"
+          ],
+          "open": "12:00",
+          "close": "15:00",
+          "timezone": "Europe/Stockholm"
+        }
+      ]
+    },
+    {
+      "id": "chat",
+      "channel": "chat",
+      "label": "Chatt",
+      "url": "https://www.karolinska.se/preventell/",
+      "openingHours": [
+        {
+          "days": [
+            "mon",
+            "wed",
+            "thu"
+          ],
+          "open": "15:00",
+          "close": "16:00",
+          "timezone": "Europe/Stockholm"
+        }
+      ]
+    },
+    {
+      "id": "callback-voicemail",
+      "channel": "phone",
+      "label": "Telefonsvarare för återuppringning",
+      "value": "020-66 77 88",
+      "openingHours": [
+        {
+          "days": [
+            "mon",
+            "tue",
+            "wed",
+            "thu",
+            "fri",
+            "sat",
+            "sun"
+          ],
+          "open": "00:00",
+          "close": "24:00",
+          "timezone": "Europe/Stockholm",
+          "note": "Meddelande kan lämnas dygnet runt; återuppringning inom 1-2 arbetsdagar"
+        }
+      ]
+    }
+  ],
+  "accessibility": {
+    "anonymous": true,
+    "free": true,
+    "languages": [
+      "svenska"
+    ],
+    "region": "sweden"
+  },
+  "urgency": {
+    "level": "standard",
+    "showEmergencyNotice": true,
+    "emergencyText": "Vid akut fara för liv, ring 112."
+  },
+  "source": {
+    "primaryUrl": "https://www.karolinska.se/preventell/",
+    "checkedAt": "2026-06-04",
+    "sourceUpdatedAt": "2026-05-11",
+    "confidence": "high"
+  },
+  "display": {
+    "featured": true,
+    "priority": 72,
+    "primaryLabel": "Ring 020-66 77 88",
+    "availabilityLabel": "Telefon: vardagar 12-15. Chatt: mån, ons och tors 15-16"
+  },
+  "metadata": {
+    "lastVerified": "2026-06-04",
+    "nextReview": "2026-12-04"
+  }
+}

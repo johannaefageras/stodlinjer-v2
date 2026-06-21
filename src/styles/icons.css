@@ -1,0 +1,1843 @@
+/*--------------------------------
+
+Nightingale Icons icon font
+Copyright (c) 2024 by Nightingale Icons, licensed under SIL Open Font License Version 1.1.
+
+-------------------------------- */
+
+@font-face {
+    font-family: 'Nightingale Icons';
+    src: url('/fonts/nightingale-icons.woff2') format('woff2'),
+        url('/fonts/nightingale-icons.woff') format('woff'),
+        url('/fonts/nightingale-icons.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: block;
+}
+
+/* base class */
+.icon {
+    display: inline-block;
+    font: normal normal 400 1em/1 'Nightingale Icons';
+    color: inherit;
+    flex-shrink: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* icons */
+.ni-24-hour-label-inside-circular-arrow::before {
+    content: "\ea01";
+}
+
+.ni-addition-sign::before {
+    content: "\ea02";
+}
+
+.ni-address-book-with-tabbed-pages::before {
+    content: "\ea03";
+}
+
+.ni-adhesive-bandage::before {
+    content: "\ea04";
+}
+
+.ni-adult-and-child-restroom-figures::before {
+    content: "\ea05";
+}
+
+.ni-adult-and-child-standing-together::before {
+    content: "\ea06";
+}
+
+.ni-adult-holding-infant::before {
+    content: "\ea07";
+}
+
+.ni-alarm-clock-with-ringing-lines::before {
+    content: "\ea08";
+}
+
+.ni-ambulance-with-medical-cross::before {
+    content: "\ea09";
+}
+
+.ni-anchor-wrapped-with-rope::before {
+    content: "\ea0a";
+}
+
+.ni-angled-oval-paperclip::before {
+    content: "\ea0b";
+}
+
+.ni-angled-pushpin::before {
+    content: "\ea0c";
+}
+
+.ni-angular-infinity-loop::before {
+    content: "\ea0d";
+}
+
+.ni-angular-pointed-lightning-bolt::before {
+    content: "\ea0e";
+}
+
+.ni-animal-paw-print::before {
+    content: "\ea0f";
+}
+
+.ni-apartment-building-beside-tree::before {
+    content: "\ea10";
+}
+
+.ni-archive-storage-box::before {
+    content: "\ea11";
+}
+
+.ni-ascending-stairs-with-upward-right-arrow::before {
+    content: "\ea12";
+}
+
+.ni-ascending-zigzag-arrow::before {
+    content: "\ea13";
+}
+
+.ni-at-sign-inside-circle::before {
+    content: "\ea14";
+}
+
+.ni-award-ribbon-badge::before {
+    content: "\ea15";
+}
+
+.ni-baby-bottle::before {
+    content: "\ea16";
+}
+
+.ni-baby-stroller-with-two-wheels::before {
+    content: "\ea17";
+}
+
+.ni-bacterial-cell-with-surrounding-microbes::before {
+    content: "\ea18";
+}
+
+.ni-balanced-justice-scales::before {
+    content: "\ea19";
+}
+
+.ni-bank-building-with-columns::before {
+    content: "\ea1a";
+}
+
+.ni-banknote-with-three-downward-payout-lines::before {
+    content: "\ea1b";
+}
+
+.ni-bitten-cookie-with-chocolate-chips::before {
+    content: "\ea1c";
+}
+
+.ni-blank-file-page-with-folded-corner::before {
+    content: "\ea1d";
+}
+
+.ni-blood-drop-with-medical-cross::before {
+    content: "\ea1e";
+}
+
+.ni-bookmark-ribbon::before {
+    content: "\ea1f";
+}
+
+.ni-brain-split-between-circuit-and-organic-hemispheres::before {
+    content: "\ea20";
+}
+
+.ni-brain-with-lightning-bolt::before {
+    content: "\ea21";
+}
+
+.ni-brain-with-sparkle::before {
+    content: "\ea22";
+}
+
+.ni-brain-with-warning-triangle::before {
+    content: "\ea23";
+}
+
+.ni-broad-rounded-lightning-bolt::before {
+    content: "\ea24";
+}
+
+.ni-broken-chain-link-with-impact-rays::before {
+    content: "\ea25";
+}
+
+.ni-broom-sweeping-dust::before {
+    content: "\ea26";
+}
+
+.ni-bullseye-target-on-two-legs::before {
+    content: "\ea27";
+}
+
+.ni-butterfly-with-spread-wings::before {
+    content: "\ea28";
+}
+
+.ni-cactus-on-ground-line::before {
+    content: "\ea29";
+}
+
+.ni-calendar-page-with-medical-cross::before {
+    content: "\ea2a";
+}
+
+.ni-calendar-page-with-six-date-dots::before {
+    content: "\ea2b";
+}
+
+.ni-call-center-headset-with-microphone::before {
+    content: "\ea2c";
+}
+
+.ni-camera-with-circular-lens::before {
+    content: "\ea2d";
+}
+
+.ni-cannabis-leaf::before {
+    content: "\ea2e";
+}
+
+.ni-central-person-surrounded-by-group-arcs::before {
+    content: "\ea2f";
+}
+
+.ni-certificate-document-with-ribbon-seal::before {
+    content: "\ea30";
+}
+
+.ni-check-mark::before {
+    content: "\ea31";
+}
+
+.ni-check-mark-inside-rounded-square::before {
+    content: "\ea32";
+}
+
+.ni-chess-knight-piece::before {
+    content: "\ea33";
+}
+
+.ni-chess-queen-piece::before {
+    content: "\ea34";
+}
+
+.ni-chevron-shaped-label::before {
+    content: "\ea35";
+}
+
+.ni-circular-spiral-coil::before {
+    content: "\ea36";
+}
+
+.ni-circular-target-crosshair::before {
+    content: "\ea37";
+}
+
+.ni-clipboard-with-medical-cross::before {
+    content: "\ea38";
+}
+
+.ni-clipboard-with-pencil::before {
+    content: "\ea39";
+}
+
+.ni-clipboard-with-pulse-waveform::before {
+    content: "\ea3a";
+}
+
+.ni-clipboard-with-two-text-lines::before {
+    content: "\ea3b";
+}
+
+.ni-clock-face-with-partial-dashed-rim::before {
+    content: "\ea3c";
+}
+
+.ni-clock-face-with-sleep-letter-z::before {
+    content: "\ea3d";
+}
+
+.ni-closed-book-with-bookmark-ribbon::before {
+    content: "\ea3e";
+}
+
+.ni-closed-envelope-with-rounded-corners::before {
+    content: "\ea3f";
+}
+
+.ni-closed-grabbing-hand-cursor::before {
+    content: "\ea40";
+}
+
+.ni-closed-padlock-inside-rounded-square::before {
+    content: "\ea41";
+}
+
+.ni-closed-tabbed-file-folder::before {
+    content: "\ea42";
+}
+
+.ni-closed-umbrella-resting-in-stand::before {
+    content: "\ea43";
+}
+
+.ni-closed-umbrella-with-curved-handle::before {
+    content: "\ea44";
+}
+
+.ni-cloud-above-globe::before {
+    content: "\ea45";
+}
+
+.ni-cloud-blowing-horizontal-wind::before {
+    content: "\ea46";
+}
+
+.ni-cloud-with-three-raindrops::before {
+    content: "\ea47";
+}
+
+.ni-cocktail-glass::before {
+    content: "\ea48";
+}
+
+.ni-comet-with-trailing-streaks::before {
+    content: "\ea49";
+}
+
+.ni-compass-needle-inside-circle::before {
+    content: "\ea4a";
+}
+
+.ni-compass-needle-inside-rounded-square::before {
+    content: "\ea4b";
+}
+
+.ni-contract-document-with-pencil::before {
+    content: "\ea4c";
+}
+
+.ni-credit-card-with-magnetic-stripe::before {
+    content: "\ea4d";
+}
+
+.ni-crescent-moon::before {
+    content: "\ea4e";
+}
+
+.ni-crescent-moon-inside-circle::before {
+    content: "\ea4f";
+}
+
+.ni-crescent-moon-with-two-sleep-letters-z::before {
+    content: "\ea50";
+}
+
+.ni-crescent-moon-with-two-stars::before {
+    content: "\ea51";
+}
+
+.ni-crossed-out-wheat-stalk::before {
+    content: "\ea52";
+}
+
+.ni-curled-moustache::before {
+    content: "\ea53";
+}
+
+.ni-curling-tidal-wave-above-water-lines::before {
+    content: "\ea54";
+}
+
+.ni-curved-feather::before {
+    content: "\ea55";
+}
+
+.ni-curved-forward-arrow::before {
+    content: "\ea56";
+}
+
+.ni-curved-route-between-two-endpoint-dots::before {
+    content: "\ea57";
+}
+
+.ni-dart-striking-circular-target::before {
+    content: "\ea58";
+}
+
+.ni-descending-stairs-with-downward-right-arrow::before {
+    content: "\ea59";
+}
+
+.ni-descending-zigzag-arrow::before {
+    content: "\ea5a";
+}
+
+.ni-desktop-monitor-displaying-medical-cross::before {
+    content: "\ea5b";
+}
+
+.ni-desktop-monitor-with-pulse-waveform::before {
+    content: "\ea5c";
+}
+
+.ni-desktop-printer-with-paper-tray::before {
+    content: "\ea5d";
+}
+
+.ni-diagonal-cross-mark::before {
+    content: "\ea5e";
+}
+
+.ni-diagonal-medical-syringe::before {
+    content: "\ea5f";
+}
+
+.ni-diagonal-pencil-with-eraser::before {
+    content: "\ea60";
+}
+
+.ni-diagonal-ruler-with-edge-markings::before {
+    content: "\ea61";
+}
+
+.ni-diamond-road-sign-with-curved-right-arrow::before {
+    content: "\ea62";
+}
+
+.ni-dictionary-book-with-a-and-z-letters::before {
+    content: "\ea63";
+}
+
+.ni-die-showing-five-dots::before {
+    content: "\ea64";
+}
+
+.ni-dollar-banknote::before {
+    content: "\ea65";
+}
+
+.ni-domed-city-hall-building-with-flag::before {
+    content: "\ea66";
+}
+
+.ni-domed-government-building::before {
+    content: "\ea67";
+}
+
+.ni-dot-grid-with-enlarged-center-point::before {
+    content: "\ea68";
+}
+
+.ni-dove-perched-above-judge-gavel::before {
+    content: "\ea69";
+}
+
+.ni-downward-chevron::before {
+    content: "\ea6a";
+}
+
+.ni-electric-power-drill::before {
+    content: "\ea6b";
+}
+
+.ni-electrical-plug-inside-circular-outline::before {
+    content: "\ea6c";
+}
+
+.ni-elongated-faceted-gemstone-with-shine-rays::before {
+    content: "\ea6d";
+}
+
+.ni-emergency-beacon-with-flashing-rays::before {
+    content: "\ea6e";
+}
+
+.ni-empty-wheelchair-with-small-front-caster::before {
+    content: "\ea6f";
+}
+
+.ni-equality-lines-surrounded-by-four-directional-wedges::before {
+    content: "\ea70";
+}
+
+.ni-faceted-diamond-gemstone::before {
+    content: "\ea71";
+}
+
+.ni-feather-quill-pen::before {
+    content: "\ea72";
+}
+
+.ni-female-gender-symbol::before {
+    content: "\ea73";
+}
+
+.ni-female-restroom-figure-with-rounded-skirt::before {
+    content: "\ea74";
+}
+
+.ni-female-restroom-figure-with-triangular-dress::before {
+    content: "\ea75";
+}
+
+.ni-file-folder-with-medical-cross::before {
+    content: "\ea76";
+}
+
+.ni-fire-extinguisher-with-hose::before {
+    content: "\ea77";
+}
+
+.ni-fire-hydrant-with-side-caps::before {
+    content: "\ea78";
+}
+
+.ni-five-person-team-group::before {
+    content: "\ea79";
+}
+
+.ni-five-petal-flower::before {
+    content: "\ea7a";
+}
+
+.ni-five-point-star-outline::before {
+    content: "\ea7b";
+}
+
+.ni-flame-alarm-with-ringing-waves::before {
+    content: "\ea7c";
+}
+
+.ni-flexed-bicep::before {
+    content: "\ea7d";
+}
+
+.ni-flooded-house-roof-above-waves::before {
+    content: "\ea7e";
+}
+
+.ni-flying-bird-silhouette::before {
+    content: "\ea7f";
+}
+
+.ni-folded-map-with-location-pin::before {
+    content: "\ea80";
+}
+
+.ni-fork-and-table-knife::before {
+    content: "\ea81";
+}
+
+.ni-fork-beside-round-plate::before {
+    content: "\ea82";
+}
+
+.ni-forked-navigation-arrow-branching-up-and-right::before {
+    content: "\ea83";
+}
+
+.ni-four-diamond-tiles::before {
+    content: "\ea84";
+}
+
+.ni-four-interlocking-circular-loops::before {
+    content: "\ea85";
+}
+
+.ni-four-leaf-clover::before {
+    content: "\ea86";
+}
+
+.ni-four-rounded-square-photo-grid::before {
+    content: "\ea87";
+}
+
+.ni-four-segment-lifebuoy::before {
+    content: "\ea88";
+}
+
+.ni-four-segment-lifebuoy-alt::before {
+    content: "\ea89";
+}
+
+.ni-funnel-filter::before {
+    content: "\ea8a";
+}
+
+.ni-gear-wheel::before {
+    content: "\ea8b";
+}
+
+.ni-globe-grid-with-latitude-and-longitude-lines::before {
+    content: "\ea8c";
+}
+
+.ni-globe-with-continents::before {
+    content: "\ea8d";
+}
+
+.ni-globe-with-mountain-peaks-and-wavy-terrain::before {
+    content: "\ea8e";
+}
+
+.ni-glowing-light-bulb-with-rays::before {
+    content: "\ea8f";
+}
+
+.ni-government-building-with-flag-and-columns::before {
+    content: "\ea90";
+}
+
+.ni-graduation-cap-with-tassel::before {
+    content: "\ea91";
+}
+
+.ni-hand-cursor-pointing-upward::before {
+    content: "\ea92";
+}
+
+.ni-hand-holding-money-bag::before {
+    content: "\ea93";
+}
+
+.ni-hand-holding-sparkle::before {
+    content: "\ea94";
+}
+
+.ni-hand-making-sign-language-gesture::before {
+    content: "\ea95";
+}
+
+.ni-hand-presenting-dollar-sign::before {
+    content: "\ea96";
+}
+
+.ni-hand-presenting-heart::before {
+    content: "\ea97";
+}
+
+.ni-hand-presenting-medical-cross::before {
+    content: "\ea98";
+}
+
+.ni-hand-raising-one-index-finger::before {
+    content: "\ea99";
+}
+
+.ni-handheld-dumbbell::before {
+    content: "\ea9a";
+}
+
+.ni-handheld-flashlight::before {
+    content: "\ea9b";
+}
+
+.ni-handheld-megaphone::before {
+    content: "\ea9c";
+}
+
+.ni-handwritten-signature-with-x-and-underline::before {
+    content: "\ea9d";
+}
+
+.ni-hanging-medal-with-star-center::before {
+    content: "\ea9e";
+}
+
+.ni-head-silhouette-releasing-scattered-square-thoughts::before {
+    content: "\ea9f";
+}
+
+.ni-head-silhouette-split-between-face-and-circuit-lines::before {
+    content: "\eaa0";
+}
+
+.ni-head-silhouette-wearing-headset-microphone::before {
+    content: "\eaa1";
+}
+
+.ni-head-silhouette-with-brain-inside::before {
+    content: "\eaa2";
+}
+
+.ni-head-silhouette-with-gear-inside::before {
+    content: "\eaa3";
+}
+
+.ni-head-silhouette-with-hexagonal-nut-inside::before {
+    content: "\eaa4";
+}
+
+.ni-head-silhouette-with-question-mark-inside::before {
+    content: "\eaa5";
+}
+
+.ni-head-silhouette-with-spiral-inside::before {
+    content: "\eaa6";
+}
+
+.ni-heart-with-centered-pulse-waveform::before {
+    content: "\eaa7";
+}
+
+.ni-heart-with-flowing-breath-lines::before {
+    content: "\eaa8";
+}
+
+.ni-heart-with-horizontal-pulse-waveform::before {
+    content: "\eaa9";
+}
+
+.ni-heart-with-lightning-bolt::before {
+    content: "\eaaa";
+}
+
+.ni-heart-with-medical-cross::before {
+    content: "\eaab";
+}
+
+.ni-heart-with-two-horizontal-bands::before {
+    content: "\eaac";
+}
+
+.ni-horizontal-minus-sign::before {
+    content: "\eaad";
+}
+
+.ni-hospital-bed-with-patient::before {
+    content: "\eaae";
+}
+
+.ni-hospital-flag-with-medical-cross::before {
+    content: "\eaaf";
+}
+
+.ni-hospital-letter-inside-rounded-square::before {
+    content: "\eab0";
+}
+
+.ni-hot-air-balloon-with-striped-envelope::before {
+    content: "\eab1";
+}
+
+.ni-hourglass-with-sand-chambers::before {
+    content: "\eab2";
+}
+
+.ni-house-with-chimney::before {
+    content: "\eab3";
+}
+
+.ni-inbox-tray-holding-text-document::before {
+    content: "\eab4";
+}
+
+.ni-index-finger-pointing-upward::before {
+    content: "\eab5";
+}
+
+.ni-information-mark-inside-tall-rounded-square::before {
+    content: "\eab6";
+}
+
+.ni-information-mark-inside-wide-rounded-square::before {
+    content: "\eab7";
+}
+
+.ni-intersex-gender-symbol::before {
+    content: "\eab8";
+}
+
+.ni-iv-fluid-bag-with-tubing::before {
+    content: "\eab9";
+}
+
+.ni-judge-gavel-beside-block::before {
+    content: "\eaba";
+}
+
+.ni-justice-scales-tilted-toward-left-pan::before {
+    content: "\eabb";
+}
+
+.ni-justice-scales-tilted-toward-right-pan::before {
+    content: "\eabc";
+}
+
+.ni-king-portrait-wearing-crown::before {
+    content: "\eabd";
+}
+
+.ni-kitchen-weighing-scale::before {
+    content: "\eabe";
+}
+
+.ni-laboratory-microscope::before {
+    content: "\eabf";
+}
+
+.ni-landscape-photo-with-mountain-and-sun::before {
+    content: "\eac0";
+}
+
+.ni-layered-pine-tree::before {
+    content: "\eac1";
+}
+
+.ni-left-chevron::before {
+    content: "\eac2";
+}
+
+.ni-left-pointing-u-turn-arrow::before {
+    content: "\eac3";
+}
+
+.ni-license-document-with-user-portrait-and-text::before {
+    content: "\eac4";
+}
+
+.ni-light-bulb-with-sparkle::before {
+    content: "\eac5";
+}
+
+.ni-lighthouse-emitting-light-beams::before {
+    content: "\eac6";
+}
+
+.ni-lit-cigarette-with-rising-smoke::before {
+    content: "\eac7";
+}
+
+.ni-location-pin-standing-on-map-base::before {
+    content: "\eac8";
+}
+
+.ni-location-pin-with-heart-inside::before {
+    content: "\eac9";
+}
+
+.ni-location-pin-with-medical-cross::before {
+    content: "\eaca";
+}
+
+.ni-looped-command-key-mark::before {
+    content: "\eacb";
+}
+
+.ni-lotus-flower-resting-in-bowl::before {
+    content: "\eacc";
+}
+
+.ni-magic-wand-with-star-tip::before {
+    content: "\eacd";
+}
+
+.ni-magic-wand-with-surrounding-sparkles::before {
+    content: "\eace";
+}
+
+.ni-magnifying-glass-containing-three-text-lines::before {
+    content: "\eacf";
+}
+
+.ni-magnifying-glass-with-medical-cross::before {
+    content: "\ead0";
+}
+
+.ni-magnifying-glass-with-minus-sign::before {
+    content: "\ead1";
+}
+
+.ni-magnifying-glass-with-plus-sign::before {
+    content: "\ead2";
+}
+
+.ni-magnifying-glass-with-pulse-waveform::before {
+    content: "\ead3";
+}
+
+.ni-magnifying-glass-with-rising-trend-arrow::before {
+    content: "\ead4";
+}
+
+.ni-male-and-female-restroom-figures::before {
+    content: "\ead5";
+}
+
+.ni-male-and-female-restroom-figures-alt::before {
+    content: "\ead6";
+}
+
+.ni-male-gender-symbol::before {
+    content: "\ead7";
+}
+
+.ni-male-restroom-figure::before {
+    content: "\ead8";
+}
+
+.ni-male-restroom-figure-with-rounded-torso::before {
+    content: "\ead9";
+}
+
+.ni-medal-badge-with-star::before {
+    content: "\eada";
+}
+
+.ni-medical-bag-with-cross::before {
+    content: "\eadb";
+}
+
+.ni-medical-cross-inside-rounded-square::before {
+    content: "\eadc";
+}
+
+.ni-medical-cross-on-shield-inside-circle::before {
+    content: "\eadd";
+}
+
+.ni-medical-cross-with-pulse-line::before {
+    content: "\eade";
+}
+
+.ni-medical-identification-card-with-cross-and-text::before {
+    content: "\eadf";
+}
+
+.ni-medical-report-file-with-cross::before {
+    content: "\eae0";
+}
+
+.ni-medicine-bottle-with-cross-and-ribbed-cap::before {
+    content: "\eae1";
+}
+
+.ni-mirrored-silhouettes-divided-by-dotted-axis::before {
+    content: "\eae2";
+}
+
+.ni-money-bag-with-dollar-sign::before {
+    content: "\eae3";
+}
+
+.ni-mortar-and-pestle-with-medical-cross::before {
+    content: "\eae4";
+}
+
+.ni-mountain-summit-with-flag::before {
+    content: "\eae5";
+}
+
+.ni-narrow-vertical-lightning-bolt::before {
+    content: "\eae6";
+}
+
+.ni-nine-square-application-grid::before {
+    content: "\eae7";
+}
+
+.ni-nurse-cap-with-medical-cross::before {
+    content: "\eae8";
+}
+
+.ni-old-key-with-round-bow::before {
+    content: "\eae9";
+}
+
+.ni-open-book-with-bookmark-ribbon::before {
+    content: "\eaea";
+}
+
+.ni-open-book-with-center-crease::before {
+    content: "\eaeb";
+}
+
+.ni-open-book-with-magnifying-glass::before {
+    content: "\eaec";
+}
+
+.ni-open-envelope-holding-text-letter::before {
+    content: "\eaed";
+}
+
+.ni-open-envelope-inside-circle::before {
+    content: "\eaee";
+}
+
+.ni-open-eye-with-circular-iris-and-lashes::before {
+    content: "\eaef";
+}
+
+.ni-open-eye-with-circular-pupil::before {
+    content: "\eaf0";
+}
+
+.ni-open-eye-with-teardrop::before {
+    content: "\eaf1";
+}
+
+.ni-open-padlock-inside-rounded-square::before {
+    content: "\eaf2";
+}
+
+.ni-open-tabbed-file-folder::before {
+    content: "\eaf3";
+}
+
+.ni-open-umbrella-with-curved-handle::before {
+    content: "\eaf4";
+}
+
+.ni-opposing-horizontal-arrows-with-four-dots::before {
+    content: "\eaf5";
+}
+
+.ni-opposing-horizontal-exchange-arrows::before {
+    content: "\eaf6";
+}
+
+.ni-option-key-branching-mark::before {
+    content: "\eaf7";
+}
+
+.ni-order-receipt-with-text-and-check-mark::before {
+    content: "\eaf8";
+}
+
+.ni-outlined-paper-airplane::before {
+    content: "\eaf9";
+}
+
+.ni-overlapping-square-speech-bubbles-with-text-lines::before {
+    content: "\eafa";
+}
+
+.ni-paint-palette-with-four-paint-wells::before {
+    content: "\eafb";
+}
+
+.ni-palm-tree-with-curved-trunk::before {
+    content: "\eafc";
+}
+
+.ni-paper-airplane-with-motion-lines::before {
+    content: "\eafd";
+}
+
+.ni-paper-receipt-with-three-text-lines::before {
+    content: "\eafe";
+}
+
+.ni-peace-mark-inside-circle::before {
+    content: "\eaff";
+}
+
+.ni-pen-drawing-wavy-line::before {
+    content: "\eb00";
+}
+
+.ni-pen-writing-curved-signature::before {
+    content: "\eb01";
+}
+
+.ni-pencil-above-straight-underline::before {
+    content: "\eb02";
+}
+
+.ni-pencil-inside-rounded-square::before {
+    content: "\eb03";
+}
+
+.ni-person-above-heart::before {
+    content: "\eb04";
+}
+
+.ni-person-beside-medical-cross::before {
+    content: "\eb05";
+}
+
+.ni-person-dropping-trash-into-bin::before {
+    content: "\eb06";
+}
+
+.ni-person-extending-arms-horizontally::before {
+    content: "\eb07";
+}
+
+.ni-person-meditating-cross-legged::before {
+    content: "\eb08";
+}
+
+.ni-person-raising-arms-diagonally::before {
+    content: "\eb09";
+}
+
+.ni-person-reading-open-book::before {
+    content: "\eb0a";
+}
+
+.ni-person-walking-with-cane::before {
+    content: "\eb0b";
+}
+
+.ni-person-walking-with-wheeled-walker::before {
+    content: "\eb0c";
+}
+
+.ni-person-with-outstretched-arms-above-dashed-line::before {
+    content: "\eb0d";
+}
+
+.ni-piggy-bank-with-coin-slot::before {
+    content: "\eb0e";
+}
+
+.ni-plain-heart-outline::before {
+    content: "\eb0f";
+}
+
+.ni-plain-light-bulb-outline::before {
+    content: "\eb10";
+}
+
+.ni-plain-location-pin-with-center-dot::before {
+    content: "\eb11";
+}
+
+.ni-plain-telephone-receiver::before {
+    content: "\eb12";
+}
+
+.ni-playground-swing-with-two-ropes::before {
+    content: "\eb13";
+}
+
+.ni-playing-card-with-diamond-suit::before {
+    content: "\eb14";
+}
+
+.ni-poker-chip-with-diamond-center::before {
+    content: "\eb15";
+}
+
+.ni-police-badge-shield-with-star::before {
+    content: "\eb16";
+}
+
+.ni-police-car-with-flashing-roof-beacon::before {
+    content: "\eb17";
+}
+
+.ni-potted-plant-with-three-broad-leaves::before {
+    content: "\eb18";
+}
+
+.ni-pregnant-woman-figure::before {
+    content: "\eb19";
+}
+
+.ni-price-tag-with-round-hole::before {
+    content: "\eb1a";
+}
+
+.ni-protective-shield-with-check-mark::before {
+    content: "\eb1b";
+}
+
+.ni-protective-shield-with-closed-padlock::before {
+    content: "\eb1c";
+}
+
+.ni-protective-shield-with-heart::before {
+    content: "\eb1d";
+}
+
+.ni-protective-shield-with-keyhole::before {
+    content: "\eb1e";
+}
+
+.ni-puzzle-piece-with-top-and-side-knobs::before {
+    content: "\eb1f";
+}
+
+.ni-queen-portrait-wearing-crown::before {
+    content: "\eb20";
+}
+
+.ni-question-mark-inside-rounded-square::before {
+    content: "\eb21";
+}
+
+.ni-rainbow-arcs-emerging-from-cloud::before {
+    content: "\eb22";
+}
+
+.ni-raised-clenched-fist::before {
+    content: "\eb23";
+}
+
+.ni-raised-finger-with-reminder-bow::before {
+    content: "\eb24";
+}
+
+.ni-raised-hand-above-wavy-water-lines::before {
+    content: "\eb25";
+}
+
+.ni-right-chevron::before {
+    content: "\eb26";
+}
+
+.ni-right-pointing-paper-airplane::before {
+    content: "\eb27";
+}
+
+.ni-right-pointing-return-arrow::before {
+    content: "\eb28";
+}
+
+.ni-ringed-planet::before {
+    content: "\eb29";
+}
+
+.ni-ringing-bell-with-motion-lines::before {
+    content: "\eb2a";
+}
+
+.ni-rising-curve-on-axis-chart::before {
+    content: "\eb2b";
+}
+
+.ni-road-curving-left-with-dashed-center-line::before {
+    content: "\eb2c";
+}
+
+.ni-road-curving-right-with-dashed-center-line::before {
+    content: "\eb2d";
+}
+
+.ni-rocket-launching-diagonally::before {
+    content: "\eb2e";
+}
+
+.ni-rolled-document-with-text-lines::before {
+    content: "\eb2f";
+}
+
+.ni-round-award-badge-with-star-and-ribbons::before {
+    content: "\eb30";
+}
+
+.ni-round-clock-face::before {
+    content: "\eb31";
+}
+
+.ni-round-fire-alarm-bell-with-pull-cord::before {
+    content: "\eb32";
+}
+
+.ni-round-magnifying-glass::before {
+    content: "\eb33";
+}
+
+.ni-round-virus-particle-with-spikes::before {
+    content: "\eb34";
+}
+
+.ni-rounded-infinity-loop::before {
+    content: "\eb35";
+}
+
+.ni-rounded-medical-cross::before {
+    content: "\eb36";
+}
+
+.ni-rubber-mallet::before {
+    content: "\eb37";
+}
+
+.ni-rubber-stamp-with-rectangular-base::before {
+    content: "\eb38";
+}
+
+.ni-running-person-entering-open-doorway::before {
+    content: "\eb39";
+}
+
+.ni-running-person-escaping-smoke::before {
+    content: "\eb3a";
+}
+
+.ni-sailboat-with-single-sail::before {
+    content: "\eb3b";
+}
+
+.ni-screwdriver-and-wrench::before {
+    content: "\eb3c";
+}
+
+.ni-separated-electrical-plug-and-socket::before {
+    content: "\eb3d";
+}
+
+.ni-share-arrow-exiting-rounded-square::before {
+    content: "\eb3e";
+}
+
+.ni-sharpened-pencil-tip-angled-downward::before {
+    content: "\eb3f";
+}
+
+.ni-shopping-basket-with-curved-handle::before {
+    content: "\eb40";
+}
+
+.ni-shopping-cart-with-two-item-dots::before {
+    content: "\eb41";
+}
+
+.ni-side-profile-head-silhouette::before {
+    content: "\eb42";
+}
+
+.ni-signpost-with-two-direction-boards::before {
+    content: "\eb43";
+}
+
+.ni-single-interlocking-puzzle-piece::before {
+    content: "\eb44";
+}
+
+.ni-single-leaf-with-central-vein::before {
+    content: "\eb45";
+}
+
+.ni-single-standing-person::before {
+    content: "\eb46";
+}
+
+.ni-six-arm-asterisk::before {
+    content: "\eb47";
+}
+
+.ni-six-branch-snowflake::before {
+    content: "\eb48";
+}
+
+.ni-six-person-community-group::before {
+    content: "\eb49";
+}
+
+.ni-six-point-medical-star::before {
+    content: "\eb4a";
+}
+
+.ni-slot-machine-with-lever::before {
+    content: "\eb4b";
+}
+
+.ni-small-shield-nested-inside-large-shield::before {
+    content: "\eb4c";
+}
+
+.ni-smiling-baby-face-with-curled-hair::before {
+    content: "\eb4d";
+}
+
+.ni-smiling-female-face-with-bobbed-hair::before {
+    content: "\eb4e";
+}
+
+.ni-smiling-female-portrait-with-side-buns::before {
+    content: "\eb4f";
+}
+
+.ni-smiling-male-face-with-short-hair::before {
+    content: "\eb50";
+}
+
+.ni-smiling-male-portrait-with-short-hair::before {
+    content: "\eb51";
+}
+
+.ni-smiling-man-face::before {
+    content: "\eb52";
+}
+
+.ni-smiling-robot-head-with-antenna::before {
+    content: "\eb53";
+}
+
+.ni-smiling-woman-face-with-hair-bun::before {
+    content: "\eb54";
+}
+
+.ni-sos-emergency-letters::before {
+    content: "\eb55";
+}
+
+.ni-spiral-galaxy::before {
+    content: "\eb56";
+}
+
+.ni-spiral-notebook-with-pencil::before {
+    content: "\eb57";
+}
+
+.ni-spiral-notepad-with-two-text-lines::before {
+    content: "\eb58";
+}
+
+.ni-spiral-sketchpad-with-scribbled-line::before {
+    content: "\eb59";
+}
+
+.ni-spiraling-hurricane-funnel::before {
+    content: "\eb5a";
+}
+
+.ni-split-brain-hemispheres::before {
+    content: "\eb5b";
+}
+
+.ni-square-speech-bubble-with-heart-inside::before {
+    content: "\eb5c";
+}
+
+.ni-square-speech-bubble-with-three-typing-dots::before {
+    content: "\eb5d";
+}
+
+.ni-square-speech-bubble-with-two-text-lines::before {
+    content: "\eb5e";
+}
+
+.ni-square-speech-bubble-with-user-portrait::before {
+    content: "\eb5f";
+}
+
+.ni-standing-person-beside-question-mark::before {
+    content: "\eb60";
+}
+
+.ni-steaming-teacup-on-saucer-line::before {
+    content: "\eb61";
+}
+
+.ni-stethoscope-with-round-chestpiece::before {
+    content: "\eb62";
+}
+
+.ni-storefront-with-striped-awning::before {
+    content: "\eb63";
+}
+
+.ni-storm-cloud-with-lightning-bolt::before {
+    content: "\eb64";
+}
+
+.ni-straight-road-with-dashed-center-line::before {
+    content: "\eb65";
+}
+
+.ni-striped-construction-barrier::before {
+    content: "\eb66";
+}
+
+.ni-striped-traffic-cone::before {
+    content: "\eb67";
+}
+
+.ni-sun-above-horizontal-haze-lines::before {
+    content: "\eb68";
+}
+
+.ni-sun-above-mountain-peak::before {
+    content: "\eb69";
+}
+
+.ni-sun-inside-circular-outline::before {
+    content: "\eb6a";
+}
+
+.ni-sun-rising-over-cultivated-field::before {
+    content: "\eb6b";
+}
+
+.ni-sun-setting-over-wavy-water::before {
+    content: "\eb6c";
+}
+
+.ni-sun-shining-over-solar-panel::before {
+    content: "\eb6d";
+}
+
+.ni-sun-with-wavy-outer-rays::before {
+    content: "\eb6e";
+}
+
+.ni-tabbed-file-folder::before {
+    content: "\eb6f";
+}
+
+.ni-task-list-with-two-check-marks::before {
+    content: "\eb70";
+}
+
+.ni-teacher-presenting-beside-classroom-board::before {
+    content: "\eb71";
+}
+
+.ni-teacup-with-hanging-tea-bag::before {
+    content: "\eb72";
+}
+
+.ni-teapot-with-curved-handle-and-spout::before {
+    content: "\eb73";
+}
+
+.ni-telephone-receiver-with-24-hour-label::before {
+    content: "\eb74";
+}
+
+.ni-telephone-receiver-with-medical-cross::before {
+    content: "\eb75";
+}
+
+.ni-telephone-receiver-with-ringing-waves::before {
+    content: "\eb76";
+}
+
+.ni-telescope-mounted-on-tripod::before {
+    content: "\eb77";
+}
+
+.ni-thick-downward-arrow::before {
+    content: "\eb78";
+}
+
+.ni-thick-left-arrow::before {
+    content: "\eb79";
+}
+
+.ni-thick-right-arrow::before {
+    content: "\eb7a";
+}
+
+.ni-thick-upward-arrow::before {
+    content: "\eb7b";
+}
+
+.ni-thin-downward-arrow::before {
+    content: "\eb7c";
+}
+
+.ni-thin-left-arrow::before {
+    content: "\eb7d";
+}
+
+.ni-thin-right-arrow::before {
+    content: "\eb7e";
+}
+
+.ni-thin-upward-arrow::before {
+    content: "\eb7f";
+}
+
+.ni-three-arc-rainbow::before {
+    content: "\eb80";
+}
+
+.ni-three-curved-recycling-arrows::before {
+    content: "\eb81";
+}
+
+.ni-three-horizontal-menu-dots::before {
+    content: "\eb82";
+}
+
+.ni-three-horizontal-menu-lines::before {
+    content: "\eb83";
+}
+
+.ni-three-horizontal-wind-gust-lines::before {
+    content: "\eb84";
+}
+
+.ni-three-node-share-network::before {
+    content: "\eb85";
+}
+
+.ni-three-point-crown::before {
+    content: "\eb86";
+}
+
+.ni-three-sparkle-stars::before {
+    content: "\eb87";
+}
+
+.ni-three-stacked-spa-stones::before {
+    content: "\eb88";
+}
+
+.ni-three-vertical-menu-dots::before {
+    content: "\eb89";
+}
+
+.ni-thumbs-up-hand::before {
+    content: "\eb8a";
+}
+
+.ni-toolbox-with-handle-and-center-latch::before {
+    content: "\eb8b";
+}
+
+.ni-transgender-gender-symbol::before {
+    content: "\eb8c";
+}
+
+.ni-trash-bin-with-domed-lid::before {
+    content: "\eb8d";
+}
+
+.ni-tree-and-mountain-above-oval-lake::before {
+    content: "\eb8e";
+}
+
+.ni-tree-with-two-flying-birds::before {
+    content: "\eb8f";
+}
+
+.ni-triangle-and-two-rounded-square-category-shapes::before {
+    content: "\eb90";
+}
+
+.ni-triangle-heart-circle-and-square-category-shapes::before {
+    content: "\eb91";
+}
+
+.ni-triangular-set-square-with-ruler-markings::before {
+    content: "\eb92";
+}
+
+.ni-trophy-cup-with-two-handles::before {
+    content: "\eb93";
+}
+
+.ni-tulip-flower-with-two-leaves::before {
+    content: "\eb94";
+}
+
+.ni-two-clinking-wine-glasses::before {
+    content: "\eb95";
+}
+
+.ni-two-closed-books::before {
+    content: "\eb96";
+}
+
+.ni-two-curved-arrows-forming-horizontal-cycle::before {
+    content: "\eb97";
+}
+
+.ni-two-customer-service-figures::before {
+    content: "\eb98";
+}
+
+.ni-two-diagonal-chain-links::before {
+    content: "\eb99";
+}
+
+.ni-two-friends-standing-side-by-side::before {
+    content: "\eb9a";
+}
+
+.ni-two-hands-protecting-medical-cross::before {
+    content: "\eb9b";
+}
+
+.ni-two-hands-shaking::before {
+    content: "\eb9c";
+}
+
+.ni-two-horizontal-interlocking-chain-links::before {
+    content: "\eb9d";
+}
+
+.ni-two-leaf-seedling::before {
+    content: "\eb9e";
+}
+
+.ni-two-leaf-sprout-emerging-from-soil::before {
+    content: "\eb9f";
+}
+
+.ni-two-medicine-capsules::before {
+    content: "\eba0";
+}
+
+.ni-two-neighbors-under-house-roof::before {
+    content: "\eba1";
+}
+
+.ni-two-overlapping-check-marks::before {
+    content: "\eba2";
+}
+
+.ni-two-overlapping-chevron-labels::before {
+    content: "\eba3";
+}
+
+.ni-two-overlapping-clouds::before {
+    content: "\eba4";
+}
+
+.ni-two-overlapping-user-profiles::before {
+    content: "\eba5";
+}
+
+.ni-two-people-connected-by-rotating-arrows::before {
+    content: "\eba6";
+}
+
+.ni-two-people-seated-across-table::before {
+    content: "\eba7";
+}
+
+.ni-two-sparkle-stars::before {
+    content: "\eba8";
+}
+
+.ni-two-stacks-of-coins::before {
+    content: "\eba9";
+}
+
+.ni-two-tone-capsule-pill::before {
+    content: "\ebaa";
+}
+
+.ni-two-user-portraits-inside-circle::before {
+    content: "\ebab";
+}
+
+.ni-two-wheat-stalks::before {
+    content: "\ebac";
+}
+
+.ni-ultrasound-probe-emitting-waves::before {
+    content: "\ebad";
+}
+
+.ni-umbrella-sheltering-person::before {
+    content: "\ebae";
+}
+
+.ni-upright-narrow-paperclip::before {
+    content: "\ebaf";
+}
+
+.ni-upright-ruler-with-side-markings::before {
+    content: "\ebb0";
+}
+
+.ni-upright-sharpened-pencil::before {
+    content: "\ebb1";
+}
+
+.ni-upward-chevron::before {
+    content: "\ebb2";
+}
+
+.ni-upward-shift-key-arrow::before {
+    content: "\ebb3";
+}
+
+.ni-user-portrait-inside-rounded-square::before {
+    content: "\ebb4";
+}
+
+.ni-vertical-thermometer-with-round-bulb::before {
+    content: "\ebb5";
+}
+
+.ni-vertical-traffic-light-with-three-lamps::before {
+    content: "\ebb6";
+}
+
+.ni-video-camera-with-rounded-lens-body::before {
+    content: "\ebb7";
+}
+
+.ni-volcano-emitting-smoke-cloud::before {
+    content: "\ebb8";
+}
+
+.ni-wall-mounted-lamp-with-shade::before {
+    content: "\ebb9";
+}
+
+.ni-wallet-with-round-clasp::before {
+    content: "\ebba";
+}
+
+.ni-warning-shield-with-exclamation-mark::before {
+    content: "\ebbb";
+}
+
+.ni-warning-triangle-with-lightning-bolt::before {
+    content: "\ebbc";
+}
+
+.ni-waving-flag-on-pole::before {
+    content: "\ebbd";
+}
+
+.ni-web-page-displaying-medical-cross::before {
+    content: "\ebbe";
+}
+
+.ni-wheelchair-user-with-raised-arm::before {
+    content: "\ebbf";
+}
+
+.ni-whistle-emitting-sound-rays::before {
+    content: "\ebc0";
+}
+
+.ni-windmill-with-four-flower-shaped-blades::before {
+    content: "\ebc1";
+}
+
+.ni-wine-bottle-beside-stemmed-glass::before {
+    content: "\ebc2";
+}
+
+.ni-wine-glass-half-filled::before {
+    content: "\ebc3";
+}
+
+.ni-wrapped-gift-box-with-bow::before {
+    content: "\ebc4";
+}
+
+.ni-wrench-inside-rounded-square::before {
+    content: "\ebc5";
+}
+
+.ni-yin-yang-circle-with-two-dots::before {
+    content: "\ebc6";
+}

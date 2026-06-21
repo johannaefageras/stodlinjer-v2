@@ -1,0 +1,52 @@
+---
+import "../styles/tokens.css";
+import "../styles/icons.css";
+import "../styles/global.css";
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const {
+  title,
+  description = "Hitta svenska stödlinjer för kris, ångest, våld, ensamhet och oro. Anonymt, kostnadsfritt och tillgängligt.",
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="sv">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="canonical" href={Astro.url.href} />
+
+    <!-- Type faces load from the jsdelivr CDN (GT Alpina via @font-face,
+         Söhne / Söhne Mono via @import in global.css); preconnect so the
+         woff2 requests start sooner. -->
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+
+    <script is:inline>
+      // Set theme before paint to avoid a flash. Honour saved choice,
+      // else the OS preference.
+      (function () {
+        try {
+          const saved = localStorage.getItem("theme");
+          const theme =
+            saved ||
+            (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+          document.documentElement.dataset.theme = theme;
+        } catch (_) {
+          document.documentElement.dataset.theme = "light";
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <a href="#main" class="sr-only">Hoppa till innehåll</a>
+    <slot />
+  </body>
+</html>

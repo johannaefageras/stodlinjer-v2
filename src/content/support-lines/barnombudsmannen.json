@@ -1,0 +1,125 @@
+{
+  "id": "barnombudsmannen",
+  "slug": "barnombudsmannen",
+  "name": "Barnombudsmannen",
+  "organization": "Barnombudsmannen",
+  "type": "public_service",
+  "status": "active",
+  "category": "rights_public_authority",
+  "shortDescription": "Myndighetskontakt för frågor om barns rättigheter.",
+  "longDescription": "Barnombudsmannen kan informera om barns rättigheter, vart barn och vuxna kan vända sig för stöd och myndighetens arbete. Myndigheten driver inte enskilda ärenden, bedriver inte tillsyn och överprövar inte andra myndigheters beslut. Posten är därför en offentlig rättighetsresurs, inte en stödlinje.",
+  "helpsWith": [
+    "barns-rattigheter",
+    "myndighetsinformation",
+    "vagledning-till-stod",
+    "barnkonventionen"
+  ],
+  "targetGroups": [
+    "barn-och-unga",
+    "foraldrar",
+    "yrkesverksamma",
+    "allmanheten"
+  ],
+  "contactMethods": [
+    {
+      "id": "under-18-phone",
+      "channel": "phone",
+      "label": "Telefon för dig under 18",
+      "value": "020-23 10 10",
+      "openingHours": [
+        {
+          "days": [
+            "mon",
+            "wed"
+          ],
+          "open": "13:00",
+          "close": "15:00",
+          "timezone": "Europe/Stockholm"
+        },
+        {
+          "days": [
+            "tue",
+            "thu",
+            "fri"
+          ],
+          "open": "10:00",
+          "close": "12:00",
+          "timezone": "Europe/Stockholm"
+        }
+      ],
+      "note": "För frågor om barns rättigheter."
+    },
+    {
+      "id": "switchboard",
+      "channel": "phone",
+      "label": "Växel",
+      "value": "08-692 29 50",
+      "openingHours": [
+        {
+          "days": [
+            "mon",
+            "wed"
+          ],
+          "open": "13:00",
+          "close": "15:00",
+          "timezone": "Europe/Stockholm"
+        },
+        {
+          "days": [
+            "tue",
+            "thu",
+            "fri"
+          ],
+          "open": "10:00",
+          "close": "12:00",
+          "timezone": "Europe/Stockholm"
+        }
+      ]
+    },
+    {
+      "id": "email",
+      "channel": "email",
+      "label": "E-post",
+      "value": "info@barnombudsmannen.se",
+      "openingHours": []
+    },
+    {
+      "id": "website",
+      "channel": "web",
+      "label": "Barnombudsmannen",
+      "url": "https://www.barnombudsmannen.se/",
+      "openingHours": []
+    }
+  ],
+  "accessibility": {
+    "anonymous": true,
+    "free": false,
+    "languages": [
+      "svenska",
+      "engelska"
+    ],
+    "region": "sweden"
+  },
+  "urgency": {
+    "level": "standard",
+    "showEmergencyNotice": true,
+    "emergencyText": "Vid akut fara för liv, ring 112."
+  },
+  "source": {
+    "primaryUrl": "https://www.barnombudsmannen.se/kontakta-oss/",
+    "checkedAt": "2026-06-05",
+    "confidence": "high"
+  },
+  "display": {
+    "featured": false,
+    "priority": 25,
+    "primaryLabel": "Ring 020-23 10 10",
+    "availabilityLabel": "Barntelefon: mån/ons 13-15, tis/tor/fre 10-12. Inte en stödlinje"
+  },
+  "metadata": {
+    "lastVerified": "2026-06-05",
+    "nextReview": "2026-12-05",
+    "resourceKind": "governmental_rights_resource",
+    "supportLine": false
+  }
+}

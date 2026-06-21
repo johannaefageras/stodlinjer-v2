@@ -1,0 +1,127 @@
+{
+  "id": "stodlinjen-for-transpersoner",
+  "slug": "stodlinjen-for-transpersoner",
+  "name": "Stödlinjen för transpersoner",
+  "organization": "Nationellt centrum för kvinnofrid (NCK)",
+  "type": "direct_line",
+  "status": "active",
+  "category": "violence_abuse",
+  "shortDescription": "Nationell stödtelefon och chatt för transpersoner och ickebinära som utsatts för våld eller sexuella övergrepp.",
+  "longDescription": "Stödlinjen för transpersoner är en anonym och kostnadsfri stödlinje för transpersoner och ickebinära som utsatts för hot, våld i nära relation eller sexuella övergrepp. Närstående och yrkesverksamma kan också kontakta linjen för råd och stöd. Telefonen är öppen dygnet runt och chatten har särskilda öppettider.",
+  "helpsWith": [
+    "vald-i-nara-relation",
+    "sexuellt-vald",
+    "hot",
+    "transspecifik-utsatthet",
+    "rad-och-stod",
+    "anhorigstod"
+  ],
+  "targetGroups": [
+    "transpersoner",
+    "ickebinara",
+    "anhoriga",
+    "yrkesverksamma",
+    "alla-aldrar"
+  ],
+  "contactMethods": [
+    {
+      "id": "phone",
+      "channel": "phone",
+      "label": "Telefon",
+      "value": "020-55 00 00",
+      "openingHours": [
+        {
+          "days": [
+            "mon",
+            "tue",
+            "wed",
+            "thu",
+            "fri",
+            "sat",
+            "sun"
+          ],
+          "open": "00:00",
+          "close": "24:00",
+          "timezone": "Europe/Stockholm"
+        }
+      ]
+    },
+    {
+      "id": "chat",
+      "channel": "chat",
+      "label": "Chatt",
+      "url": "https://stodlinjenfortranspersoner.se/",
+      "openingHours": [
+        {
+          "days": [
+            "mon"
+          ],
+          "open": "15:00",
+          "close": "21:00",
+          "timezone": "Europe/Stockholm"
+        },
+        {
+          "days": [
+            "tue"
+          ],
+          "open": "08:00",
+          "close": "13:00",
+          "timezone": "Europe/Stockholm"
+        },
+        {
+          "days": [
+            "thu"
+          ],
+          "open": "15:00",
+          "close": "21:00",
+          "timezone": "Europe/Stockholm"
+        },
+        {
+          "days": [
+            "fri"
+          ],
+          "open": "09:00",
+          "close": "16:00",
+          "timezone": "Europe/Stockholm"
+        },
+        {
+          "days": [
+            "sun"
+          ],
+          "open": "11:00",
+          "close": "17:00",
+          "timezone": "Europe/Stockholm"
+        }
+      ]
+    }
+  ],
+  "accessibility": {
+    "anonymous": true,
+    "free": true,
+    "languages": [
+      "svenska",
+      "engelska"
+    ],
+    "region": "sweden"
+  },
+  "urgency": {
+    "level": "urgent",
+    "showEmergencyNotice": true,
+    "emergencyText": "Vid akut fara för liv, ring 112."
+  },
+  "source": {
+    "primaryUrl": "https://stodlinjenfortranspersoner.se/",
+    "checkedAt": "2026-06-05",
+    "confidence": "high"
+  },
+  "display": {
+    "featured": true,
+    "priority": 97,
+    "primaryLabel": "Ring 020-55 00 00",
+    "availabilityLabel": "Telefon: dygnet runt. Chatt: mån 15-21, tis 8-13, tors 15-21, fre 9-16, sön 11-17"
+  },
+  "metadata": {
+    "lastVerified": "2026-06-05",
+    "nextReview": "2026-12-05"
+  }
+}

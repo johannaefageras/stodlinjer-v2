@@ -1,0 +1,203 @@
+{
+  "categories": [
+    {
+      "id": "acute_emergency",
+      "label": "Akut / Nödsituation",
+      "description": "Omedelbar hjälp vid akut fara, nödsituationer eller brådskande förgiftning.",
+      "icon": "rounded-medical-cross",
+      "color": "red",
+      "priority": 10,
+      "keywords": [
+        "akut",
+        "nödnummer",
+        "112",
+        "förgiftning",
+        "omedelbar hjälp"
+      ]
+    },
+    {
+      "id": "mental_health",
+      "label": "Psykisk hälsa",
+      "description": "Stöd vid psykisk ohälsa, ångest, ensamhet, kris, självmordstankar eller behov av någon som lyssnar.",
+      "icon": "split-brain-hemispheres",
+      "color": "green",
+      "priority": 20,
+      "keywords": [
+        "psykisk ohälsa",
+        "ångest",
+        "kris",
+        "ensamhet",
+        "självmordstankar",
+        "samtalsstöd"
+      ]
+    },
+    {
+      "id": "violence_abuse",
+      "label": "Våld & övergrepp",
+      "description": "Stöd vid våld, hot, sexuella övergrepp, brottsutsatthet, hedersrelaterat våld eller risk att skada andra.",
+      "icon": "adhesive-bandage",
+      "color": "rose",
+      "priority": 30,
+      "keywords": [
+        "våld",
+        "övergrepp",
+        "brott",
+        "hot",
+        "hedersvåld",
+        "sexuellt våld"
+      ]
+    },
+    {
+      "id": "children_youth",
+      "label": "Barn & unga",
+      "description": "Stöd som i första hand riktar sig till barn, unga eller unga vuxna.",
+      "icon": "adult-and-child-standing-together",
+      "color": "sky",
+      "priority": 40,
+      "keywords": [
+        "barn",
+        "unga",
+        "tonåring",
+        "ungdom",
+        "chattstöd"
+      ]
+    },
+    {
+      "id": "family_parenting",
+      "label": "Familj & anhöriga",
+      "description": "Stöd för föräldrar, anhöriga, familjer och personer som oroar sig för någon närstående.",
+      "icon": "central-person-surrounded-by-group-arcs",
+      "color": "teal",
+      "priority": 50,
+      "keywords": [
+        "anhörig",
+        "förälder",
+        "familj",
+        "närstående",
+        "föräldraskap"
+      ]
+    },
+    {
+      "id": "substance_use",
+      "label": "Beroende & missbruk",
+      "description": "Stöd kring alkohol, droger, beroende, nykterhet och anhörigstöd kopplat till substansbruk.",
+      "icon": "cannabis-leaf",
+      "color": "lime",
+      "priority": 60,
+      "keywords": [
+        "alkohol",
+        "droger",
+        "missbruk",
+        "beroende",
+        "nykterhet"
+      ]
+    },
+    {
+      "id": "gambling",
+      "label": "Spelberoende",
+      "description": "Stöd för personer med spelproblem och anhöriga till personer med spelberoende.",
+      "icon": "poker-chip-with-diamond-center",
+      "color": "amber",
+      "priority": 70,
+      "keywords": [
+        "spelproblem",
+        "spelberoende",
+        "gambling",
+        "pengaspel",
+        "anhörig"
+      ]
+    },
+    {
+      "id": "eating_disorders",
+      "label": "Ätstörningar",
+      "description": "Stöd kring ätstörningar, självskadebeteende kopplat till mat och kropp, samt anhörigstöd.",
+      "icon": "kitchen-weighing-scale",
+      "color": "pink",
+      "priority": 80,
+      "keywords": [
+        "ätstörning",
+        "mat",
+        "kropp",
+        "självskada",
+        "anhörig"
+      ]
+    },
+    {
+      "id": "grief_loss",
+      "label": "Sorg & förlust",
+      "description": "Stöd vid sorg, dödsfall, förlust, suicidnära sorg eller när ett barn har dött.",
+      "icon": "flying-bird-silhouette",
+      "color": "blue",
+      "priority": 90,
+      "keywords": [
+        "sorg",
+        "förlust",
+        "dödsfall",
+        "efterlevande",
+        "suicid"
+      ]
+    },
+    {
+      "id": "identity_inclusion",
+      "label": "Identitet & inkludering",
+      "description": "Stöd kopplat till HBTQIA+, transfrågor, minoritetsidentitet, inkludering och utsatthet kopplad till identitet.",
+      "icon": "rainbow-arcs-emerging-from-cloud",
+      "color": "violet",
+      "priority": 100,
+      "keywords": [
+        "hbtqia",
+        "hbtqi",
+        "trans",
+        "identitet",
+        "minoritet",
+        "inkludering"
+      ]
+    },
+    {
+      "id": "care_guidance",
+      "label": "Vård & rådgivning",
+      "description": "Hälso- och sjukvårdsrådgivning som hjälper användaren att bedöma vårdbehov och hitta rätt vårdnivå.",
+      "icon": "glowing-light-bulb-with-rays",
+      "color": "cyan",
+      "priority": 110,
+      "keywords": [
+        "vård",
+        "sjukvårdsrådgivning",
+        "1177",
+        "hälsa",
+        "vårdnivå"
+      ]
+    },
+    {
+      "id": "rights_public_authority",
+      "label": "Rättigheter & myndigheter",
+      "description": "Offentliga myndigheter och rättighetsresurser som ger information, vägledning eller tar emot anmälningar men inte är stödlinjer.",
+      "icon": "balanced-justice-scales",
+      "color": "indigo",
+      "priority": 120,
+      "keywords": [
+        "myndighet",
+        "rättigheter",
+        "anmälan",
+        "diskriminering",
+        "barnrätt",
+        "information"
+      ]
+    },
+    {
+      "id": "community_social_support",
+      "label": "Gemenskap & socialt stöd",
+      "description": "Humanitärt, socialt eller praktiskt stöd och organisationskontakter som inte primärt är vård, myndighet eller specialiserad stödlinje.",
+      "icon": "two-hands-protecting-medical-cross",
+      "color": "orange",
+      "priority": 130,
+      "keywords": [
+        "socialt stöd",
+        "praktiskt stöd",
+        "humanitärt stöd",
+        "organisation",
+        "vägledning"
+      ]
+    }
+  ]
+}

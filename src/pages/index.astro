@@ -1,0 +1,731 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SupportLineCard from "../components/SupportLineCard.astro";
+import SupportLineDetail from "../components/SupportLineDetail.astro";
+import SearchBar from "../components/SearchBar.astro";
+import ThemeToggle from "../components/ThemeToggle.astro";
+import Icon from "../components/Icon.astro";
+import categoriesData from "../content/categories.json";
+import { detailHours, closedDays, type Hours } from "../lib/hours";
+
+const categories = categoriesData.categories;
+const catById = Object.fromEntries(categories.map((c) => [c.id, c]));
+
+// Real support-line data → the card grid. Active only, featured first,
+// then by display priority, then alphabetically (Swedish collation).
+const lines = (await getCollection("supportLines", (e) => e.data.status === "active"))
+  .sort((a, b) => {
+    const f = Number(b.data.display.featured) - Number(a.data.display.featured);
+    if (f !== 0) return f;
+    const p = b.data.display.priority - a.data.display.priority;
+    if (p !== 0) return p;
+    return a.data.name.localeCompare(b.data.name, "sv");
+  });
+
+type Line = (typeof lines)[number];
+
+// The headline contact (phone first, else the first method that can be
+// acted on) drives the foot value, its icon, the link, and the hours
+// popover. The website comes from source.primaryUrl.
+function cardPropsOf(line: Line) {
+  const cm = line.data.contactMethods;
+  const headline =
+    cm.find((c) => c.channel === "phone" && c.value) ??
+    cm.find((c) => c.value || c.url) ??
+    cm[0];
+
+  const channel = headline.channel;
+  const isPhone = channel === "phone";
+
+  // Phones show the number; everything else shows the curated action label.
+  const primaryValue = isPhone
+    ? (headline.value ?? line.data.display.primaryLabel)
+    : (headline.label ?? line.data.display.primaryLabel);
+
+  const primaryHref = isPhone
+    ? headline.value
+      ? `tel:${headline.value.replace(/\D/g, "")}`
+      : null
+    : (headline.url ?? null);
+
+  const entries = (headline.openingHours ?? []) as Hours[];
+  const hoursDetail = detailHours(entries);
+  const hoursClosed = closedDays(entries);
+
+  return {
+    primaryValue,
+    primaryChannel: channel,
+    primaryHref,
+    hoursDetail,
+    hoursClosed,
+    website: line.data.source.primaryUrl ?? null,
+  };
+}
+---
+
+<BaseLayout title="Stödlinjer Sverige | Hitta rätt hjälp direkt">
+  <header class="topbar">
+    <div class="topbar__inner container--wide">
+      <a class="brand" href="/">Stödlinjer</a>
+      <nav class="nav">
+        <a class="nav__link" href="#stodlinjer">Stödlinjer</a>
+        <a class="nav__link" href="/artiklar/">Artiklar</a>
+        <ThemeToggle />
+        <a class="nav__cta" href="/chatt/">Fråga Stödkompassen</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero container--wide">
+      <p class="hero__eyebrow mono">{lines.length} stödlinjer · {categories.length} kategorier</p>
+      <h1 class="hero__title">Hitta rätt stöd,<br /><em>när du behöver det.</em></h1>
+      <p class="hero__lede">
+        Sveriges stödlinjer och krisresurser samlade på ett ställe. Anonymt,
+        kostnadsfritt och tillgängligt dygnet runt.
+      </p>
+      <div class="hero__actions">
+        <a class="btn btn--primary" href="#stodlinjer">Sök stödlinjer</a>
+        <a class="btn btn--ghost" href="/chatt/">Fråga Stödkompassen</a>
+      </div>
+    </section>
+
+    <section id="stodlinjer" class="lines container--wide">
+      <div class="pills-wrap">
+        <button
+          class="pills-nav pills-nav--left"
+          type="button"
+          aria-label="Bläddra kategorier åt vänster"
+          tabindex="-1"
+        >
+          <Icon name="left-chevron" size={18} />
+        </button>
+        <div class="pills" role="group" aria-label="Filtrera efter kategori">
+          <button class="pill" data-filter="all" aria-pressed="true">
+            <Icon name="nine-square-application-grid" size={17} />
+            Alla
+          </button>
+          {
+            categories.map((c) => (
+              <button class="pill" data-filter={c.id} aria-pressed="false">
+                <Icon name={c.icon} size={17} />
+                {c.label}
+              </button>
+            ))
+          }
+        </div>
+        <button
+          class="pills-nav pills-nav--right"
+          type="button"
+          aria-label="Bläddra kategorier åt höger"
+          tabindex="-1"
+        >
+          <Icon name="right-chevron" size={18} />
+        </button>
+      </div>
+
+      <div class="grid">
+        {
+          lines.map((line) => {
+            const cat = catById[line.data.category.id];
+            const cp = cardPropsOf(line);
+            return (
+              <SupportLineCard
+                name={line.data.name}
+                shortDescription={line.data.shortDescription}
+                categoryColor={cat.color}
+                categoryIcon={cat.icon}
+                categoryId={cat.id}
+                categoryLabel={cat.label}
+                primaryValue={cp.primaryValue}
+                primaryChannel={cp.primaryChannel}
+                primaryHref={cp.primaryHref}
+                hoursDetail={cp.hoursDetail}
+                hoursClosed={cp.hoursClosed}
+                website={cp.website}
+                keywords={[...cat.keywords, ...line.data.helpsWith]}
+                href={`/stodlinjer/${line.data.slug}/`}
+              />
+            );
+          })
+        }
+      </div>
+
+      <p id="grid-empty" class="grid__empty" hidden>
+        Inga stödlinjer matchar din sökning.
+      </p>
+    </section>
+
+    <div class="crisis">
+      <span class="crisis__dot" aria-hidden="true"></span>
+      Akut fara för liv? Ring <span class="mono">112</span>.
+    </div>
+  </main>
+
+  <SearchBar />
+
+  <dialog class="line-modal" id="line-modal" aria-label="Stödlinje">
+    <button class="line-modal__close" type="button" aria-label="Stäng" data-modal-close>
+      <Icon name="diagonal-cross-mark" size={16} />
+    </button>
+    <div class="line-modal__inner" data-modal-inner>
+      {
+        lines.map((line) => (
+          <div class="line-panel" data-slug={line.data.slug} hidden>
+            <SupportLineDetail line={line} />
+          </div>
+        ))
+      }
+    </div>
+  </dialog>
+</BaseLayout>
+
+<style>
+  /* ── Topbar ─────────────────────────────────────────────── */
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    border-bottom: var(--hairline) solid var(--border);
+    background: color-mix(in oklch, var(--background) 80%, transparent);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+  .topbar__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-block: var(--space-3);
+  }
+  .brand {
+    font-family: var(--font-serif);
+    font-size: 1.375rem;
+    font-weight: 500; /* Book — holds the serif's contrast at this size */
+    letter-spacing: -0.005em;
+    color: var(--foreground);
+  }
+  .nav {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    font-size: 0.9375rem;
+  }
+  .nav__link {
+    color: var(--muted);
+    transition: color 0.15s ease;
+  }
+  .nav__link:hover {
+    color: var(--foreground);
+  }
+  .nav__cta {
+    padding: 8px 15px;
+    border-radius: var(--radius-pill);
+    background: var(--accent);
+    color: var(--accent-fg);
+    font-size: 0.90625rem;
+    font-weight: 500;
+    transition: background 0.15s ease;
+  }
+  .nav__cta:hover {
+    background: var(--accent-hover);
+  }
+
+  /* ── Hero ───────────────────────────────────────────────── */
+  .hero {
+    text-align: center;
+    padding-block: clamp(var(--space-12), 9vw, 120px) var(--space-12);
+  }
+  .hero__eyebrow {
+    font-size: 0.8125rem;
+    letter-spacing: 0.02em; /* System Mono is already wide — ease the tracking */
+    color: var(--subtle);
+    margin-bottom: var(--space-6);
+  }
+  .hero__title {
+    /* Dropped to 400 at display size so GT Alpina's contrast stays
+       elegant rather than heavy. */
+    font-size: clamp(2.5rem, 6.6vw, 5.1rem);
+    font-weight: 400;
+    line-height: 1.06;
+    letter-spacing: -0.01em;
+    margin-inline: auto;
+    max-width: min(16ch, 100%);
+    overflow-wrap: break-word;
+  }
+  .hero__title em {
+    font-style: italic; /* GT Alpina's calligraphic italic is the showpiece here */
+    color: var(--muted);
+  }
+  .hero__lede {
+    font-size: clamp(1.08rem, 1.5vw, 1.25rem);
+    color: var(--muted);
+    line-height: 1.55;
+    margin: var(--space-6) auto 0;
+    max-width: var(--measure);
+  }
+  .hero__actions {
+    display: flex;
+    gap: var(--space-3);
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: var(--space-8);
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.96875rem;
+    font-weight: 500;
+    padding: 11px 22px;
+    border: var(--hairline) solid transparent;
+    border-radius: var(--radius-pill);
+    transition: background 0.15s ease, border-color 0.15s ease, transform 0.1s ease;
+  }
+  .btn:active {
+    transform: translateY(1px);
+  }
+  .btn--primary {
+    background: var(--accent);
+    color: var(--accent-fg);
+  }
+  .btn--primary:hover {
+    background: var(--accent-hover);
+  }
+  .btn--ghost {
+    border-color: var(--border-strong);
+    background: var(--surface);
+    color: var(--foreground);
+  }
+  .btn--ghost:hover {
+    background: var(--hover);
+  }
+
+  /* ── Lines section ──────────────────────────────────────── */
+  .lines {
+    padding-bottom: var(--space-16);
+  }
+  .pills-wrap {
+    position: relative;
+    margin-bottom: var(--space-4);
+  }
+  .pills {
+    display: flex;
+    gap: 6px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    padding-bottom: var(--space-2);
+    scroll-snap-type: x proximity;
+    scroll-behavior: smooth;
+  }
+  .pills::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Edge fades hint at off-screen pills; only shown on the scrollable side. */
+  .pills-wrap::before,
+  .pills-wrap::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: var(--space-2); /* sit above the scrollbar padding */
+    width: 56px;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.15s ease;
+  }
+  .pills-wrap::before {
+    left: 0;
+    background: linear-gradient(to right, var(--background), transparent);
+  }
+  .pills-wrap::after {
+    right: 0;
+    background: linear-gradient(to left, var(--background), transparent);
+  }
+  .pills-wrap.can-left::before,
+  .pills-wrap.can-right::after {
+    opacity: 1;
+  }
+
+  /* Scroll arrows — fade in on hover, only toward the side you can scroll. */
+  .pills-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(calc(-50% - var(--space-1)));
+    z-index: 2;
+    display: grid;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--surface);
+    border: var(--hairline) solid var(--border-strong);
+    color: var(--foreground);
+    box-shadow: 0 2px 8px color-mix(in oklch, var(--foreground) 12%, transparent);
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+  }
+  .pills-nav--left {
+    left: -6px;
+  }
+  .pills-nav--right {
+    right: -6px;
+  }
+  .pills-nav:hover {
+    background: var(--hover);
+    border-color: var(--border-strong);
+  }
+  .pills-wrap.can-left:hover .pills-nav--left,
+  .pills-wrap.can-right:hover .pills-nav--right {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .pills {
+      scroll-behavior: auto;
+    }
+  }
+  /* Touch devices scroll by swipe — the arrows add no value there. */
+  @media (hover: none) {
+    .pills-nav {
+      display: none;
+    }
+  }
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    flex-shrink: 0;
+    scroll-snap-align: start;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: var(--foreground);
+    background: var(--surface);
+    border: var(--hairline) solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 9px 16px 9px 14px;
+    transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  }
+  .pill .icon {
+    color: var(--muted);
+    transition: color 0.15s ease;
+  }
+  .pill[aria-pressed="true"] .icon {
+    color: var(--accent-fg);
+  }
+  .pill:hover {
+    background: var(--hover);
+    border-color: var(--border-strong);
+  }
+  .pill[aria-pressed="true"] {
+    background: var(--accent);
+    color: var(--accent-fg);
+    border-color: var(--accent);
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: var(--space-4);
+  }
+  /* Cap at 3 columns on wide screens so cards stay generous, not stretched. */
+  @media (min-width: 1100px) {
+    .grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  /* One full-width card on phones. */
+  @media (max-width: 560px) {
+    .grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  .grid :global(.card.is-hidden) {
+    display: none;
+  }
+  .grid__empty {
+    color: var(--muted);
+    text-align: center;
+    padding-block: var(--space-16);
+    font-size: 1rem;
+  }
+
+  /* ── Crisis banner ──────────────────────────────────────── */
+  .crisis {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    width: fit-content;
+    margin: 0 auto 96px; /* centred; bottom clears the floating search bar */
+    padding: 11px 18px;
+    border-radius: var(--radius-pill);
+    background: var(--urgency-emergency-soft);
+    color: var(--urgency-emergency);
+    font-size: 0.9375rem;
+  }
+  .crisis__dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--urgency-emergency);
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 640px) {
+    .nav__link,
+    .nav__cta {
+      display: none;
+    }
+  }
+
+  /* ── Support-line modal ─────────────────────────────────── */
+  .line-modal {
+    position: relative;
+    width: min(720px, 100%);
+    max-width: 100%;
+    max-height: min(88vh, 940px);
+    margin: auto; /* centre in the viewport */
+    padding: 0;
+    border: none;
+    border-radius: var(--radius-xl);
+    background: var(--background);
+    color: var(--foreground);
+    box-shadow: 0 40px 90px -28px oklch(0 0 0 / 0.55);
+    overflow: hidden;
+  }
+  .line-modal::backdrop {
+    background: var(--modal-scrim);
+    backdrop-filter: blur(6px) saturate(1.05);
+    -webkit-backdrop-filter: blur(6px) saturate(1.05);
+  }
+  .line-modal__inner {
+    max-height: min(88vh, 940px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding: var(--space-12) var(--space-8) var(--space-8);
+  }
+  .line-modal__close {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    z-index: 3;
+    display: grid;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: var(--hairline) solid var(--border);
+    background: var(--surface);
+    color: var(--muted);
+    transition:
+      background 0.15s ease,
+      color 0.15s ease,
+      border-color 0.15s ease;
+  }
+  .line-modal__close:hover {
+    background: var(--hover);
+    color: var(--foreground);
+    border-color: var(--border-strong);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .line-modal[open] {
+      animation: modal-in 0.18s ease-out;
+    }
+    .line-modal[open]::backdrop {
+      animation: backdrop-in 0.18s ease-out;
+    }
+  }
+  @keyframes modal-in {
+    from {
+      opacity: 0;
+      transform: translateY(8px) scale(0.99);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  @keyframes backdrop-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  /* Phone: dock to the bottom as a sheet. */
+  @media (max-width: 560px) {
+    .line-modal {
+      width: 100%;
+      max-height: 92vh;
+      margin: auto auto 0;
+      border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+    }
+    .line-modal__inner {
+      max-height: 92vh;
+      padding: var(--space-12) var(--space-6) var(--space-8);
+    }
+  }
+
+  /* Lock background scroll while the modal is open. */
+  :global(body.modal-open) {
+    overflow: hidden;
+  }
+</style>
+
+<script>
+  // Owns the category pills + the ⌘K search bar, filtering the card grid.
+  const input = document.getElementById("line-search") as HTMLInputElement | null;
+  const cards = Array.from(document.querySelectorAll<HTMLElement>("[data-card]"));
+  const pills = Array.from(document.querySelectorAll<HTMLElement>(".pill"));
+  const empty = document.getElementById("grid-empty");
+
+  let activeCat = "all";
+  let query = "";
+
+  function apply() {
+    let visible = 0;
+    for (const card of cards) {
+      const matchCat = activeCat === "all" || card.dataset.cat === activeCat;
+      const matchText = query === "" || (card.dataset.search ?? "").includes(query);
+      const show = matchCat && matchText;
+      card.classList.toggle("is-hidden", !show);
+      if (show) visible++;
+    }
+    if (empty) empty.hidden = visible !== 0;
+  }
+
+  input?.addEventListener("input", () => {
+    query = input.value.trim().toLowerCase();
+    apply();
+  });
+  input?.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      input.value = "";
+      query = "";
+      apply();
+      input.blur();
+    }
+  });
+
+  for (const pill of pills) {
+    pill.addEventListener("click", () => {
+      activeCat = pill.dataset.filter ?? "all";
+      pills.forEach((p) => p.setAttribute("aria-pressed", String(p === pill)));
+      apply();
+    });
+  }
+
+  // Pills overflow affordance — toggle edge fades + arrows by scroll position.
+  const pillsWrap = document.querySelector<HTMLElement>(".pills-wrap");
+  const pillsScroller = document.querySelector<HTMLElement>(".pills");
+  const navLeft = document.querySelector<HTMLElement>(".pills-nav--left");
+  const navRight = document.querySelector<HTMLElement>(".pills-nav--right");
+
+  function updatePillNav() {
+    if (!pillsWrap || !pillsScroller) return;
+    const { scrollLeft, scrollWidth, clientWidth } = pillsScroller;
+    const max = scrollWidth - clientWidth;
+    pillsWrap.classList.toggle("can-left", scrollLeft > 1);
+    pillsWrap.classList.toggle("can-right", scrollLeft < max - 1);
+  }
+
+  function scrollPills(direction: number) {
+    pillsScroller?.scrollBy({ left: direction * pillsScroller.clientWidth * 0.8 });
+  }
+
+  navLeft?.addEventListener("click", () => scrollPills(-1));
+  navRight?.addEventListener("click", () => scrollPills(1));
+  pillsScroller?.addEventListener("scroll", updatePillNav, { passive: true });
+  window.addEventListener("resize", updatePillNav);
+  updatePillNav();
+
+  // ⌘K / Ctrl+K focuses the floating search bar.
+  window.addEventListener("keydown", (e) => {
+    if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
+      e.preventDefault();
+      input?.focus();
+    }
+  });
+
+  // ── Support-line modal ────────────────────────────────────
+  // Cards keep a real href to /stodlinjer/{slug}/ (the no-JS / shareable
+  // fallback). Here we intercept that click to open a modal instead and keep
+  // the URL in sync via the History API, so back/forward and sharing work.
+  const modal = document.getElementById("line-modal") as HTMLDialogElement | null;
+  const modalInner = modal?.querySelector<HTMLElement>("[data-modal-inner]") ?? null;
+  const panels = Array.from(modal?.querySelectorAll<HTMLElement>(".line-panel") ?? []);
+  const panelBySlug = new Map(panels.map((p) => [p.dataset.slug ?? "", p]));
+  const SLUG_RE = /^\/stodlinjer\/([^/]+)\/?$/;
+
+  function showPanel(slug: string): boolean {
+    const target = panelBySlug.get(slug);
+    if (!target) return false;
+    for (const p of panels) p.hidden = p !== target;
+    const name = target.querySelector(".line__name")?.textContent?.trim();
+    if (name) modal?.setAttribute("aria-label", name);
+    return true;
+  }
+
+  function openModalUI(slug: string): boolean {
+    if (!modal || !showPanel(slug)) return false;
+    if (!modal.open) modal.showModal();
+    document.body.classList.add("modal-open");
+    if (modalInner) modalInner.scrollTop = 0;
+    return true;
+  }
+
+  function closeModalUI() {
+    if (modal?.open) modal.close();
+    document.body.classList.remove("modal-open");
+  }
+
+  // The URL is the source of truth; the modal mirrors it.
+  function navigateToLine(slug: string) {
+    if (!openModalUI(slug)) return;
+    history.pushState({ modal: slug }, "", `/stodlinjer/${slug}/`);
+  }
+
+  function syncToLocation() {
+    const m = location.pathname.match(SLUG_RE);
+    if (m && panelBySlug.has(m[1])) openModalUI(m[1]);
+    else closeModalUI();
+  }
+
+  if (modal) {
+    // Intercept a card's primary link → open it as a modal instead.
+    document.querySelector(".grid")?.addEventListener("click", (e) => {
+      const ev = e as MouseEvent;
+      // Respect modifier-clicks / middle-click so "open in new tab" still works.
+      if (ev.metaKey || ev.ctrlKey || ev.shiftKey || ev.altKey || ev.button !== 0) return;
+      const link = (ev.target as HTMLElement)?.closest?.(
+        "a.card__name",
+      ) as HTMLAnchorElement | null;
+      if (!link) return;
+      const slug = link.getAttribute("href")?.match(SLUG_RE)?.[1];
+      if (!slug) return;
+      ev.preventDefault();
+      navigateToLine(slug);
+    });
+
+    // Esc, the × button and backdrop clicks all "go back" so the URL resets;
+    // popstate then drives the actual close, keeping one code path.
+    modal.addEventListener("cancel", (e) => {
+      e.preventDefault();
+      history.back();
+    });
+    modal
+      .querySelector("[data-modal-close]")
+      ?.addEventListener("click", () => history.back());
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal) history.back(); // backdrop
+    });
+
+    window.addEventListener("popstate", syncToLocation);
+  }
+</script>

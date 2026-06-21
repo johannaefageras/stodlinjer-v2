@@ -1,0 +1,95 @@
+{
+  "id": "shedo",
+  "slug": "shedo",
+  "name": "SHEDO",
+  "organization": "SHEDO",
+  "type": "direct_line",
+  "status": "active",
+  "category": "mental_health",
+  "shortDescription": "Stöd via självskadechatt och jourmail för självskadebeteende och ätstörningar.",
+  "longDescription": "SHEDO erbjuder medmänskligt stöd till drabbade, närstående och yrkesverksamma kring självskadebeteende och ätstörningar, främst via Självskadechatten och Jourmail.",
+  "helpsWith": [
+    "sjalvskadebeteende",
+    "atstorningar",
+    "anhorigstod",
+    "strategier",
+    "behov-av-samtal"
+  ],
+  "targetGroups": [
+    "drabbade",
+    "anhoriga",
+    "yrkesverksamma"
+  ],
+  "contactMethods": [
+    {
+      "id": "chat",
+      "channel": "chat",
+      "label": "Självskadechatten",
+      "url": "https://www.shedo.se/chatt/",
+      "openingHours": [
+        {
+          "days": [
+            "mon",
+            "tue",
+            "wed",
+            "sun"
+          ],
+          "open": "20:00",
+          "close": "22:00",
+          "timezone": "Europe/Stockholm"
+        }
+      ]
+    },
+    {
+      "id": "jourmail",
+      "channel": "web",
+      "label": "Jourmail",
+      "url": "https://www.shedo.se/jourmail/",
+      "openingHours": [
+        {
+          "days": [
+            "mon",
+            "tue",
+            "wed",
+            "thu",
+            "fri",
+            "sat",
+            "sun"
+          ],
+          "open": "00:00",
+          "close": "24:00",
+          "timezone": "Europe/Stockholm",
+          "note": "Formulär kan skickas via webbplatsen"
+        }
+      ]
+    }
+  ],
+  "accessibility": {
+    "anonymous": true,
+    "free": true,
+    "languages": [
+      "svenska"
+    ],
+    "region": "sweden"
+  },
+  "urgency": {
+    "level": "standard",
+    "showEmergencyNotice": true,
+    "emergencyText": "Vid akut fara för liv, ring 112."
+  },
+  "source": {
+    "primaryUrl": "https://www.shedo.se/stod/",
+    "checkedAt": "2026-06-04",
+    "confidence": "high"
+  },
+  "display": {
+    "featured": true,
+    "priority": 67,
+    "primaryLabel": "Chatta med SHEDO",
+    "availabilityLabel": "Självskadechatten: mån-tis-ons och sön 20-22"
+  },
+  "metadata": {
+    "lastVerified": "2026-06-04",
+    "nextReview": "2026-12-04"
+  }
+}

@@ -1,0 +1,19 @@
+---
+import Icon from "../Icon.astro";
+
+interface Props {
+  name: "phone" | "clock" | "chevron" | "arrow";
+  size?: number;
+}
+
+const { name, size = 16 } = Astro.props;
+
+const iconNames = {
+  phone: "plain-telephone-receiver",
+  clock: "round-clock-face",
+  chevron: "downward-chevron",
+  arrow: "thin-right-arrow",
+} as const;
+---
+
+<Icon name={iconNames[name]} size={size} />

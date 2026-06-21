@@ -1,0 +1,98 @@
+{
+  "id": "roda-korset",
+  "slug": "roda-korset",
+  "name": "Röda Korset",
+  "organization": "Svenska Röda Korset",
+  "type": "organization_contact",
+  "status": "active",
+  "category": "community_social_support",
+  "shortDescription": "Röda Korsets nationella kontaktväg för frågor och vägledning.",
+  "longDescription": "Röda Korsets nuvarande officiella kontaktväg är Infoservice, som svarar på frågor via telefon, e-post och formulär under vardagar. Den äldre generella stödtelefonposten bör därför hanteras som organisationskontakt, inte som en specialiserad stödlinje.",
+  "helpsWith": [
+    "fragor-till-roda-korset",
+    "vagledning",
+    "kontakt-med-verksamhet",
+    "krisstod-och-humanitart-stod"
+  ],
+  "targetGroups": [
+    "allmanheten"
+  ],
+  "contactMethods": [
+    {
+      "id": "infoservice-phone",
+      "channel": "phone",
+      "label": "Infoservice",
+      "value": "0771-19 95 00",
+      "openingHours": [
+        {
+          "days": [
+            "mon",
+            "tue",
+            "wed",
+            "thu",
+            "fri"
+          ],
+          "open": "10:00",
+          "close": "12:00",
+          "timezone": "Europe/Stockholm"
+        },
+        {
+          "days": [
+            "mon",
+            "tue",
+            "wed",
+            "thu",
+            "fri"
+          ],
+          "open": "13:00",
+          "close": "15:00",
+          "timezone": "Europe/Stockholm"
+        }
+      ]
+    },
+    {
+      "id": "infoservice-email",
+      "channel": "email",
+      "label": "E-post",
+      "value": "info@redcross.se",
+      "openingHours": []
+    },
+    {
+      "id": "contact-form",
+      "channel": "web",
+      "label": "Kontaktformulär",
+      "url": "https://www.rodakorset.se/kontakt/",
+      "openingHours": []
+    }
+  ],
+  "accessibility": {
+    "anonymous": false,
+    "free": false,
+    "languages": [
+      "svenska"
+    ],
+    "region": "sweden"
+  },
+  "urgency": {
+    "level": "standard",
+    "showEmergencyNotice": true,
+    "emergencyText": "Vid akut fara för liv, ring 112."
+  },
+  "source": {
+    "primaryUrl": "https://www.rodakorset.se/om-oss/kontakta-oss/",
+    "checkedAt": "2026-06-05",
+    "confidence": "high"
+  },
+  "display": {
+    "featured": false,
+    "priority": 35,
+    "primaryLabel": "Ring 0771-19 95 00",
+    "availabilityLabel": "Infoservice: vardagar 10-12 och 13-15"
+  },
+  "metadata": {
+    "lastVerified": "2026-06-05",
+    "nextReview": "2026-12-05",
+    "resourceKind": "organization_contact",
+    "supportLine": false
+  }
+}
