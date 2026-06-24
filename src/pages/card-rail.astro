@@ -1,0 +1,102 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import CardRail from "../components/mockups/CardRail.astro";
+import { getMockupCards } from "../components/mockups/sample.ts";
+
+// Throwaway preview page for the border-left rail redesign. Delete with the
+// rest of src/components/mockups/ once a direction is chosen.
+const cards = await getMockupCards();
+
+const emergency = cards.find((c) => c.categoryColor === "red");
+const noPhone = cards.find((c) => !c.phone);
+const normal = cards.find(
+  (c) =>
+    c.phone &&
+    c.hoursDetail.length &&
+    c.categoryColor !== "red" &&
+    c !== noPhone,
+);
+
+const picked = [normal, emergency, noPhone].filter(Boolean);
+const seen = new Set(picked);
+for (const c of cards) {
+  if (picked.length >= 3) break;
+  if (!seen.has(c)) {
+    picked.push(c);
+    seen.add(c);
+  }
+}
+const trio = picked.slice(0, 3);
+
+const variants = [
+  { id: "a", label: "A · 3 px hairline rail" },
+  { id: "b", label: "B · 5 px rail  —  recommended" },
+  { id: "c", label: "C · 8 px bold rail" },
+  { id: "d", label: "D · 5 px soft pill, inset from corners" },
+] as const;
+---
+
+<BaseLayout title="Card rail mockups">
+  <main class="wrap">
+    <header class="intro">
+      <h1>Border-left rail · variants</h1>
+      <p>
+        Category colour moves into a left rail; the icon chip is quieted to a
+        neutral outline. Soft periwinkle on every card, rose on the one
+        emergency line.
+      </p>
+    </header>
+
+    {
+      variants.map((v) => (
+        <section class="block">
+          <h2 class="block__label">{v.label}</h2>
+          <div class="grid">
+            {trio.map((c) => (
+              <CardRail variant={v.id} {...c} />
+            ))}
+          </div>
+        </section>
+      ))
+    }
+  </main>
+</BaseLayout>
+
+<style>
+  .wrap {
+    max-width: 1180px;
+    margin-inline: auto;
+    padding: var(--space-12) var(--space-6) var(--space-16);
+  }
+  .intro {
+    margin-bottom: var(--space-12);
+  }
+  .intro h1 {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    margin-bottom: var(--space-3);
+  }
+  .intro p {
+    max-width: 60ch;
+    color: var(--muted);
+  }
+  .block {
+    margin-bottom: var(--space-16);
+  }
+  .block__label {
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--subtle);
+    margin-bottom: var(--space-4);
+    padding-bottom: var(--space-2);
+    border-bottom: var(--hairline) solid var(--border);
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-4);
+    align-items: stretch;
+  }
+</style>

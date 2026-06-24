@@ -1,34 +1,7 @@
 /* Global base — depends on tokens.css (imported first in BaseLayout).
    Keeps structure quiet so the per-category accent is the only colour. */
 
-/* @import rules must precede every other rule, so the Söhne CDN imports
-   come first; the self-hosted GT Alpina @font-face blocks follow. */
-@import url('https://cdn.jsdelivr.net/gh/johannaefageras/cdn@main/fonts/klim-type/sohne/index.css');
-@import url('https://cdn.jsdelivr.net/gh/johannaefageras/cdn@main/fonts/klim-type/sohne-mono/index.css');
-
-/* GT Alpina (Grilli Type) — variable serif, weight 20–1000, self-hosted
-   on the CDN repo. One axis-spanning face each for roman + italic. */
-@font-face {
-  font-family: 'GT Alpina';
-  src: url('https://cdn.jsdelivr.net/gh/johannaefageras/cdn@main/fonts/grilli-type/fonts/GTAlpinaRoman.woff2') format('woff2'),
-  url('https://cdn.jsdelivr.net/gh/johannaefageras/cdn@main/fonts/grilli-type/fonts/GTAlpinaRoman.woff') format('woff'),
-  url('https://cdn.jsdelivr.net/gh/johannaefageras/cdn@main/fonts/grilli-type/fonts/GTAlpinaRoman.ttf') format('truetype');
-  font-weight: 20 1000;
-  font-stretch: 1% 1000%;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'GT Alpina';
-  src: url('https://cdn.jsdelivr.net/gh/johannaefageras/cdn@main/fonts/grilli-type/fonts/GTAlpinaItalic.woff2') format('woff2'),
-    url('https://cdn.jsdelivr.net/gh/johannaefageras/cdn@main/fonts/grilli-type/fonts/GTAlpinaItalic.woff') format('woff'),
-    url('https://cdn.jsdelivr.net/gh/johannaefageras/cdn@main/fonts/grilli-type/fonts/GTAlpinaItalic.ttf') format('truetype');
-  font-weight: 20 1000;
-  font-stretch: 1% 1000%;
-  font-style: italic;
-  font-display: swap;
-}
+@import './fonts.css';
 
 *,
 *::before,
@@ -44,8 +17,8 @@ html {
   -webkit-text-size-adjust: 100%;
   /* Global text-size knob. All font-sizes are rem, so this one value scales
      every bit of text (spacing/layout stay in px). 100% = the user's browser
-     default (~16px); 109.375% ≈ 17.5px base. Nudge here to re-tune. */
-  font-size: 109.375%;
+     default (~16px); 103.125% ≈ 16.5px base. Nudge here to re-tune. */
+  font-size: 103.125%;
 }
 
 body {

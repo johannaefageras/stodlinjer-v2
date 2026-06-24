@@ -150,6 +150,8 @@ const search = [name, shortDescription, categoryLabel, ...keywords]
     flex-direction: column;
     gap: var(--space-4);
     padding: var(--space-4);
+    /* Extra room on the left so content clears the category rail below. */
+    padding-left: var(--space-6);
     border: var(--hairline) solid var(--border);
     border-radius: var(--radius-card);
     background: var(--surface);
@@ -160,10 +162,29 @@ const search = [name, shortDescription, categoryLabel, ...keywords]
       border-color 0.16s ease,
       box-shadow 0.16s ease;
   }
+  /* Category rail — a soft colour edge over the left border that keeps the
+     card's radius. Periwinkle on every line, rose on the emergency category.
+     pointer-events:none so it never steals clicks from the stretched link. */
+  .card::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 5px;
+    background: var(--c-fg);
+    border-top-left-radius: var(--radius-card);
+    border-bottom-left-radius: var(--radius-card);
+    pointer-events: none;
+    transition: width 0.16s ease;
+  }
   .card:hover {
     transform: translateY(-3px);
     border-color: var(--border-strong);
     box-shadow: 0 10px 30px -16px oklch(0 0 0 / 0.35);
+  }
+  .card:hover::before {
+    width: 6px;
   }
   .card:has(.card__hours[open]) {
     z-index: 5;

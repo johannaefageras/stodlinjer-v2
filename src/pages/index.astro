@@ -426,11 +426,15 @@ function cardPropsOf(line: Line) {
     max-height: min(88vh, 940px);
     margin: auto; /* centre in the viewport */
     padding: 0;
-    border: none;
+    border: var(--hairline) solid var(--border);
     border-radius: var(--radius-xl);
     background: var(--background);
     color: var(--foreground);
-    box-shadow: 0 40px 90px -28px oklch(0 0 0 / 0.55);
+    /* Two layers: a near edge to crisply define the panel against the
+       blurred page, plus the deep ambient lift. */
+    box-shadow:
+      0 4px 16px -6px oklch(0 0 0 / 0.25),
+      0 40px 90px -28px oklch(0 0 0 / 0.55);
     overflow: hidden;
   }
   .line-modal::backdrop {

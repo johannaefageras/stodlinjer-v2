@@ -1,0 +1,253 @@
+---
+import CategoryIcon from "../CategoryIcon.astro";
+import MIcon from "./MIcon.astro";
+
+interface HoursRow {
+  dayRange: string;
+  time: string;
+}
+interface Props {
+  /** a = 3px · b = 5px · c = 8px · d = 5px partial pill */
+  variant: "a" | "b" | "c" | "d";
+  name: string;
+  shortDescription: string;
+  categoryColor: string;
+  categoryIcon: string;
+  categoryLabel: string;
+  phone: string | null;
+  telHref: string | null;
+  primaryLabel: string;
+  hoursDetail: HoursRow[];
+  hoursClosed: string | null;
+  href: string;
+}
+const {
+  variant,
+  name,
+  shortDescription,
+  categoryColor,
+  categoryIcon,
+  categoryLabel,
+  phone,
+  telHref,
+  primaryLabel,
+  hoursDetail,
+  hoursClosed,
+  href,
+} = Astro.props;
+---
+
+<article
+  class={`rail rail--${variant}`}
+  style={`--c: var(--cat-${categoryColor}, var(--accent-soft)); --c-fg: var(--cat-${categoryColor}-fg, var(--accent-soft-fg));`}
+>
+  <span class="rail__head">
+    <span class="rail__chip" aria-hidden="true">
+      <CategoryIcon name={categoryIcon} size={22} />
+    </span>
+    <span class="rail__cat">{categoryLabel}</span>
+  </span>
+
+  <span class="rail__body">
+    <a class="rail__name" href={href}>{name}</a>
+    <span class="rail__desc">{shortDescription}</span>
+  </span>
+
+  <span class="rail__foot">
+    {
+      phone && telHref ? (
+        <a class="rail__value" href={telHref}>
+          <span class="rail__valicon" aria-hidden="true">
+            <MIcon name="phone" size={18} />
+          </span>
+          <span class="mono">{phone}</span>
+        </a>
+      ) : (
+        <span class="rail__value rail__value--label">
+          <span class="rail__valicon" aria-hidden="true">
+            <MIcon name="phone" size={18} />
+          </span>
+          <span>{primaryLabel}</span>
+        </span>
+      )
+    }
+    {
+      hoursDetail.length > 0 && (
+        <span class="rail__hourstrigger">
+          <MIcon name="clock" size={13} />
+          <span>Öppettider</span>
+        </span>
+      )
+    }
+  </span>
+</article>
+
+<style>
+  .rail {
+    --rail-w: 5px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    padding: var(--space-4);
+    /* Extra room on the left so content clears the colour rail. */
+    padding-left: var(--space-6);
+    border: var(--hairline) solid var(--border);
+    border-radius: var(--radius-card);
+    background: var(--surface);
+    transition:
+      transform 0.16s ease,
+      border-color 0.16s ease,
+      box-shadow 0.16s ease;
+  }
+  /* The category rail — sits over the left border, keeps the card's radius. */
+  .rail::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: var(--rail-w);
+    background: var(--c-fg);
+    border-top-left-radius: var(--radius-card);
+    border-bottom-left-radius: var(--radius-card);
+    pointer-events: none;
+    transition: width 0.16s ease;
+  }
+  .rail:hover {
+    transform: translateY(-3px);
+    border-color: var(--border-strong);
+    box-shadow: 0 10px 30px -16px oklch(0 0 0 / 0.35);
+  }
+
+  /* Weight variants ──────────────────────────────────────────── */
+  .rail--a { --rail-w: 3px; }
+  .rail--b { --rail-w: 5px; }
+  .rail--c { --rail-w: 8px; }
+  /* d = a softer partial bar that stops short of the rounded corners */
+  .rail--d { --rail-w: 5px; }
+  .rail--d::before {
+    top: var(--space-4);
+    bottom: var(--space-4);
+    border-radius: var(--radius-pill);
+  }
+
+  /* Quieted chip — neutral outline, muted icon; category now lives in the rail. */
+  .rail__head {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+  }
+  .rail__chip {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    flex-shrink: 0;
+    border-radius: 11px;
+    background: transparent;
+    border: var(--hairline) solid var(--border);
+    color: var(--muted);
+  }
+  .rail__cat {
+    font-size: 0.85rem;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--subtle);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-width: 0;
+    font-weight: 500;
+  }
+
+  .rail__body {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .rail__name {
+    display: block;
+    font-family: var(--font-serif);
+    font-size: 1.625rem;
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: -0.005em;
+    color: var(--foreground);
+    text-decoration: none;
+    text-wrap: balance;
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+  .rail__name::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: var(--radius-card);
+  }
+  .rail__desc {
+    font-size: 1.0625rem;
+    line-height: 1.55;
+    color: var(--muted);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .rail__foot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+    margin-top: auto;
+    padding-top: var(--space-4);
+    border-top: var(--hairline) solid var(--border);
+    min-height: calc(36px + var(--space-4) + var(--hairline));
+  }
+  .rail__value {
+    position: relative;
+    z-index: 1;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1.125rem;
+    line-height: 1;
+    color: var(--foreground);
+    text-decoration: none;
+    min-width: 0;
+  }
+  .rail__value .mono {
+    font-size: 1.125rem;
+  }
+  .rail__valicon {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    color: var(--c-fg);
+  }
+  .rail__value--label span:last-child {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .rail__hourstrigger {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 6px 11px;
+    border: var(--hairline) solid
+      color-mix(in oklch, var(--border) 60%, transparent);
+    border-radius: var(--radius-md);
+    font-size: 0.8125rem;
+    color: var(--muted);
+    background: var(--surface);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .rail__hourstrigger :global(.icon) {
+    flex-shrink: 0;
+  }
+</style>

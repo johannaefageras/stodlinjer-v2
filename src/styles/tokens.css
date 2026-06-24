@@ -76,7 +76,7 @@
 
   /* Modal scrim — a cool violet-dark dim behind dialogs (theme-aware, never the
      inverting --foreground, which would wash light over a dark page). */
-  --modal-scrim: oklch(0.18 0.02 285 / 0.45);
+  --modal-scrim: oklch(0.18 0.02 285 / 0.55);
 }
 
 /* Dark mode — warm near-black, never the old pure-neutral grey */
@@ -114,7 +114,7 @@
 
   /* Deeper, cooler dim in dark mode — separates the floating modal from the
      already-dark page that sits behind the blur. */
-  --modal-scrim: oklch(0.06 0.012 285 / 0.64);
+  --modal-scrim: oklch(0.06 0.012 285 / 0.72);
 }
 
 @media (prefers-color-scheme: dark) {

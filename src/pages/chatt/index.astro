@@ -1,8 +1,8 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import SiteHeader from "../../components/SiteHeader.astro";
-import SiteFooter from "../../components/SiteFooter.astro";
 import Stodkompassen from "../../components/stodkompassen/Stodkompassen.astro";
+import Mascot from "../../components/stodkompassen/Mascot.astro";
 ---
 
 <BaseLayout
@@ -13,6 +13,10 @@ import Stodkompassen from "../../components/stodkompassen/Stodkompassen.astro";
 
   <main id="main" class="chat-page container--wide">
     <header class="chat-intro">
+      <span class="chat-intro__avatar">
+        <Mascot size={40} />
+        <span class="chat-intro__dot" aria-hidden="true"></span>
+      </span>
       <h1 class="chat-intro__title">Fråga Stödkompassen</h1>
       <p class="chat-intro__lede">
         Berätta hur du har det, så hjälper Stödkompassen dig vidare till rätt
@@ -24,19 +28,98 @@ import Stodkompassen from "../../components/stodkompassen/Stodkompassen.astro";
       <Stodkompassen variant="page" />
     </div>
   </main>
-
-  <SiteFooter />
 </BaseLayout>
 
 <style>
+  /* /chatt/ is a full-height app surface: the header sits on top, and the chat
+     region fills the rest of the viewport. The card flex-fills the space left
+     under the hero, so the only thing that scrolls is the chat log inside it —
+     no page scroll, no second scrollbar. (No site footer here; the chat is the
+     surface, and the footer's links live on every other page.)
+
+     ~67px is the sticky header's height; subtracting a touch more guarantees we
+     under-fill rather than overflow (which would re-introduce a page scrollbar). */
   .chat-page {
-    padding-block: clamp(var(--space-8), 5vw, var(--space-12)) var(--space-12);
+    position: relative;
+    isolation: isolate;
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100vh - 70px);
+    min-height: calc(100svh - 70px);
+    padding-block: clamp(var(--space-4), 3vw, var(--space-8)) var(--space-6);
   }
+
+  /* ── Ambient periwinkle field ──────────────────────────────────
+     Two soft radial washes (mixed from the brand accent) give the card an
+     intentional environment to rest in, so its flat surface separates from the
+     page instead of floating in a void. Decorative + non-interactive. The mix
+     references --accent, so dark mode adapts via the token shift. */
+  .chat-page::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background:
+      radial-gradient(
+        52% 38% at 50% 28%,
+        color-mix(in oklch, var(--accent) 14%, transparent),
+        transparent 72%
+      ),
+      radial-gradient(
+        64% 46% at 50% 82%,
+        color-mix(in oklch, var(--accent) 7%, transparent),
+        transparent 76%
+      );
+    animation: chat-fade 0.8s ease both;
+  }
+  /* Dark-mode accent is brighter — dial the wash back so it stays calm. */
+  :global(:root[data-theme="dark"]) .chat-page::before {
+    background:
+      radial-gradient(
+        52% 38% at 50% 28%,
+        color-mix(in oklch, var(--accent) 9%, transparent),
+        transparent 72%
+      ),
+      radial-gradient(
+        64% 46% at 50% 82%,
+        color-mix(in oklch, var(--accent) 5%, transparent),
+        transparent 76%
+      );
+  }
+
   .chat-intro {
+    flex-shrink: 0;
     text-align: center;
     max-width: var(--measure);
     margin: 0 auto var(--space-6);
+    animation: chat-rise 0.45s ease both;
   }
+
+  /* Compact mascot avatar — echoes the chat header's identity as a quiet brand
+     mark. The full waving mascot still lives inside the card's welcome state. */
+  .chat-intro__avatar {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: 64px;
+    height: 64px;
+    margin: 0 auto var(--space-4);
+    border-radius: var(--radius-pill);
+    background: var(--accent-soft);
+    color: var(--accent);
+  }
+  .chat-intro__dot {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--accent);
+    border: 2px solid var(--background);
+  }
+
   .chat-intro__title {
     font-size: clamp(2rem, 4.4vw, 3rem);
     font-weight: 400;
@@ -50,14 +133,48 @@ import Stodkompassen from "../../components/stodkompassen/Stodkompassen.astro";
     margin: var(--space-4) auto 0;
   }
 
-  /* The chat is a self-contained card centred in the reading column. */
+  /* The chat card flex-fills the space under the hero, so it's always fully
+     visible and only its inner log scrolls. min-height keeps it usable on short
+     screens; max-width keeps the reading measure comfortable. Soft, periwinkle-
+     tinted shadow so it belongs in the glow rather than punching a hole in it. */
   .chat-card {
-    max-width: 600px;
+    flex: 1 1 auto;
+    width: 100%;
+    max-width: 720px;
+    min-height: 360px;
     margin: 0 auto;
-    height: clamp(520px, 70vh, 800px);
     border: var(--hairline) solid var(--border);
     border-radius: var(--radius-xl);
-    box-shadow: 0 30px 70px -34px oklch(0 0 0 / 0.4);
+    box-shadow:
+      0 2px 6px -2px oklch(0.2 0.04 285 / 0.16),
+      0 26px 54px -30px oklch(0.2 0.05 285 / 0.42);
     overflow: hidden;
+    animation: chat-rise 0.5s ease 0.05s both;
+  }
+
+  @keyframes chat-rise {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  @keyframes chat-fade {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .chat-intro,
+    .chat-card,
+    .chat-page::before {
+      animation: none;
+    }
   }
 </style>
