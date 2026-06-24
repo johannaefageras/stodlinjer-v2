@@ -462,3 +462,11 @@ const greeting =
     font-size: 1rem;
   }
 </style>
+
+<!-- Client logic for every `.sk` surface (the /chatt/ page and the launcher
+     panel both render this component). Imported for side effects — chat.ts
+     self-initialises via `document.querySelectorAll(".sk").forEach(initChat)`.
+     Astro bundles and dedupes this, so it loads once per page. -->
+<script>
+  import "./chat.ts";
+</script>
