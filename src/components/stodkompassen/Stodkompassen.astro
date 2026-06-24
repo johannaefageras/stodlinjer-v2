@@ -364,6 +364,28 @@ const greeting =
     border-top-color: color-mix(in oklch, var(--border) 60%, transparent);
   }
 
+  /* Cards fade + rise in once, when first streamed into the conversation, so
+     they feel placed rather than popped. Text bubbles grow in place (no
+     animation). The class is added by chat.ts only on a card's first render. */
+  .sk-card--enter {
+    animation: sk-card-in 0.32s ease both;
+  }
+  @keyframes sk-card-in {
+    from {
+      opacity: 0;
+      transform: translateY(6px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .sk-card--enter {
+      animation: none;
+    }
+  }
+
   /* ── Footer (composer · one quiet safety note) ─────────────── */
   .sk__footer {
     flex-shrink: 0;

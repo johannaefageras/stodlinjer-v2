@@ -139,9 +139,10 @@ const CATALOG_INTRO = `# Katalog över stödlinjer (en av två källor du får r
 Formatet är: [slug] Namn (Organisation) — Kategori, följt av beskrivning och fakta.
 `;
 
-const ARTICLE_INTRO = `# Katalog över artiklar (den andra källan — använd [[article:slug]])
+const ARTICLE_INTRO = `# Katalog över artiklar (den andra källan — använd [[article:ämne/slug]])
 Rekommendera en artikel när personen vill förstå, läsa eller orientera sig, eller som komplement till en stödlinje. Välj bara slugs härifrån.
-Formatet är: [slug] Titel — ämnesområde :: kort beskrivning.
+Formatet är: [ämne/slug] Titel — ämnesområde :: kort beskrivning.
+Vissa artiklar har raden "passande stödlinjer" — det är förslag på linjer som ofta hör ihop med ämnet. Du får gärna rekommendera en sådan linje tillsammans med artikeln när det passar, men det är inget krav, och du väljer alltid det som stämmer bäst med personens situation.
 `;
 
 export type UiMode = "widget" | "page";
@@ -159,7 +160,7 @@ export async function buildSystemPrompt(uiMode: UiMode = "page"): Promise<string
   if (hit) return hit;
   const [lines, articles] = await Promise.all([activeLines(), publishedArticles()]);
   const lineCatalog = lines.map(catalogEntry).join("\n\n");
-  const articleCatalog = articles.map(articleCatalogEntry).join("\n");
+  const articleCatalog = articles.map((a) => articleCatalogEntry(a, lines)).join("\n");
   const profile = uiMode === "widget" ? WIDGET_PROFILE : PAGE_PROFILE;
   const prompt =
     `${CORE}\n\n${profile}\n\n` +
@@ -183,6 +184,101 @@ function articleKeyOf(entry: Article): string {
   return entry.id; // glob id is already "collection/slug"
 }
 
+// ── Tag-based article→line association ───────────────────────────────────────
+//
+// relatedSupportLines is defined in the CMS but unused across the corpus (the
+// relevant lines are written into each article's prose instead). So instead of
+// reading an empty field, we INFER companion lines at build time from an
+// article's tags + collection against each line's helpsWith / category keywords
+// / targetGroups. These are surfaced in the catalog as *suggested* lines — a
+// ranked hint the model may use when recommending an article, never a mandate.
+//
+// The scoring is deliberately simple and transparent: token overlap with light
+// Swedish suffix-stripping, generic emotional tokens discounted (they match
+// everything), and a strong bonus when the article's collection aligns with the
+// line's category. A minimum threshold suppresses weak single-token flukes.
+
+function normToken(s: string): string {
+  return s.toLowerCase().replace(/[^\p{L}\p{N}\s-]/gu, " ").trim();
+}
+function stemToken(w: string): string {
+  for (const suf of ["andet", "ande", "arna", "erna", "orna", "tankar", "tanke", "else", "ning", "ade", "are", "or", "er", "ar", "en", "et", "na"]) {
+    if (w.length > suf.length + 2 && w.endsWith(suf)) return w.slice(0, -suf.length);
+  }
+  return w;
+}
+function toTokens(s: string): string[] {
+  return normToken(s).split(/[\s-]+/).filter(Boolean).map(stemToken);
+}
+
+// Emotionally generic tokens present on many lines/articles; a match here is
+// weak evidence, so it's discounted rather than counted at full weight.
+const GENERIC_TOKENS = new Set(
+  ["oro", "angst", "angest", "ensam", "ensamh", "skam", "stod", "sok", "soka", "hjalp", "sjalvhjalp", "mae", "maen", "daligt", "kris", "samtalsstod", "vard", "trygg", "vuxen"].map(stemToken),
+);
+
+// Article collection → the line category it most aligns with. Used for a strong
+// topical bonus. Collections without a clean 1:1 line category map to
+// mental_health, the broadest support category.
+const COLLECTION_TO_CATEGORY: Record<string, string> = {
+  "akut-och-kris": "mental_health",
+  "beroende-och-missbruk": "substance_use",
+  "hbtqi-och-identitet": "identity_inclusion",
+  "sorg-och-forandring": "grief_loss",
+  "barn-och-unga": "children_youth",
+  "att-vara-anhorig": "family_parenting",
+  "kvinnors-halsa": "mental_health",
+  "mans-halsa": "mental_health",
+  "forsta-ditt-maende": "mental_health",
+  "annorlunda-hjarnor": "mental_health",
+  "rattigheter-och-stod": "rights_public_authority",
+  "verktyg-och-sjalvhjalp": "mental_health",
+};
+
+const ASSOC_MIN_SCORE = 2.5;
+const ASSOC_MAX_LINES = 3;
+
+// Weighted token set for a line (helpsWith/keywords = 2, group/category = 1;
+// generic tokens capped at 1 regardless of source).
+function lineTokenWeights(line: Line): Map<string, number> {
+  const m = new Map<string, number>();
+  const cat = catById[line.data.category.id];
+  const add = (arr: string[], w: number) => {
+    for (const x of arr)
+      for (const t of toTokens(x)) {
+        const weight = GENERIC_TOKENS.has(t) ? Math.min(w, 1) : w;
+        m.set(t, Math.max(m.get(t) ?? 0, weight));
+      }
+  };
+  add(line.data.helpsWith, 2);
+  add(cat?.keywords ?? [], 2);
+  add(line.data.targetGroups, 1);
+  add([line.data.category.id], 1);
+  return m;
+}
+
+function associationScore(entry: Article, line: Line, lw: Map<string, number>): number {
+  const at = new Set<string>();
+  for (const tag of entry.data.tags ?? []) toTokens(tag).forEach((t) => at.add(t));
+  let s = 0;
+  for (const t of at) {
+    const w = lw.get(t);
+    if (w) s += GENERIC_TOKENS.has(t) ? 0.5 : w;
+  }
+  if (COLLECTION_TO_CATEGORY[entry.data.collection] === line.data.category.id) s += 3;
+  return s;
+}
+
+/** Top companion-line slugs for an article, ranked, above the score threshold. */
+function suggestedLineSlugs(entry: Article, lines: Line[]): string[] {
+  return lines
+    .map((line) => ({ slug: line.data.slug, score: associationScore(entry, line, lineTokenWeights(line)) }))
+    .filter((r) => r.score >= ASSOC_MIN_SCORE)
+    .sort((a, b) => b.score - a.score)
+    .slice(0, ASSOC_MAX_LINES)
+    .map((r) => r.slug);
+}
+
 // Published (non-draft) articles, newest first, so the model sees current
 // material at the top. Small corpus (~150) — fine to inject wholesale.
 async function publishedArticles(): Promise<Article[]> {
@@ -190,10 +286,12 @@ async function publishedArticles(): Promise<Article[]> {
   return articles.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 }
 
-function articleCatalogEntry(entry: Article): string {
+function articleCatalogEntry(entry: Article, lines: Line[]): string {
   const d = entry.data;
   const topic = getArticleCollection(d.collection).label || d.collection;
-  return `[${articleKeyOf(entry)}] ${d.title} — ${topic} :: ${d.description}`;
+  const suggested = suggestedLineSlugs(entry, lines);
+  const companion = suggested.length ? `\n  passande stödlinjer: ${suggested.join(", ")}` : "";
+  return `[${articleKeyOf(entry)}] ${d.title} — ${topic} :: ${d.description}${companion}`;
 }
 
 // ── Client-facing display data (for rendering recommended-line cards) ───────

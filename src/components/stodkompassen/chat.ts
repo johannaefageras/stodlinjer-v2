@@ -234,22 +234,24 @@ function initChat(root: HTMLElement) {
     return card;
   }
 
-  // Split an assistant turn into lavender text bubbles + standalone cards.
-  // While streaming (final = false) a dangling, not-yet-closed `[[…` tail is
-  // hidden so a half-typed marker never flashes as broken text.
-  function renderAssistant(el: HTMLElement, text: string, final: boolean) {
-    el.replaceChildren();
+  // Parse an assistant turn into an ordered list of segments: text blocks and
+  // card references. Pure (no DOM) so it can be diffed against what's rendered.
+  type Seg =
+    | { kind: "text"; value: string }
+    | { kind: "line"; slug: string }
+    | { kind: "article"; slug: string };
+
+  function parseSegments(text: string, final: boolean): Seg[] {
+    // While streaming, hide a dangling, not-yet-closed `[[…` tail so a half-typed
+    // marker never flashes as broken text or renders a card a token too early.
     if (!final) {
       const open = text.lastIndexOf("[[");
       if (open >= 0 && !/\]\]/.test(text.slice(open))) text = text.slice(0, open);
     }
+    const segs: Seg[] = [];
     const pushText = (s: string) => {
       const t = s.trim();
-      if (!t) return;
-      const b = document.createElement("div");
-      b.className = "sk-bubble";
-      renderText(b, t);
-      el.appendChild(b);
+      if (t) segs.push({ kind: "text", value: t });
     };
     MARKER.lastIndex = 0;
     let last = 0;
@@ -257,16 +259,78 @@ function initChat(root: HTMLElement) {
     while ((m = MARKER.exec(text))) {
       if (m.index > last) pushText(text.slice(last, m.index));
       const [, kind, slug] = m;
-      if (kind === "line") {
-        const line = lines[slug];
-        if (line) el.appendChild(lineCard(line)); // unknown slug → render nothing
-      } else if (kind === "article") {
-        const article = articles[slug];
-        if (article) el.appendChild(articleCard(article));
-      }
+      // Only emit a card segment if the slug resolves to verified data;
+      // unknown slugs render nothing (and don't disturb the diff).
+      if (kind === "line" && lines[slug]) segs.push({ kind: "line", slug });
+      else if (kind === "article" && articles[slug]) segs.push({ kind: "article", slug });
       last = m.index + m[0].length;
     }
     if (last < text.length) pushText(text.slice(last));
+    return segs;
+  }
+
+  // A stable signature per segment, used to tell whether an already-rendered
+  // child can stay (text nodes keyed by position+kind; cards by slug).
+  function segKey(seg: Seg, index: number): string {
+    return seg.kind === "text" ? `text:${index}` : `${seg.kind}:${seg.slug}`;
+  }
+
+  function renderSeg(seg: Seg, animateCards: boolean): HTMLElement {
+    if (seg.kind === "text") {
+      const b = document.createElement("div");
+      b.className = "sk-bubble";
+      renderText(b, seg.value);
+      return b;
+    }
+    const card =
+      seg.kind === "line" ? lineCard(lines[seg.slug]) : articleCard(articles[seg.slug]);
+    // Animate cards in (cards only — text bubbles grow in place, no pop), but
+    // only for live streaming; replayed history should appear already settled.
+    if (animateCards) card.classList.add("sk-card--enter");
+    return card;
+  }
+
+  // Render (and re-render during streaming) by DIFFING against what's already
+  // in the DOM, rather than replacing everything each token. This keeps already
+  // rendered cards alive (no flicker, animation plays once), and lets a growing
+  // trailing text block update in place instead of being torn down and rebuilt.
+  // `animateCards` is true while streaming a new reply, false when replaying
+  // stored history (so old cards don't all animate in on page load).
+  function renderAssistant(el: HTMLElement, text: string, final: boolean, animateCards = true) {
+    const segs = parseSegments(text, final);
+    const children = Array.from(el.children) as HTMLElement[];
+
+    for (let i = 0; i < segs.length; i++) {
+      const seg = segs[i];
+      const key = segKey(seg, i);
+      const existing = children[i];
+
+      if (existing && existing.dataset.segKey === key) {
+        // Same slot, same identity. Text may have grown mid-stream → refresh
+        // its content in place; cards are immutable so leave them untouched.
+        if (seg.kind === "text") {
+          const next = seg.value;
+          if (existing.dataset.segText !== next) {
+            existing.replaceChildren();
+            renderText(existing, next);
+            existing.dataset.segText = next;
+          }
+        }
+        continue;
+      }
+
+      // Identity changed at this position → replace from here down. (Cards
+      // never change identity once committed, so in practice this only fires
+      // for the trailing text slot or when a new segment is appended.)
+      const node = renderSeg(seg, animateCards);
+      node.dataset.segKey = key;
+      if (seg.kind === "text") node.dataset.segText = seg.value;
+      if (existing) el.replaceChild(node, existing);
+      else el.appendChild(node);
+    }
+
+    // Drop any stale trailing children (e.g. the streaming tail shrank).
+    while (el.children.length > segs.length) el.removeChild(el.lastChild!);
   }
 
   // ── sending ───────────────────────────────────────────────────────────
@@ -366,7 +430,7 @@ function initChat(root: HTMLElement) {
       [lines, articles] = await Promise.all([loadLines(), loadArticles()]);
       for (const m of messages) {
         const el = bubble(m.role);
-        if (m.role === "assistant") renderAssistant(el, m.content, true);
+        if (m.role === "assistant") renderAssistant(el, m.content, true, false);
         else renderText(el, m.content);
       }
       scrollToEnd();

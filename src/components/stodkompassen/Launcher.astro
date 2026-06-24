@@ -76,6 +76,11 @@ import Mascot from "./Mascot.astro";
     box-shadow: 0 30px 70px -24px oklch(0 0 0 / 0.5);
     overflow: hidden;
   }
+  /* `display: flex` above would otherwise override the UA `[hidden]` rule,
+     leaving the panel visible even when closed; restore hide-on-hidden. */
+  .launcher__panel[hidden] {
+    display: none;
+  }
 
   @media (prefers-reduced-motion: no-preference) {
     .launcher__panel:not([hidden]) {
