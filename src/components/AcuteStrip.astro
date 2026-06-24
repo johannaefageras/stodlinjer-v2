@@ -1,0 +1,136 @@
+---
+import Icon from "./Icon.astro";
+
+// Slim, always-visible emergency rail pinned above the site header. The two
+// numbers a person in acute danger needs — 112 (immediate danger to life) and
+// 90101 (Mind Självmordslinjen) — stay one tap away no matter how far they've
+// scrolled. Kept deliberately thin so it never competes with the search hero
+// for visual weight: this is a safety rail, not the focal point.
+---
+
+<aside class="acute-strip" role="note" aria-label="Akut hjälp">
+  <div class="acute-strip__inner container--wide">
+    <span class="acute-strip__icon" aria-hidden="true">
+      <Icon name="ambulance-with-medical-cross" size={16} />
+    </span>
+    <p class="acute-strip__text">
+      <span class="acute-strip__item">
+        <span class="acute-strip__lead">Akut fara för liv?</span>
+        <span class="acute-strip__ring">Ring</span>
+        <a class="acute-strip__num mono" href="tel:112">112</a>
+      </span>
+      <span class="acute-strip__sep" aria-hidden="true"></span>
+      <span class="acute-strip__item">
+        <span class="acute-strip__lead">Självmordstankar?</span>
+        <span class="acute-strip__ring">Ring</span>
+        <a class="acute-strip__num mono" href="tel:90101">90101</a>
+      </span>
+    </p>
+  </div>
+</aside>
+
+<style>
+  .acute-strip {
+    position: sticky;
+    top: 0;
+    z-index: 55; /* above the header (50), below the skip-link (100) */
+    background: var(--urgency-emergency-soft);
+    border-bottom: var(--hairline) solid
+      color-mix(in oklch, var(--urgency-emergency) 28%, transparent);
+  }
+  .acute-strip__inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    min-height: var(--acute-strip-h, 40px);
+    padding-block: var(--space-2);
+  }
+  .acute-strip__icon {
+    display: flex;
+    color: var(--urgency-emergency);
+    flex-shrink: 0;
+  }
+  .acute-strip__text {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    flex-wrap: wrap;
+    justify-content: center;
+    font-size: 0.875rem;
+    line-height: 1.3;
+    color: var(--foreground);
+  }
+  .acute-strip__item {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 6px;
+  }
+  .acute-strip__lead {
+    color: var(--muted);
+  }
+  .acute-strip__num {
+    font-weight: 600;
+    font-size: 0.9375rem;
+    color: var(--urgency-emergency);
+    text-decoration: underline;
+    text-decoration-color: color-mix(in oklch, var(--urgency-emergency) 40%, transparent);
+    text-underline-offset: 2px;
+  }
+  .acute-strip__num:hover {
+    text-decoration-color: var(--urgency-emergency);
+  }
+  /* A hairline dot between the two numbers. */
+  .acute-strip__sep {
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: color-mix(in oklch, var(--urgency-emergency) 55%, transparent);
+    flex-shrink: 0;
+  }
+
+  /* Phones: drop the lead questions and the "Ring" verb so the rail stays a
+     single tight line — just the icon and the two tappable numbers. */
+  @media (max-width: 560px) {
+    .acute-strip__lead,
+    .acute-strip__ring {
+      display: none;
+    }
+    .acute-strip__text {
+      gap: var(--space-2);
+    }
+    .acute-strip__num::before {
+      /* Re-introduce a tiny label so a bare "112 · 90101" still reads clearly. */
+      content: "Akut ";
+      font-family: var(--font-sans);
+      font-weight: 400;
+      color: var(--muted);
+      text-decoration: none;
+    }
+    .acute-strip__item:last-child .acute-strip__num::before {
+      content: "Självmordstankar ";
+    }
+  }
+  @media (max-width: 380px) {
+    .acute-strip__num::before,
+    .acute-strip__item:last-child .acute-strip__num::before {
+      content: none;
+    }
+  }
+</style>
+
+<script>
+  // Pin every sticky topbar exactly below the strip's real rendered height
+  // (it can wrap taller than the 40px token on the narrowest screens). The
+  // token defaults to 40px in tokens.css so the offset is right before this runs.
+  const strip = document.querySelector<HTMLElement>(".acute-strip");
+  if (strip) {
+    const sync = () =>
+      document.documentElement.style.setProperty(
+        "--acute-strip-h",
+        `${strip.offsetHeight}px`,
+      );
+    sync();
+    window.addEventListener("resize", sync);
+  }
+</script>

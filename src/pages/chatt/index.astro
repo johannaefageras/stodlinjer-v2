@@ -2,7 +2,6 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import SiteHeader from "../../components/SiteHeader.astro";
 import Stodkompassen from "../../components/stodkompassen/Stodkompassen.astro";
-import Mascot from "../../components/stodkompassen/Mascot.astro";
 ---
 
 <BaseLayout
@@ -12,17 +11,9 @@ import Mascot from "../../components/stodkompassen/Mascot.astro";
   <SiteHeader />
 
   <main id="main" class="chat-page container--wide">
-    <header class="chat-intro">
-      <span class="chat-intro__avatar">
-        <Mascot size={40} />
-        <span class="chat-intro__dot" aria-hidden="true"></span>
-      </span>
-      <h1 class="chat-intro__title">Fråga Stödkompassen</h1>
-      <p class="chat-intro__lede">
-        Berätta hur du har det, så hjälper Stödkompassen dig vidare till rätt
-        stöd. Du kan vara helt anonym.
-      </p>
-    </header>
+    {/* The card carries the full identity (its own header + welcome mascot +
+        greeting), so the page heading is visually hidden — kept for a11y/SEO. */}
+    <h1 class="sr-only">Fråga Stödkompassen</h1>
 
     <div class="chat-card">
       <Stodkompassen variant="page" />
@@ -38,14 +29,18 @@ import Mascot from "../../components/stodkompassen/Mascot.astro";
      surface, and the footer's links live on every other page.)
 
      ~67px is the sticky header's height; subtracting a touch more guarantees we
-     under-fill rather than overflow (which would re-introduce a page scrollbar). */
+     under-fill rather than overflow (which would re-introduce a page scrollbar).
+     The sticky AcuteStrip above the header eats another --acute-strip-h. */
   .chat-page {
     position: relative;
     isolation: isolate;
     display: flex;
     flex-direction: column;
-    min-height: calc(100vh - 70px);
-    min-height: calc(100svh - 70px);
+    /* A fixed height (not min-height) so the height chain stays definite all the
+       way down to .sk__log — only the chat log scrolls, the page never grows. */
+    height: calc(100vh - 70px - var(--acute-strip-h, 0px));
+    height: calc(100svh - 70px - var(--acute-strip-h, 0px));
+    min-height: 0;
     padding-block: clamp(var(--space-4), 3vw, var(--space-8)) var(--space-6);
   }
 
@@ -88,52 +83,7 @@ import Mascot from "../../components/stodkompassen/Mascot.astro";
       );
   }
 
-  .chat-intro {
-    flex-shrink: 0;
-    text-align: center;
-    max-width: var(--measure);
-    margin: 0 auto var(--space-6);
-    animation: chat-rise 0.45s ease both;
-  }
-
-  /* Compact mascot avatar — echoes the chat header's identity as a quiet brand
-     mark. The full waving mascot still lives inside the card's welcome state. */
-  .chat-intro__avatar {
-    position: relative;
-    display: grid;
-    place-items: center;
-    width: 64px;
-    height: 64px;
-    margin: 0 auto var(--space-4);
-    border-radius: var(--radius-pill);
-    background: var(--accent-soft);
-    color: var(--accent);
-  }
-  .chat-intro__dot {
-    position: absolute;
-    top: 5px;
-    right: 5px;
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: var(--accent);
-    border: 2px solid var(--background);
-  }
-
-  .chat-intro__title {
-    font-size: clamp(2rem, 4.4vw, 3rem);
-    font-weight: 400;
-    line-height: 1.1;
-    letter-spacing: -0.01em;
-  }
-  .chat-intro__lede {
-    font-size: clamp(1.02rem, 1.4vw, 1.15rem);
-    color: var(--muted);
-    line-height: 1.55;
-    margin: var(--space-4) auto 0;
-  }
-
-  /* The chat card flex-fills the space under the hero, so it's always fully
+  /* The chat card fills the whole surface (no page hero), so it's always fully
      visible and only its inner log scrolls. min-height keeps it usable on short
      screens; max-width keeps the reading measure comfortable. Soft, periwinkle-
      tinted shadow so it belongs in the glow rather than punching a hole in it. */
@@ -171,7 +121,6 @@ import Mascot from "../../components/stodkompassen/Mascot.astro";
     }
   }
   @media (prefers-reduced-motion: reduce) {
-    .chat-intro,
     .chat-card,
     .chat-page::before {
       animation: none;

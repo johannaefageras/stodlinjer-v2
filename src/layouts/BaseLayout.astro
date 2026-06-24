@@ -3,6 +3,7 @@ import "../styles/tokens.css";
 import "../styles/icons.css";
 import "../styles/global.css";
 import Launcher from "../components/stodkompassen/Launcher.astro";
+import AcuteStrip from "../components/AcuteStrip.astro";
 
 interface Props {
   title: string;
@@ -52,6 +53,7 @@ const showLauncher = !Astro.url.pathname.startsWith("/chatt");
   </head>
   <body>
     <a href="#main" class="skip-link">Hoppa till innehåll</a>
+    <AcuteStrip />
     <slot />
     {showLauncher && <Launcher />}
     <style>

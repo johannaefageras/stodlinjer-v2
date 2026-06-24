@@ -177,6 +177,13 @@ const greeting =
       scroll-behavior: auto;
     }
   }
+  /* Centre the welcome (mascot + greeting) while the log is empty. Once the
+     first message arrives the log reverts to top-aligned, scrollable flow.
+     `safe center` falls back to top-alignment if the welcome ever exceeds the
+     log height (very short screens), so its top can never be clipped. */
+  .sk__log:not(:has(.sk-msg)) {
+    justify-content: safe center;
+  }
 
   /* ── Welcome state (mascot + greeting, before the first reply) ──── */
   .sk__welcome {

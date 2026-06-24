@@ -44,7 +44,9 @@ const isArticles = path.startsWith("/artiklar");
 <style>
   .topbar {
     position: sticky;
-    top: 0;
+    /* Sits flush below the sticky AcuteStrip when present (homepage); the
+       variable defaults to 0 on pages without the strip. */
+    top: var(--acute-strip-h, 0);
     z-index: 50;
     border-bottom: var(--hairline) solid var(--border);
     background: color-mix(in oklch, var(--background) 80%, transparent);

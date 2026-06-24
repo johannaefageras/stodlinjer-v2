@@ -11,14 +11,14 @@ const { placeholder = "Sök stödlinjer…" } = Astro.props;
 ---
 
 <div class="searchbar" role="search">
-  <label for="line-search" class="sr-only">Sök stödlinjer</label>
+  <label for="line-search-floating" class="sr-only">Sök stödlinjer</label>
   <span class="searchbar__icon" aria-hidden="true">
     <Icon name="round-magnifying-glass" size={20} />
   </span>
   <input
-    id="line-search"
+    id="line-search-floating"
     type="search"
-    class="searchbar__input"
+    class="js-line-search searchbar__input"
     placeholder={placeholder}
     autocomplete="off"
     spellcheck="false"
@@ -61,6 +61,22 @@ const { placeholder = "Sök stödlinjer…" } = Astro.props;
       0 2px 4px -1px oklch(0 0 0 / 0.1),
       0 14px 28px -8px oklch(0 0 0 / 0.26),
       0 32px 64px -18px oklch(0 0 0 / 0.48);
+  }
+
+  /* Progressive enhancement: the homepage script adds `is-collapsible` so the
+     bar starts hidden and only slides up once the hero search scrolls away.
+     Without JS the class is never added, so the bar stays visible. The hidden
+     transform keeps the -50% horizontal centring. */
+  .searchbar.is-collapsible {
+    opacity: 0;
+    transform: translate(-50%, 16px);
+    pointer-events: none;
+    transition: opacity 0.2s ease, transform 0.2s ease, box-shadow 0.16s ease;
+  }
+  .searchbar.is-collapsible.is-visible {
+    opacity: 1;
+    transform: translateX(-50%);
+    pointer-events: auto;
   }
   .searchbar__icon {
     display: flex;

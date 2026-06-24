@@ -71,18 +71,27 @@ function cardPropsOf(line: Line) {
   <main id="main">
     <section class="hero container--wide">
       <p class="hero__eyebrow mono">{lines.length} stödlinjer · {categories.length} kategorier</p>
-      <h1 class="hero__title">Hitta rätt stöd,<br /><em>när du behöver det.</em></h1>
+      <h1 class="hero__title">Behöver du hjälp nu?</h1>
       <p class="hero__lede">
-        Sveriges stödlinjer och krisresurser samlade på ett ställe. Anonymt,
-        kostnadsfritt och tillgängligt dygnet runt.
+        Hitta rätt stödlinje — anonymt, kostnadsfritt och dygnet runt.
       </p>
-      <div class="hero__actions">
-        <a class="btn btn--primary" href="#stodlinjer">Sök stödlinjer</a>
-        <a class="btn btn--ghost" href="/chatt/">Fråga Stödkompassen</a>
-      </div>
-    </section>
 
-    <section id="stodlinjer" class="lines container--wide">
+      <div class="hero-search" role="search">
+        <span class="hero-search__icon" aria-hidden="true">
+          <Icon name="round-magnifying-glass" size={22} />
+        </span>
+        <label for="line-search" class="sr-only">Sök stödlinjer</label>
+        <input
+          id="line-search"
+          type="search"
+          class="js-line-search hero-search__input"
+          placeholder="Sök stöd — t.ex. ångest, våld, ekonomi…"
+          autocomplete="off"
+          spellcheck="false"
+        />
+        <kbd class="hero-search__kbd" aria-hidden="true">⌘K</kbd>
+      </div>
+
       <div class="pills-wrap">
         <button
           class="pills-nav pills-nav--left"
@@ -115,7 +124,9 @@ function cardPropsOf(line: Line) {
           <Icon name="right-chevron" size={18} />
         </button>
       </div>
+    </section>
 
+    <section id="stodlinjer" class="lines container--wide">
       <div class="grid">
         {
           lines.map((line) => {
@@ -148,10 +159,6 @@ function cardPropsOf(line: Line) {
       </p>
     </section>
 
-    <div class="crisis">
-      <span class="crisis__dot" aria-hidden="true"></span>
-      Akut fara för liv? Ring <span class="mono">112</span>.
-    </div>
   </main>
 
   <SiteFooter />
@@ -178,7 +185,9 @@ function cardPropsOf(line: Line) {
   /* ── Hero ───────────────────────────────────────────────── */
   .hero {
     text-align: center;
-    padding-block: clamp(var(--space-12), 9vw, 120px) var(--space-12);
+    /* Compact enough that the search field + category filters clear the fold
+       on a laptop — the hero is an entry point, not a landing splash. */
+    padding-block: clamp(var(--space-8), 5vw, var(--space-16)) var(--space-8);
   }
   .hero__eyebrow {
     font-size: 0.8125rem;
@@ -187,14 +196,14 @@ function cardPropsOf(line: Line) {
     margin-bottom: var(--space-6);
   }
   .hero__title {
-    /* Dropped to 400 at display size so GT Alpina's contrast stays
-       elegant rather than heavy. */
-    font-size: clamp(2.5rem, 6.6vw, 5.1rem);
+    /* Kept at 400 so GT Alpina's contrast stays elegant rather than heavy.
+       Smaller than a splash headline — it frames the search, doesn't upstage it. */
+    font-size: clamp(2rem, 5vw, 3.4rem);
     font-weight: 400;
-    line-height: 1.06;
+    line-height: 1.08;
     letter-spacing: -0.01em;
     margin-inline: auto;
-    max-width: min(16ch, 100%);
+    max-width: min(20ch, 100%);
     overflow-wrap: break-word;
   }
   .hero__title em {
@@ -202,56 +211,82 @@ function cardPropsOf(line: Line) {
     color: var(--muted);
   }
   .hero__lede {
-    font-size: clamp(1.08rem, 1.5vw, 1.25rem);
+    font-size: clamp(1.02rem, 1.4vw, 1.15rem);
     color: var(--muted);
     line-height: 1.55;
-    margin: var(--space-6) auto 0;
+    margin: var(--space-4) auto 0;
     max-width: var(--measure);
   }
-  .hero__actions {
+
+  /* ── Hero search — the focal point ──────────────────────── */
+  .hero-search {
     display: flex;
-    gap: var(--space-3);
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-top: var(--space-8);
-  }
-  .btn {
-    display: inline-flex;
     align-items: center;
-    gap: 6px;
-    font-size: 0.96875rem;
-    font-weight: 500;
-    padding: 11px 22px;
-    border: var(--hairline) solid transparent;
+    gap: var(--space-3);
+    width: min(620px, 100%);
+    margin: var(--space-8) auto 0;
+    padding: 14px 18px;
     border-radius: var(--radius-pill);
-    transition: background 0.15s ease, border-color 0.15s ease, transform 0.1s ease;
-  }
-  .btn:active {
-    transform: translateY(1px);
-  }
-  .btn--primary {
-    background: var(--accent);
-    color: var(--accent-fg);
-  }
-  .btn--primary:hover {
-    background: var(--accent-hover);
-  }
-  .btn--ghost {
-    border-color: var(--border-strong);
     background: var(--surface);
+    border: var(--hairline) solid var(--border-strong);
+    box-shadow:
+      0 1px 2px oklch(0 0 0 / 0.04),
+      0 12px 28px -12px oklch(0 0 0 / 0.18);
+    transition: box-shadow 0.16s ease, border-color 0.16s ease;
+  }
+  .hero-search:focus-within {
+    border-color: var(--accent);
+    box-shadow:
+      0 0 0 3px var(--accent-soft),
+      0 12px 28px -12px oklch(0 0 0 / 0.2);
+  }
+  .hero-search__icon {
+    display: flex;
+    color: var(--muted);
+    flex-shrink: 0;
+  }
+  .hero-search__input {
+    flex: 1;
+    min-width: 0;
+    border: 0;
+    outline: none;
+    background: transparent;
+    font: inherit;
+    font-size: 1.125rem;
     color: var(--foreground);
   }
-  .btn--ghost:hover {
-    background: var(--hover);
+  .hero-search__input::placeholder {
+    color: var(--subtle);
+  }
+  .hero-search__input::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+  }
+  .hero-search__kbd {
+    flex-shrink: 0;
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    color: var(--muted);
+    background: var(--accent-soft);
+    border: var(--hairline) solid var(--border);
+    border-radius: 7px;
+    padding: 6px 9px;
+    line-height: 1;
+  }
+  @media (max-width: 560px) {
+    .hero-search__kbd {
+      display: none;
+    }
   }
 
   /* ── Lines section ──────────────────────────────────────── */
   .lines {
     padding-bottom: var(--space-16);
+    /* Anchor jumps (/#stodlinjer) land clear of the sticky strip + header. */
+    scroll-margin-top: calc(var(--acute-strip-h, 0px) + 76px);
   }
   .pills-wrap {
     position: relative;
-    margin-bottom: var(--space-4);
+    margin-top: var(--space-6);
   }
   .pills {
     display: flex;
@@ -397,27 +432,6 @@ function cardPropsOf(line: Line) {
     font-size: 1rem;
   }
 
-  /* ── Crisis banner ──────────────────────────────────────── */
-  .crisis {
-    display: flex;
-    align-items: center;
-    gap: var(--space-2);
-    width: fit-content;
-    margin: 0 auto 96px; /* centred; bottom clears the floating search bar */
-    padding: 11px 18px;
-    border-radius: var(--radius-pill);
-    background: var(--urgency-emergency-soft);
-    color: var(--urgency-emergency);
-    font-size: 0.9375rem;
-  }
-  .crisis__dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: var(--urgency-emergency);
-    flex-shrink: 0;
-  }
-
   /* ── Support-line modal ─────────────────────────────────── */
   .line-modal {
     position: relative;
@@ -520,8 +534,10 @@ function cardPropsOf(line: Line) {
 </style>
 
 <script>
-  // Owns the category pills + the ⌘K search bar, filtering the card grid.
-  const input = document.getElementById("line-search") as HTMLInputElement | null;
+  // Owns the category pills + the two synced search fields (the hero field and
+  // the floating ⌘K bar), filtering the card grid.
+  const inputs = Array.from(document.querySelectorAll<HTMLInputElement>(".js-line-search"));
+  const heroInput = document.getElementById("line-search") as HTMLInputElement | null;
   const cards = Array.from(document.querySelectorAll<HTMLElement>("[data-card]"));
   const pills = Array.from(document.querySelectorAll<HTMLElement>(".pill"));
   const empty = document.getElementById("grid-empty");
@@ -541,18 +557,25 @@ function cardPropsOf(line: Line) {
     if (empty) empty.hidden = visible !== 0;
   }
 
-  input?.addEventListener("input", () => {
-    query = input.value.trim().toLowerCase();
-    apply();
-  });
-  input?.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") {
-      input.value = "";
-      query = "";
-      apply();
-      input.blur();
+  // One query, mirrored across every search field so the hero field and the
+  // floating bar always agree.
+  function setQuery(value: string) {
+    query = value.trim().toLowerCase();
+    for (const el of inputs) {
+      if (el.value !== value) el.value = value;
     }
-  });
+    apply();
+  }
+
+  for (const el of inputs) {
+    el.addEventListener("input", () => setQuery(el.value));
+    el.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        setQuery("");
+        el.blur();
+      }
+    });
+  }
 
   for (const pill of pills) {
     pill.addEventListener("click", () => {
@@ -586,13 +609,33 @@ function cardPropsOf(line: Line) {
   window.addEventListener("resize", updatePillNav);
   updatePillNav();
 
-  // ⌘K / Ctrl+K focuses the floating search bar.
+  // ── Floating bar: reveal on scroll past the hero field ───────────
+  // The hero search is primary; the floating ⌘K bar stays hidden until the hero
+  // field scrolls out of view, so there are never two competing fields on
+  // screen at once. It opts into the hidden state via JS, so without JS the bar
+  // simply stays visible (its filtering needs JS anyway).
+  const heroSearch = document.querySelector<HTMLElement>(".hero-search");
+  const floatingBar = document.querySelector<HTMLElement>(".searchbar");
+  const floatingInput = document.getElementById("line-search-floating") as HTMLInputElement | null;
+
+  if (heroSearch && floatingBar) {
+    floatingBar.classList.add("is-collapsible");
+    const io = new IntersectionObserver(
+      ([entry]) => floatingBar.classList.toggle("is-visible", !entry.isIntersecting),
+      { rootMargin: "-80px 0px 0px 0px" },
+    );
+    io.observe(heroSearch);
+  }
+
+  // ⌘K / Ctrl+K focuses whichever field is currently on screen.
   window.addEventListener("keydown", (e) => {
     if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
       e.preventDefault();
-      input?.focus();
+      const useFloating = floatingBar?.classList.contains("is-visible");
+      (useFloating ? floatingInput : heroInput)?.focus();
     }
   });
+
 
   // ── Support-line modal ────────────────────────────────────
   // Cards keep a real href to /stodlinjer/{slug}/ (the no-JS / shareable

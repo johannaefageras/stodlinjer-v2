@@ -59,6 +59,7 @@
   --content-wide: 1280px; /* card grid + topbar */
   --content-max: 760px;   /* article / reading width */
   --measure: 680px;       /* centred hero text */
+  --acute-strip-h: 40px;  /* sticky AcuteStrip height; JS refines to the exact rendered px */
 
   /* Category chip — monochrome periwinkle; emergency is the one rose exception.
      Non-emergency categories fall back to --accent-soft in the components. */

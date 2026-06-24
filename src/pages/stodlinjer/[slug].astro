@@ -43,7 +43,7 @@ const d = line.data;
   /* ── Topbar (slim) ──────────────────────────────────────── */
   .topbar {
     position: sticky;
-    top: 0;
+    top: var(--acute-strip-h, 0); /* stack below the sticky AcuteStrip */
     z-index: 50;
     border-bottom: var(--hairline) solid var(--border);
     background: color-mix(in oklch, var(--background) 80%, transparent);
