@@ -1,0 +1,63 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import SiteHeader from "../../components/SiteHeader.astro";
+import SiteFooter from "../../components/SiteFooter.astro";
+import Stodkompassen from "../../components/stodkompassen/Stodkompassen.astro";
+---
+
+<BaseLayout
+  title="Fråga Stödkompassen | Stödlinjer"
+  description="Stödkompassen hjälper dig hitta rätt svensk stödlinje för din situation. Berätta hur du har det — anonymt och kostnadsfritt."
+>
+  <SiteHeader />
+
+  <main id="main" class="chat-page container--wide">
+    <header class="chat-intro">
+      <h1 class="chat-intro__title">Fråga Stödkompassen</h1>
+      <p class="chat-intro__lede">
+        Berätta hur du har det, så hjälper Stödkompassen dig vidare till rätt
+        stöd. Du kan vara helt anonym.
+      </p>
+    </header>
+
+    <div class="chat-card">
+      <Stodkompassen variant="page" />
+    </div>
+  </main>
+
+  <SiteFooter />
+</BaseLayout>
+
+<style>
+  .chat-page {
+    padding-block: clamp(var(--space-8), 5vw, var(--space-12)) var(--space-12);
+  }
+  .chat-intro {
+    text-align: center;
+    max-width: var(--measure);
+    margin: 0 auto var(--space-6);
+  }
+  .chat-intro__title {
+    font-size: clamp(2rem, 4.4vw, 3rem);
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+  }
+  .chat-intro__lede {
+    font-size: clamp(1.02rem, 1.4vw, 1.15rem);
+    color: var(--muted);
+    line-height: 1.55;
+    margin: var(--space-4) auto 0;
+  }
+
+  /* The chat is a self-contained card centred in the reading column. */
+  .chat-card {
+    max-width: 600px;
+    margin: 0 auto;
+    height: clamp(520px, 70vh, 800px);
+    border: var(--hairline) solid var(--border);
+    border-radius: var(--radius-xl);
+    box-shadow: 0 30px 70px -34px oklch(0 0 0 / 0.4);
+    overflow: hidden;
+  }
+</style>

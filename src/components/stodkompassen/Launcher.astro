@@ -1,0 +1,138 @@
+---
+import Stodkompassen from "./Stodkompassen.astro";
+import Mascot from "./Mascot.astro";
+
+// Floating, site-wide entry point to Stödkompassen. Opens a panel that mounts
+// the same chat surface used on /chatt/ (which owns its own header + close
+// button). Included from BaseLayout on every page except /chatt/ itself.
+---
+
+<div class="launcher" data-sk-launcher>
+  <button
+    class="launcher__btn"
+    type="button"
+    data-sk-open
+    aria-expanded="false"
+    aria-controls="sk-panel"
+  >
+    <span class="sk-avatar launcher__avatar">
+      <Mascot size={22} />
+    </span>
+    <span class="launcher__label">Fråga Stödkompassen</span>
+  </button>
+
+  <div class="launcher__panel" id="sk-panel" data-sk-panel hidden>
+    <Stodkompassen variant="panel" />
+  </div>
+</div>
+
+<style>
+  .launcher {
+    position: fixed;
+    right: var(--space-6);
+    bottom: var(--space-6);
+    z-index: 60;
+  }
+
+  .launcher__btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: 8px 18px 8px 8px;
+    border: none;
+    border-radius: var(--radius-pill);
+    background: var(--accent);
+    color: var(--accent-fg);
+    font-size: 0.96875rem;
+    font-weight: 500;
+    cursor: pointer;
+    box-shadow: 0 12px 28px -10px color-mix(in oklch, var(--accent) 55%, transparent);
+    transition: background 0.15s ease, transform 0.12s ease;
+  }
+  .launcher__btn:hover {
+    background: var(--accent-hover);
+  }
+  .launcher__btn:active {
+    transform: translateY(1px);
+  }
+  .launcher__avatar {
+    width: 34px;
+    height: 34px;
+  }
+  .launcher[data-open] .launcher__btn {
+    display: none;
+  }
+
+  .launcher__panel {
+    position: fixed;
+    right: var(--space-6);
+    bottom: var(--space-6);
+    display: flex;
+    flex-direction: column;
+    width: min(400px, calc(100vw - 2 * var(--space-4)));
+    height: min(640px, calc(100dvh - 2 * var(--space-6)));
+    border: var(--hairline) solid var(--border);
+    border-radius: var(--radius-xl);
+    box-shadow: 0 30px 70px -24px oklch(0 0 0 / 0.5);
+    overflow: hidden;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .launcher__panel:not([hidden]) {
+      animation: launcher-in 0.18s ease-out;
+    }
+  }
+  @keyframes launcher-in {
+    from {
+      opacity: 0;
+      transform: translateY(12px) scale(0.98);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  /* Phone: dock to a near-fullscreen sheet. */
+  @media (max-width: 560px) {
+    .launcher {
+      right: var(--space-4);
+      bottom: var(--space-4);
+    }
+    .launcher__panel {
+      right: 0;
+      bottom: 0;
+      width: 100vw;
+      height: 100dvh;
+      border: none;
+      border-radius: 0;
+    }
+  }
+</style>
+
+<script>
+  const root = document.querySelector<HTMLElement>("[data-sk-launcher]");
+  const openBtn = root?.querySelector<HTMLButtonElement>("[data-sk-open]");
+  const panel = root?.querySelector<HTMLElement>("[data-sk-panel]");
+  const closeBtn = panel?.querySelector<HTMLButtonElement>("[data-sk-close]");
+
+  if (root && openBtn && panel && closeBtn) {
+    const open = () => {
+      root.setAttribute("data-open", "");
+      panel.hidden = false;
+      openBtn.setAttribute("aria-expanded", "true");
+      panel.querySelector<HTMLTextAreaElement>("[data-sk-input]")?.focus();
+    };
+    const close = () => {
+      root.removeAttribute("data-open");
+      panel.hidden = true;
+      openBtn.setAttribute("aria-expanded", "false");
+      openBtn.focus();
+    };
+    openBtn.addEventListener("click", open);
+    closeBtn.addEventListener("click", close);
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && root.hasAttribute("data-open")) close();
+    });
+  }
+</script>

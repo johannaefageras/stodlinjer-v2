@@ -2,6 +2,7 @@
 import { getCollection } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import SiteHeader from "../../components/SiteHeader.astro";
+import SiteFooter from "../../components/SiteFooter.astro";
 import Icon from "../../components/Icon.astro";
 import { ARTICLE_COLLECTIONS } from "../../lib/articleCollections";
 
@@ -53,6 +54,8 @@ for (const a of articles) {
       }
     </div>
   </main>
+
+  <SiteFooter />
 </BaseLayout>
 
 <style>

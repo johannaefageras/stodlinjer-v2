@@ -1,0 +1,127 @@
+---
+// Shared site footer. A quiet single band with a hairline top border that
+// mirrors the topbar's chrome. Brand + copyright + org number on the left;
+// contact email + legal links on the right. Theme-aware via tokens only;
+// columns stack on narrow screens. Legal pages are placeholders (#) for now.
+const year = new Date().getFullYear();
+
+const legalLinks = [
+  { label: "Integritetspolicy", href: "#" },
+  { label: "Cookiepolicy", href: "#" },
+  { label: "Användarvillkor", href: "#" },
+];
+---
+
+<footer class="footer" aria-label="Sidfot">
+  <div class="footer__inner container--wide">
+    <div class="footer__brand-col">
+      <a class="footer__brand" href="/">Stödlinjer</a>
+      <p class="footer__meta">
+        <span>© {year} Stödlinjer</span>
+        <span class="footer__orgnr mono">Org.nr 891115-1945</span>
+      </p>
+    </div>
+
+    <div class="footer__links-col">
+      <a class="footer__email" href="mailto:kontakt@stodlinjer.se"
+        >kontakt@stodlinjer.se</a
+      >
+      <nav class="footer__legal" aria-label="Juridiska sidor">
+        {
+          legalLinks.map((l) => (
+            <a class="footer__link" href={l.href}>
+              {l.label}
+            </a>
+          ))
+        }
+      </nav>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    border-top: var(--hairline) solid var(--border);
+    margin-top: var(--space-12);
+  }
+  .footer__inner {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: var(--space-8);
+    padding-block: var(--space-12);
+  }
+
+  /* Left: brand wordmark over copyright + org number */
+  .footer__brand-col {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+  .footer__brand {
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    font-weight: 500;
+    letter-spacing: -0.005em;
+    color: var(--foreground);
+  }
+  .footer__meta {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    font-size: 0.875rem;
+    color: var(--muted);
+  }
+  .footer__orgnr {
+    font-size: 0.8125rem;
+    color: var(--subtle);
+  }
+
+  /* Right: contact email over the legal links */
+  .footer__links-col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: var(--space-3);
+    font-size: 0.9375rem;
+  }
+  .footer__email {
+    color: var(--muted);
+    transition: color 0.15s ease;
+  }
+  .footer__legal {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: var(--space-2);
+  }
+  .footer__email:hover,
+  .footer__link:hover {
+    color: var(--foreground);
+  }
+  .footer__link {
+    color: var(--muted);
+    transition: color 0.15s ease;
+  }
+  /* Middot separators between legal links */
+  .footer__link + .footer__link::before {
+    content: "·";
+    margin-inline-end: var(--space-2);
+    color: var(--subtle);
+  }
+
+  /* Stack and left-align on narrow screens (matches the header breakpoint) */
+  @media (max-width: 560px) {
+    .footer__inner {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--space-6);
+    }
+    .footer__links-col {
+      align-items: flex-start;
+    }
+    .footer__legal {
+      justify-content: flex-start;
+    }
+  }
+</style>

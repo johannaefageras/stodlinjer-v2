@@ -1,0 +1,19 @@
+---
+// Stödkompassen mascot avatar — the friendly nurse-bot, rendered from a small
+// WebP crop (public/imgs/web/). Decorative: the header and launcher already
+// name it in adjacent text. Place inside a `.sk-avatar` wrapper.
+interface Props {
+  size?: number;
+}
+const { size = 30 } = Astro.props;
+---
+
+<img
+  class="sk-mascot"
+  src="/imgs/web/stodkompassen-head.webp"
+  width={size}
+  height={size}
+  alt=""
+  aria-hidden="true"
+  decoding="async"
+/>

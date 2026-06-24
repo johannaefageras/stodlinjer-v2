@@ -2,6 +2,7 @@
 import "../styles/tokens.css";
 import "../styles/icons.css";
 import "../styles/global.css";
+import Launcher from "../components/stodkompassen/Launcher.astro";
 
 interface Props {
   title: string;
@@ -12,6 +13,10 @@ const {
   title,
   description = "Hitta svenska stödlinjer för kris, ångest, våld, ensamhet och oro. Anonymt, kostnadsfritt och tillgängligt.",
 } = Astro.props;
+
+// The full chat already lives on /chatt/, so the floating launcher is shown
+// everywhere else.
+const showLauncher = !Astro.url.pathname.startsWith("/chatt");
 ---
 
 <!doctype html>
@@ -46,7 +51,29 @@ const {
     </script>
   </head>
   <body>
-    <a href="#main" class="sr-only">Hoppa till innehåll</a>
+    <a href="#main" class="skip-link">Hoppa till innehåll</a>
     <slot />
+    {showLauncher && <Launcher />}
+    <style>
+      /* Off-screen until a keyboard user tabs to it, then it drops into view
+         at the top-left as the first focus stop. */
+      .skip-link {
+        position: fixed;
+        top: var(--space-3);
+        left: var(--space-3);
+        z-index: 100;
+        padding: var(--space-2) var(--space-4);
+        border-radius: var(--radius-pill);
+        background: var(--accent);
+        color: var(--accent-fg);
+        font-size: 0.9375rem;
+        font-weight: 500;
+        transform: translateY(calc(-100% - var(--space-4)));
+        transition: transform 0.15s ease;
+      }
+      .skip-link:focus-visible {
+        transform: translateY(0);
+      }
+    </style>
   </body>
 </html>

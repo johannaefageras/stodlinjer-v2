@@ -5,6 +5,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import Icon from "../../components/Icon.astro";
 import ThemeToggle from "../../components/ThemeToggle.astro";
 import SupportLineDetail from "../../components/SupportLineDetail.astro";
+import SiteFooter from "../../components/SiteFooter.astro";
 
 // One static page per active support line — the deep-link / no-JS / SEO
 // fallback behind the homepage modal. The card grid links here via
@@ -34,6 +35,8 @@ const d = line.data;
 
     <SupportLineDetail line={line} heading="h1" />
   </main>
+
+  <SiteFooter />
 </BaseLayout>
 
 <style>
@@ -51,7 +54,7 @@ const d = line.data;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding-block: var(--space-3);
+    padding-block: var(--space-4);
   }
   .brand {
     font-family: var(--font-serif);

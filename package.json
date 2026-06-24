@@ -10,10 +10,13 @@
     "check": "astro check"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.105.0",
+    "@astrojs/node": "^9.5.5",
     "astro": "^5.2.0"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.4",
+    "@types/node": "^26.0.0",
     "typescript": "^5.7.0"
   }
 }

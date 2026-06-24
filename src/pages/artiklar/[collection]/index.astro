@@ -3,6 +3,7 @@ import type { GetStaticPaths } from "astro";
 import { getCollection } from "astro:content";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import SiteHeader from "../../../components/SiteHeader.astro";
+import SiteFooter from "../../../components/SiteFooter.astro";
 import Icon from "../../../components/Icon.astro";
 import ArticleCard from "../../../components/ArticleCard.astro";
 import {
@@ -63,6 +64,8 @@ const meta = getArticleCollection(collection);
       }
     </div>
   </main>
+
+  <SiteFooter />
 </BaseLayout>
 
 <style>
