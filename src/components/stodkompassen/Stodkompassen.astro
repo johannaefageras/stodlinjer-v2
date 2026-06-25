@@ -47,7 +47,39 @@ const greeting =
         aria-hidden="true"
         loading="lazy"
         decoding="async"
+        data-sk-mascot
       />
+      {/* Pick the mascot pose in the browser: a random daytime pose, or the
+         sleeping pose at night (22:00–06:00 Europe/Stockholm, DST-safe). This
+         can't be a build-time choice — the static build would bake in one pose
+         and one moment in time. `is:inline` keeps the script unbundled so it
+         runs synchronously, before the (lazy) default `waving` ever loads; that
+         default is also the no-JS fallback. */}
+      <script is:inline>
+        (function () {
+          var poses = [
+            "hands-on-heart", "heart-hands", "holding-compass", "holding-heart",
+            "neutral", "pointing", "thumbs-up", "victory", "waving", "welcoming",
+          ];
+          var hour = Number(
+            new Intl.DateTimeFormat("sv-SE", {
+              timeZone: "Europe/Stockholm",
+              hour: "2-digit",
+              hourCycle: "h23",
+            }).format(new Date())
+          );
+          var pose =
+            hour >= 22 || hour < 6
+              ? "sleeping"
+              : poses[Math.floor(Math.random() * poses.length)];
+          var src = "/imgs/web/stodkompassen-" + pose + ".webp";
+          document
+            .querySelectorAll(".sk__welcome-art[data-sk-mascot]")
+            .forEach(function (el) {
+              el.src = src;
+            });
+        })();
+      </script>
       <p class="sk__welcome-text">{greeting}</p>
     </div>
   </div>
